@@ -1,0 +1,108 @@
+name: Oracle APEX APIs
+description: Oracle Application Express (APEX) is a low-code development platform that enables you to build scalable, secure enterprise apps with world-class features.
+image: https://www.oracle.com/a/ocom/img/apex-logo.png
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+url: https://apex.oracle.com/apis.json
+apis:
+- name: Oracle APEX REST Data Services API
+  description: RESTful API for Oracle APEX applications enabling data access and manipulation through REST endpoints
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanUrl: https://apex.oracle.com/
+  baseUrl: https://apex.oracle.com/pls/apex/
+  tags:
+  - REST
+  - Database
+  - Low-Code
+  - Data Services
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/
+  - type: OpenAPI
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/aelig/rest-data-services.html
+  - type: Authentication
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/authentication.html
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX SQL Workshop API
+  description: API for accessing SQL Workshop functionality programmatically
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanUrl: https://apex.oracle.com/
+  baseUrl: https://apex.oracle.com/pls/apex/
+  tags:
+  - SQL
+  - Database
+  - Development
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/
+  - type: Tutorials
+    url: https://apex.oracle.com/en/learn/tutorials/
+- name: Oracle APEX Application API
+  description: API for managing APEX applications, pages, and components
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanUrl: https://apex.oracle.com/
+  baseUrl: https://apex.oracle.com/pls/apex/
+  tags:
+  - Applications
+  - Management
+  - Development
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/
+  - type: API Reference
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/APEX_APPLICATION.html
+- name: Oracle REST Data Services (ORDS) API
+  description: REST API framework integrated with APEX for creating RESTful services
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanUrl: https://www.oracle.com/database/technologies/appdev/rest.html
+  baseUrl: https://example.com/ords/
+  tags:
+  - REST
+  - ORDS
+  - Web Services
+  - Integration
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/
+  - type: Installation Guide
+    url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/latest/installation-guide/
+  - type: Developer Guide
+    url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/latest/developer-guide/
+common:
+- type: Website
+  url: https://apex.oracle.com/
+- type: Documentation
+  url: https://docs.oracle.com/en/database/oracle/apex/
+- type: Blog
+  url: https://blogs.oracle.com/apex/
+- type: Community
+  url: https://apex.oracle.com/community
+- type: Forums
+  url: https://community.oracle.com/tech/developers/categories/application-express
+- type: GitHub
+  url: https://github.com/oracle/apex
+- type: Twitter
+  url: https://twitter.com/oracleapex
+- type: YouTube
+  url: https://www.youtube.com/c/OracleAPEX
+- type: Learning
+  url: https://apex.oracle.com/en/learn/
+- type: Pricing
+  url: https://www.oracle.com/application-development/apex/pricing/
+maintainers:
+- FN: Oracle Corporation
+  email: apex-info_us@oracle.com
+  url: https://www.oracle.com/
+tags:
+- Low-Code
+- Database
+- REST API
+- Enterprise
+- Web Applications
+- Oracle
+- APEX
+- Development Platform
