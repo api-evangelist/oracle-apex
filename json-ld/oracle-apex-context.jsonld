@@ -1,0 +1,412 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "apex": "https://docs.oracle.com/en/database/oracle/apex/vocab#",
+    "ords": "https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Application": {
+      "@id": "apex:Application",
+      "@context": {
+        "applicationId": "apex:applicationId",
+        "applicationName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "applicationGroup": "apex:applicationGroup",
+        "workspace": "apex:workspace",
+        "workspaceId": "apex:workspaceId",
+        "alias": "apex:alias",
+        "version": {
+          "@id": "schema:version",
+          "@type": "xsd:string"
+        },
+        "schema": "apex:parsingSchema",
+        "applicationStatus": "apex:applicationStatus",
+        "buildStatus": "apex:buildStatus",
+        "language": {
+          "@id": "schema:inLanguage",
+          "@type": "xsd:string"
+        },
+        "dateFormat": "apex:dateFormat",
+        "compatibilityMode": "apex:compatibilityMode",
+        "createdOn": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastUpdatedOn": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "lastUpdatedBy": "apex:lastUpdatedBy",
+        "pages": {
+          "@id": "apex:hasPage",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Page": {
+      "@id": "apex:Page",
+      "@context": {
+        "pageId": "apex:pageId",
+        "pageName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "pageAlias": "apex:pageAlias",
+        "pageGroup": "apex:pageGroup",
+        "pageMode": "apex:pageMode",
+        "pageTemplate": "apex:pageTemplate",
+        "authorizationScheme": "apex:authorizationScheme",
+        "regions": {
+          "@id": "apex:hasRegion",
+          "@container": "@set"
+        },
+        "items": {
+          "@id": "apex:hasItem",
+          "@container": "@set"
+        },
+        "buttons": {
+          "@id": "apex:hasButton",
+          "@container": "@set"
+        },
+        "processes": {
+          "@id": "apex:hasProcess",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Region": {
+      "@id": "apex:Region",
+      "@context": {
+        "regionId": "apex:regionId",
+        "regionName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "regionType": "apex:regionType",
+        "template": "apex:template",
+        "displayPosition": "apex:displayPosition",
+        "sourceType": "apex:sourceType",
+        "source": "apex:source",
+        "columns": {
+          "@id": "apex:hasColumn",
+          "@container": "@set"
+        },
+        "subRegions": {
+          "@id": "apex:hasSubRegion",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "PageItem": {
+      "@id": "apex:PageItem",
+      "@context": {
+        "itemName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "itemType": "apex:itemType",
+        "label": "apex:label",
+        "regionId": "apex:regionId",
+        "sourceType": "apex:sourceType",
+        "source": "apex:source",
+        "isRequired": "apex:isRequired",
+        "isPrimaryKey": "apex:isPrimaryKey",
+        "defaultValue": "apex:defaultValue",
+        "displaySequence": "apex:displaySequence"
+      }
+    },
+
+    "Button": {
+      "@id": "apex:Button",
+      "@context": {
+        "buttonName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "label": "apex:label",
+        "buttonAction": "apex:buttonAction",
+        "buttonPosition": "apex:buttonPosition",
+        "isHot": "apex:isHot",
+        "regionId": "apex:regionId"
+      }
+    },
+
+    "Process": {
+      "@id": "apex:Process",
+      "@context": {
+        "processName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "processType": "apex:processType",
+        "processPoint": "apex:processPoint",
+        "source": "apex:source",
+        "errorMessage": "apex:errorMessage",
+        "successMessage": "apex:successMessage"
+      }
+    },
+
+    "DynamicAction": {
+      "@id": "apex:DynamicAction",
+      "@context": {
+        "dynamicActionName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "event": "apex:event",
+        "triggeringElementType": "apex:triggeringElementType",
+        "triggeringElement": "apex:triggeringElement",
+        "conditionType": "apex:conditionType"
+      }
+    },
+
+    "RestModule": {
+      "@id": "ords:RestModule",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "basePath": {
+          "@id": "ords:basePath",
+          "@type": "xsd:string"
+        },
+        "moduleStatus": "ords:moduleStatus",
+        "itemsPerPage": "ords:itemsPerPage",
+        "originsAllowed": "ords:originsAllowed",
+        "comments": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "templates": {
+          "@id": "ords:hasTemplate",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "RestTemplate": {
+      "@id": "ords:RestTemplate",
+      "@context": {
+        "uriPrefix": {
+          "@id": "ords:uriPrefix",
+          "@type": "xsd:string"
+        },
+        "moduleId": "ords:moduleId",
+        "priority": "ords:priority",
+        "etagType": "ords:etagType",
+        "comments": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "handlers": {
+          "@id": "ords:hasHandler",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "RestHandler": {
+      "@id": "ords:RestHandler",
+      "@context": {
+        "templateId": "ords:templateId",
+        "method": {
+          "@id": "ords:httpMethod",
+          "@type": "xsd:string"
+        },
+        "sourceType": "ords:sourceType",
+        "source": "ords:source",
+        "itemsPerPage": "ords:itemsPerPage",
+        "mimesAllowed": "ords:mimesAllowed",
+        "comments": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "RestPrivilege": {
+      "@id": "ords:RestPrivilege",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "label": "ords:label",
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "roles": {
+          "@id": "ords:hasRole",
+          "@container": "@set"
+        },
+        "patterns": {
+          "@id": "ords:hasPattern",
+          "@container": "@set"
+        },
+        "modules": {
+          "@id": "ords:hasModule",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "RestRole": {
+      "@id": "ords:RestRole",
+      "@context": {
+        "roleName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "privileges": {
+          "@id": "ords:hasPrivilege",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "OAuthClient": {
+      "@id": "ords:OAuthClient",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "redirectUri": {
+          "@id": "ords:redirectUri",
+          "@type": "@id"
+        },
+        "supportEmail": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "supportUri": {
+          "@id": "ords:supportUri",
+          "@type": "@id"
+        },
+        "privilegeNames": "ords:privilegeNames",
+        "roleNames": "ords:roleNames",
+        "allowedOrigins": "ords:allowedOrigins"
+      }
+    },
+
+    "AutoRestObject": {
+      "@id": "ords:AutoRestObject",
+      "@context": {
+        "objectName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "objectAlias": "ords:objectAlias",
+        "auth": "ords:requiresAuth"
+      }
+    },
+
+    "RestDataSource": {
+      "@id": "apex:RestDataSource",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "urlEndpoint": {
+          "@id": "apex:urlEndpoint",
+          "@type": "@id"
+        },
+        "httpMethod": "apex:httpMethod",
+        "format": "apex:format",
+        "paginationType": "apex:paginationType",
+        "credentialName": "apex:credentialName"
+      }
+    },
+
+    "WebCredential": {
+      "@id": "apex:WebCredential",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "authenticationType": "apex:authenticationType",
+        "scope": "apex:scope",
+        "validForUrls": "apex:validForUrls"
+      }
+    },
+
+    "Workspace": {
+      "@id": "apex:Workspace",
+      "@context": {
+        "workspaceId": "apex:workspaceId",
+        "workspaceName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "primarySchema": "apex:primarySchema",
+        "applications": {
+          "@id": "apex:hasApplication",
+          "@container": "@set"
+        },
+        "createdOn": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "AuthenticationScheme": {
+      "@id": "apex:AuthenticationScheme",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "schemeType": "apex:schemeType",
+        "isCurrent": "apex:isCurrent",
+        "logoutUrl": {
+          "@id": "apex:logoutUrl",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "AuthorizationScheme": {
+      "@id": "apex:AuthorizationScheme",
+      "@context": {
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "schemeType": "apex:schemeType",
+        "expression": "apex:expression",
+        "errorMessage": "apex:errorMessage",
+        "evaluateOnce": "apex:evaluateOnce"
+      }
+    },
+
+    "id": "apex:id",
+    "applicationId": "apex:applicationId",
+    "workspaceId": "apex:workspaceId",
+    "displayName": "schema:name",
+    "description": "schema:description",
+    "createdOn": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
+    "lastUpdatedOn": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

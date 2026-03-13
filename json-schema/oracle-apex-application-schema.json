@@ -1,0 +1,1251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oracle.com/schemas/apex/application.json",
+  "title": "Oracle APEX Application",
+  "description": "Schema for an Oracle Application Express (APEX) application definition including its pages, regions, items, buttons, processes, computations, and shared components. Based on the APEX application model as documented in the Oracle APEX Application Builder and Blueprint specification.",
+  "type": "object",
+  "required": [
+    "application_id",
+    "application_name",
+    "workspace"
+  ],
+  "properties": {
+    "application_id": {
+      "type": "integer",
+      "description": "Unique numeric identifier for the APEX application within the workspace"
+    },
+    "application_name": {
+      "type": "string",
+      "description": "Display name of the APEX application"
+    },
+    "application_group": {
+      "type": "string",
+      "description": "Logical group to which the application belongs for organizational purposes"
+    },
+    "workspace": {
+      "type": "string",
+      "description": "Name of the APEX workspace that owns this application"
+    },
+    "workspace_id": {
+      "type": "integer",
+      "description": "Numeric identifier of the APEX workspace"
+    },
+    "schema": {
+      "type": "string",
+      "description": "Database schema (parsing schema) used by the application for SQL and PL/SQL execution"
+    },
+    "alias": {
+      "type": "string",
+      "description": "Short alphanumeric alias for the application, used in friendly URLs"
+    },
+    "version": {
+      "type": "string",
+      "description": "Application version string"
+    },
+    "application_status": {
+      "type": "string",
+      "description": "Current availability status of the application",
+      "enum": [
+        "Available",
+        "Available with Developer Toolbar",
+        "Restricted Access",
+        "Unavailable",
+        "Unavailable (Status Shown with Login Page)",
+        "Unavailable (Redirect to URL)"
+      ]
+    },
+    "build_status": {
+      "type": "string",
+      "description": "Controls whether the application can be modified in the Application Builder",
+      "enum": ["Run and Build", "Run Only"]
+    },
+    "date_format": {
+      "type": "string",
+      "description": "Default Oracle date format mask for the application",
+      "examples": ["DD-MON-YYYY", "YYYY-MM-DD", "DD/MM/YYYY"]
+    },
+    "timestamp_format": {
+      "type": "string",
+      "description": "Default Oracle timestamp format mask for the application"
+    },
+    "timestamp_tz_format": {
+      "type": "string",
+      "description": "Default Oracle timestamp with time zone format mask"
+    },
+    "language": {
+      "type": "string",
+      "description": "Primary language of the application (IANA language tag)",
+      "examples": ["en", "fr", "de", "ja"]
+    },
+    "compatibility_mode": {
+      "type": "string",
+      "description": "APEX version compatibility mode for the application",
+      "examples": ["24.2", "23.2", "22.2", "21.2"]
+    },
+    "authentication": {
+      "$ref": "#/$defs/AuthenticationScheme"
+    },
+    "authorization_scheme": {
+      "type": "string",
+      "description": "Name of the authorization scheme controlling access to the entire application"
+    },
+    "session_management": {
+      "$ref": "#/$defs/SessionManagement"
+    },
+    "navigation": {
+      "$ref": "#/$defs/Navigation"
+    },
+    "user_interface": {
+      "$ref": "#/$defs/UserInterface"
+    },
+    "pages": {
+      "type": "array",
+      "description": "Collection of pages that comprise the application",
+      "items": {
+        "$ref": "#/$defs/Page"
+      }
+    },
+    "shared_components": {
+      "$ref": "#/$defs/SharedComponents"
+    },
+    "rest_data_sources": {
+      "type": "array",
+      "description": "REST data source definitions for external API integration",
+      "items": {
+        "$ref": "#/$defs/RestDataSource"
+      }
+    },
+    "web_credentials": {
+      "type": "array",
+      "description": "Web credential stores for authenticating REST data source requests",
+      "items": {
+        "$ref": "#/$defs/WebCredential"
+      }
+    },
+    "created_on": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the application was created"
+    },
+    "last_updated_on": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the application was last modified"
+    },
+    "last_updated_by": {
+      "type": "string",
+      "description": "Username of the developer who last modified the application"
+    }
+  },
+  "$defs": {
+    "AuthenticationScheme": {
+      "type": "object",
+      "description": "Authentication scheme defining how users are verified when accessing the application",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the authentication scheme"
+        },
+        "scheme_type": {
+          "type": "string",
+          "description": "Type of authentication mechanism",
+          "enum": [
+            "NATIVE_APEX_ACCOUNTS",
+            "NATIVE_HTTP_HEADER_VARIABLE",
+            "NATIVE_LDAP",
+            "NATIVE_DAD",
+            "NATIVE_CUSTOM",
+            "NATIVE_OPEN_DOOR",
+            "NATIVE_NO_AUTH",
+            "NATIVE_CLOUD_IDM",
+            "NATIVE_SOCIAL",
+            "NATIVE_SAML",
+            "NATIVE_IAS_SSO",
+            "NATIVE_ORDS_CLIENT_CREDENTIALS"
+          ]
+        },
+        "invalid_session_type": {
+          "type": "string",
+          "description": "Action taken when a session is invalid",
+          "enum": ["LOGIN_PAGE", "URL"]
+        },
+        "logout_url": {
+          "type": "string",
+          "description": "URL to redirect to after logout"
+        },
+        "session_not_valid_url": {
+          "type": "string",
+          "description": "URL to redirect to for invalid sessions"
+        },
+        "is_current": {
+          "type": "boolean",
+          "description": "Whether this is the currently active authentication scheme"
+        }
+      }
+    },
+    "SessionManagement": {
+      "type": "object",
+      "description": "Session configuration parameters for the application",
+      "properties": {
+        "max_session_length_sec": {
+          "type": "integer",
+          "description": "Maximum session duration in seconds",
+          "minimum": 0
+        },
+        "max_session_idle_sec": {
+          "type": "integer",
+          "description": "Maximum idle time before session expiration in seconds",
+          "minimum": 0
+        },
+        "session_state_protection": {
+          "type": "string",
+          "description": "Level of session state protection against URL tampering",
+          "enum": ["Enabled", "Disabled"]
+        },
+        "rejoin_existing_sessions": {
+          "type": "string",
+          "description": "Whether existing sessions can be rejoined",
+          "enum": ["Enabled", "Disabled"]
+        }
+      }
+    },
+    "Navigation": {
+      "type": "object",
+      "description": "Application navigation configuration",
+      "properties": {
+        "navigation_type": {
+          "type": "string",
+          "description": "Primary navigation component type",
+          "enum": ["List", "Navigation Menu"]
+        },
+        "navigation_list": {
+          "type": "string",
+          "description": "Name of the shared component list used for navigation"
+        },
+        "breadcrumb": {
+          "type": "string",
+          "description": "Name of the breadcrumb used for hierarchical navigation"
+        }
+      }
+    },
+    "UserInterface": {
+      "type": "object",
+      "description": "User interface settings for the application",
+      "properties": {
+        "theme_number": {
+          "type": "integer",
+          "description": "Numeric identifier of the UI theme"
+        },
+        "theme_name": {
+          "type": "string",
+          "description": "Display name of the UI theme",
+          "examples": ["Universal Theme"]
+        },
+        "template_set": {
+          "type": "string",
+          "description": "Template options or style set applied to the theme"
+        },
+        "global_page_id": {
+          "type": "integer",
+          "description": "Page ID of the global page (Page 0) that is rendered with every other page"
+        },
+        "login_page_id": {
+          "type": "integer",
+          "description": "Page ID of the login page"
+        },
+        "home_page_id": {
+          "type": "integer",
+          "description": "Page ID of the application home page"
+        },
+        "error_page_id": {
+          "type": "integer",
+          "description": "Page ID of the error handling page"
+        }
+      }
+    },
+    "Page": {
+      "type": "object",
+      "description": "An application page containing regions, items, buttons, processes, and dynamic actions",
+      "required": ["page_id", "page_name"],
+      "properties": {
+        "page_id": {
+          "type": "integer",
+          "description": "Unique numeric identifier of the page within the application"
+        },
+        "page_name": {
+          "type": "string",
+          "description": "Display name of the page"
+        },
+        "page_alias": {
+          "type": "string",
+          "description": "Alphanumeric alias for the page used in friendly URLs"
+        },
+        "page_group": {
+          "type": "string",
+          "description": "Group to which the page belongs for organizational purposes"
+        },
+        "page_mode": {
+          "type": "string",
+          "description": "Rendering mode of the page",
+          "enum": ["Normal", "Modal Dialog", "Non-Modal Dialog", "Drawer"]
+        },
+        "page_template": {
+          "type": "string",
+          "description": "Name of the page template used for rendering"
+        },
+        "authorization_scheme": {
+          "type": "string",
+          "description": "Authorization scheme controlling access to this page"
+        },
+        "page_requires_authentication": {
+          "type": "boolean",
+          "description": "Whether the page requires an authenticated session",
+          "default": true
+        },
+        "deep_linking": {
+          "type": "string",
+          "description": "Whether deep linking (direct URL access) is allowed",
+          "enum": ["Enabled", "Disabled", "Application Default"]
+        },
+        "regions": {
+          "type": "array",
+          "description": "Regions displayed on the page",
+          "items": {
+            "$ref": "#/$defs/Region"
+          }
+        },
+        "items": {
+          "type": "array",
+          "description": "Page-level items (form fields, display items, hidden items)",
+          "items": {
+            "$ref": "#/$defs/PageItem"
+          }
+        },
+        "buttons": {
+          "type": "array",
+          "description": "Buttons displayed on the page",
+          "items": {
+            "$ref": "#/$defs/Button"
+          }
+        },
+        "processes": {
+          "type": "array",
+          "description": "Server-side processes that execute on page submit or load",
+          "items": {
+            "$ref": "#/$defs/Process"
+          }
+        },
+        "computations": {
+          "type": "array",
+          "description": "Server-side computations that set item values",
+          "items": {
+            "$ref": "#/$defs/Computation"
+          }
+        },
+        "validations": {
+          "type": "array",
+          "description": "Server-side validations that run on page submit",
+          "items": {
+            "$ref": "#/$defs/Validation"
+          }
+        },
+        "dynamic_actions": {
+          "type": "array",
+          "description": "Client-side dynamic actions triggered by browser events",
+          "items": {
+            "$ref": "#/$defs/DynamicAction"
+          }
+        },
+        "branches": {
+          "type": "array",
+          "description": "Page branching rules for navigation after page processing",
+          "items": {
+            "$ref": "#/$defs/Branch"
+          }
+        }
+      }
+    },
+    "Region": {
+      "type": "object",
+      "description": "A region is a container on a page that displays content such as reports, forms, charts, or static HTML",
+      "required": ["region_name"],
+      "properties": {
+        "region_id": {
+          "type": "integer",
+          "description": "Unique numeric identifier of the region"
+        },
+        "region_name": {
+          "type": "string",
+          "description": "Display name of the region"
+        },
+        "region_type": {
+          "type": "string",
+          "description": "Type of region determining its rendering behavior",
+          "enum": [
+            "Static Content",
+            "Classic Report",
+            "Interactive Report",
+            "Interactive Grid",
+            "Form",
+            "Chart",
+            "Map",
+            "Calendar",
+            "Tree",
+            "List",
+            "Breadcrumb",
+            "PL/SQL Dynamic Content",
+            "URL",
+            "Cards",
+            "Faceted Search",
+            "Smart Filters",
+            "Content Row",
+            "Timeline",
+            "Map Chart"
+          ]
+        },
+        "template": {
+          "type": "string",
+          "description": "Name of the region template used for rendering"
+        },
+        "display_position": {
+          "type": "string",
+          "description": "Page template position where the region is rendered",
+          "examples": ["Body", "Breadcrumb Bar", "Footer", "Sub Regions", "Dialogs, Drawers and Popups"]
+        },
+        "source_type": {
+          "type": "string",
+          "description": "Type of data source for the region",
+          "enum": [
+            "SQL Query",
+            "PL/SQL Function Body returning SQL Query",
+            "Table / View",
+            "Web Source",
+            "REST Source",
+            "Function Returning SQL Query",
+            "None"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "description": "Source code, table name, or query used by the region"
+        },
+        "authorization_scheme": {
+          "type": "string",
+          "description": "Authorization scheme controlling visibility of this region"
+        },
+        "condition_type": {
+          "type": "string",
+          "description": "Condition type that determines when the region is rendered"
+        },
+        "sub_regions": {
+          "type": "array",
+          "description": "Nested sub-regions contained within this region",
+          "items": {
+            "$ref": "#/$defs/Region"
+          }
+        },
+        "columns": {
+          "type": "array",
+          "description": "Column definitions for report and grid regions",
+          "items": {
+            "$ref": "#/$defs/RegionColumn"
+          }
+        }
+      }
+    },
+    "RegionColumn": {
+      "type": "object",
+      "description": "Column definition within a report or interactive grid region",
+      "properties": {
+        "column_name": {
+          "type": "string",
+          "description": "Database column name or alias"
+        },
+        "heading": {
+          "type": "string",
+          "description": "Display heading for the column"
+        },
+        "column_type": {
+          "type": "string",
+          "description": "Data type of the column",
+          "enum": ["STRING", "NUMBER", "DATE", "TIMESTAMP", "CLOB", "BLOB"]
+        },
+        "is_visible": {
+          "type": "boolean",
+          "description": "Whether the column is visible in the region display"
+        },
+        "is_sortable": {
+          "type": "boolean",
+          "description": "Whether the column supports sorting"
+        },
+        "is_filterable": {
+          "type": "boolean",
+          "description": "Whether the column supports filtering"
+        },
+        "format_mask": {
+          "type": "string",
+          "description": "Oracle format mask applied to column values for display"
+        },
+        "display_sequence": {
+          "type": "integer",
+          "description": "Order in which the column appears"
+        }
+      }
+    },
+    "PageItem": {
+      "type": "object",
+      "description": "A page item representing a form field, display element, or hidden value on a page",
+      "required": ["item_name"],
+      "properties": {
+        "item_name": {
+          "type": "string",
+          "description": "Unique name of the item within the application (convention: P{page_id}_{name})"
+        },
+        "item_type": {
+          "type": "string",
+          "description": "Type of the page item determining its rendering and behavior",
+          "enum": [
+            "Text Field",
+            "Textarea",
+            "Number Field",
+            "Date Picker",
+            "Select List",
+            "Radio Group",
+            "Checkbox",
+            "Switch",
+            "Popup LOV",
+            "Shuttle",
+            "Rich Text Editor",
+            "Display Only",
+            "Hidden",
+            "File Browse",
+            "Password",
+            "Color Picker",
+            "Star Rating",
+            "Combobox",
+            "Geocoded Address",
+            "Markdown Editor",
+            "Image Upload",
+            "QR Code"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "description": "Display label for the item"
+        },
+        "region_id": {
+          "type": "integer",
+          "description": "ID of the region containing this item"
+        },
+        "source_type": {
+          "type": "string",
+          "description": "Source of the item default value"
+        },
+        "source": {
+          "type": "string",
+          "description": "Database column, expression, or value providing the item's data"
+        },
+        "is_required": {
+          "type": "boolean",
+          "description": "Whether the item requires a value",
+          "default": false
+        },
+        "is_primary_key": {
+          "type": "boolean",
+          "description": "Whether the item represents a primary key column",
+          "default": false
+        },
+        "default_value": {
+          "type": "string",
+          "description": "Default value for the item when no session state value exists"
+        },
+        "lov_query": {
+          "type": "string",
+          "description": "SQL query for list of values (select lists, popup LOVs, radio groups)"
+        },
+        "display_sequence": {
+          "type": "integer",
+          "description": "Order in which the item appears within its region"
+        },
+        "authorization_scheme": {
+          "type": "string",
+          "description": "Authorization scheme controlling visibility of this item"
+        }
+      }
+    },
+    "Button": {
+      "type": "object",
+      "description": "A button on a page that triggers navigation or page submission",
+      "required": ["button_name"],
+      "properties": {
+        "button_name": {
+          "type": "string",
+          "description": "Internal name of the button"
+        },
+        "label": {
+          "type": "string",
+          "description": "Display label on the button"
+        },
+        "button_action": {
+          "type": "string",
+          "description": "Action performed when the button is clicked",
+          "enum": ["SUBMIT", "REDIRECT_URL", "REDIRECT_PAGE", "DEFINED_BY_DA"]
+        },
+        "button_position": {
+          "type": "string",
+          "description": "Position of the button within its region or page template",
+          "examples": ["REGION_BODY", "CHANGE", "CREATE", "DELETE", "CLOSE", "NEXT", "PREVIOUS", "RIGHT_OF_IR_SEARCH_BAR"]
+        },
+        "button_template": {
+          "type": "string",
+          "description": "Name of the button template"
+        },
+        "is_hot": {
+          "type": "boolean",
+          "description": "Whether the button uses hot (primary/accent) styling",
+          "default": false
+        },
+        "region_id": {
+          "type": "integer",
+          "description": "ID of the region containing this button"
+        },
+        "authorization_scheme": {
+          "type": "string",
+          "description": "Authorization scheme controlling visibility"
+        },
+        "condition_type": {
+          "type": "string",
+          "description": "Condition type that determines when the button is displayed"
+        }
+      }
+    },
+    "Process": {
+      "type": "object",
+      "description": "A server-side process that executes PL/SQL, DML, or other operations during page rendering or submission",
+      "required": ["process_name"],
+      "properties": {
+        "process_name": {
+          "type": "string",
+          "description": "Name of the process"
+        },
+        "process_type": {
+          "type": "string",
+          "description": "Type of processing operation",
+          "enum": [
+            "PL/SQL Code",
+            "DML (Insert, Update, Merge, Delete)",
+            "Form - Automatic Row Processing (DML)",
+            "Interactive Grid - Automatic Row Processing (DML)",
+            "Send E-Mail",
+            "Close Dialog",
+            "Clear Session State",
+            "Reset Pagination",
+            "Execute Code",
+            "Invoke API",
+            "Human Task - Create",
+            "Workflow - Start"
+          ]
+        },
+        "process_point": {
+          "type": "string",
+          "description": "When in the page lifecycle the process executes",
+          "enum": [
+            "Before Header",
+            "After Header",
+            "Before Regions",
+            "After Regions",
+            "Processing",
+            "After Processing"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "description": "PL/SQL code block or SQL statement executed by the process"
+        },
+        "error_message": {
+          "type": "string",
+          "description": "Error message displayed if the process fails"
+        },
+        "success_message": {
+          "type": "string",
+          "description": "Success message displayed after process completion"
+        },
+        "when_button_pressed": {
+          "type": "string",
+          "description": "Name of the button that triggers this process"
+        },
+        "condition_type": {
+          "type": "string",
+          "description": "Condition type determining when the process executes"
+        }
+      }
+    },
+    "Computation": {
+      "type": "object",
+      "description": "A server-side computation that sets an item value during page rendering or processing",
+      "properties": {
+        "item_name": {
+          "type": "string",
+          "description": "Name of the item whose value is set by the computation"
+        },
+        "computation_type": {
+          "type": "string",
+          "description": "Type of computation",
+          "enum": [
+            "Static Value",
+            "SQL Query (returning single value)",
+            "PL/SQL Expression",
+            "PL/SQL Function Body",
+            "Item Value",
+            "Expression"
+          ]
+        },
+        "computation_point": {
+          "type": "string",
+          "description": "When in the page lifecycle the computation executes",
+          "enum": ["Before Header", "After Header", "Before Regions", "After Regions", "Processing", "After Processing"]
+        },
+        "computation": {
+          "type": "string",
+          "description": "Expression, query, or value used to compute the item value"
+        }
+      }
+    },
+    "Validation": {
+      "type": "object",
+      "description": "A server-side validation that checks data integrity on page submission",
+      "properties": {
+        "validation_name": {
+          "type": "string",
+          "description": "Name of the validation"
+        },
+        "validation_type": {
+          "type": "string",
+          "description": "Type of validation check",
+          "enum": [
+            "Item is NOT NULL",
+            "Item is NOT NULL or zero",
+            "Item String Length",
+            "Regular Expression",
+            "SQL Expression",
+            "PL/SQL Expression",
+            "PL/SQL Error",
+            "Function Returning Boolean",
+            "Function Returning Error Text",
+            "Item Matches Regular Expression"
+          ]
+        },
+        "associated_item": {
+          "type": "string",
+          "description": "Page item associated with the validation for error display"
+        },
+        "error_message": {
+          "type": "string",
+          "description": "Error message displayed when validation fails"
+        },
+        "when_button_pressed": {
+          "type": "string",
+          "description": "Name of the button that triggers this validation"
+        },
+        "expression": {
+          "type": "string",
+          "description": "Validation expression, query, or regular expression"
+        }
+      }
+    },
+    "DynamicAction": {
+      "type": "object",
+      "description": "A client-side dynamic action that responds to browser events to modify page content without a full page refresh",
+      "properties": {
+        "dynamic_action_name": {
+          "type": "string",
+          "description": "Name of the dynamic action"
+        },
+        "event": {
+          "type": "string",
+          "description": "Browser event that triggers the dynamic action",
+          "examples": ["Click", "Change", "Page Load", "Key Press", "Double Click", "Lose Focus", "Get Focus", "After Refresh", "Dialog Closed"]
+        },
+        "triggering_element_type": {
+          "type": "string",
+          "description": "Type of element that fires the event",
+          "enum": ["Item", "Button", "Region", "jQuery Selector", "JavaScript Expression", "DOM Object", "Column"]
+        },
+        "triggering_element": {
+          "type": "string",
+          "description": "Identifier of the triggering element"
+        },
+        "condition_type": {
+          "type": "string",
+          "description": "Client-side condition evaluated before executing actions"
+        },
+        "true_actions": {
+          "type": "array",
+          "description": "Actions executed when the condition is true",
+          "items": {
+            "$ref": "#/$defs/DynamicActionAction"
+          }
+        },
+        "false_actions": {
+          "type": "array",
+          "description": "Actions executed when the condition is false",
+          "items": {
+            "$ref": "#/$defs/DynamicActionAction"
+          }
+        }
+      }
+    },
+    "DynamicActionAction": {
+      "type": "object",
+      "description": "A single action within a dynamic action's true or false execution path",
+      "properties": {
+        "action_type": {
+          "type": "string",
+          "description": "Type of action to execute",
+          "examples": [
+            "Show",
+            "Hide",
+            "Enable",
+            "Disable",
+            "Set Value",
+            "Execute JavaScript Code",
+            "Execute Server-side Code",
+            "Submit Page",
+            "Refresh",
+            "Add Class",
+            "Remove Class",
+            "Set Focus",
+            "Clear",
+            "Execute PL/SQL Code",
+            "Open Region",
+            "Close Region"
+          ]
+        },
+        "affected_element_type": {
+          "type": "string",
+          "description": "Type of element affected by the action",
+          "enum": ["Item", "Button", "Region", "jQuery Selector", "DOM Object", "Column", "Triggering Element"]
+        },
+        "affected_element": {
+          "type": "string",
+          "description": "Identifier of the element affected by the action"
+        },
+        "fire_on_initialization": {
+          "type": "boolean",
+          "description": "Whether the action fires when the page first loads",
+          "default": true
+        }
+      }
+    },
+    "Branch": {
+      "type": "object",
+      "description": "A branching rule that controls navigation after page processing",
+      "properties": {
+        "branch_name": {
+          "type": "string",
+          "description": "Name of the branch"
+        },
+        "branch_type": {
+          "type": "string",
+          "description": "Type of branch target",
+          "enum": ["Page", "URL", "PL/SQL Procedure"]
+        },
+        "branch_point": {
+          "type": "string",
+          "description": "When the branch is evaluated",
+          "enum": ["Before Processing", "After Processing"]
+        },
+        "target_page_id": {
+          "type": "integer",
+          "description": "Target page ID for page branches"
+        },
+        "target_url": {
+          "type": "string",
+          "description": "Target URL for URL branches"
+        },
+        "when_button_pressed": {
+          "type": "string",
+          "description": "Name of the button that triggers this branch"
+        }
+      }
+    },
+    "SharedComponents": {
+      "type": "object",
+      "description": "Application-level shared components reusable across pages",
+      "properties": {
+        "lists_of_values": {
+          "type": "array",
+          "description": "Shared list of values definitions",
+          "items": {
+            "$ref": "#/$defs/ListOfValues"
+          }
+        },
+        "navigation_lists": {
+          "type": "array",
+          "description": "Navigation list definitions for menus and navigation bars",
+          "items": {
+            "$ref": "#/$defs/NavigationList"
+          }
+        },
+        "breadcrumbs": {
+          "type": "array",
+          "description": "Breadcrumb definitions for hierarchical navigation",
+          "items": {
+            "$ref": "#/$defs/Breadcrumb"
+          }
+        },
+        "application_items": {
+          "type": "array",
+          "description": "Application-level items accessible across all pages",
+          "items": {
+            "$ref": "#/$defs/ApplicationItem"
+          }
+        },
+        "application_processes": {
+          "type": "array",
+          "description": "Application-level processes that execute on every page",
+          "items": {
+            "$ref": "#/$defs/ApplicationProcess"
+          }
+        },
+        "application_computations": {
+          "type": "array",
+          "description": "Application-level computations that execute on every page",
+          "items": {
+            "$ref": "#/$defs/ApplicationComputation"
+          }
+        },
+        "authorization_schemes": {
+          "type": "array",
+          "description": "Authorization scheme definitions for access control",
+          "items": {
+            "$ref": "#/$defs/AuthorizationScheme"
+          }
+        },
+        "build_options": {
+          "type": "array",
+          "description": "Build options for conditional inclusion/exclusion of components",
+          "items": {
+            "$ref": "#/$defs/BuildOption"
+          }
+        },
+        "email_templates": {
+          "type": "array",
+          "description": "Email template definitions",
+          "items": {
+            "$ref": "#/$defs/EmailTemplate"
+          }
+        }
+      }
+    },
+    "ListOfValues": {
+      "type": "object",
+      "description": "A shared list of values providing display/return value pairs for select lists, popup LOVs, and other item types",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the list of values"
+        },
+        "lov_type": {
+          "type": "string",
+          "description": "Source type for the list of values",
+          "enum": ["Static", "Dynamic", "SQL Query"]
+        },
+        "source": {
+          "type": "string",
+          "description": "SQL query or static definition providing the values"
+        }
+      }
+    },
+    "NavigationList": {
+      "type": "object",
+      "description": "A navigation list defining menu entries and their hierarchy",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the navigation list"
+        },
+        "list_type": {
+          "type": "string",
+          "description": "Type of the list",
+          "enum": ["Static", "Dynamic"]
+        },
+        "entries": {
+          "type": "array",
+          "description": "Entries in the navigation list",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "Display text"
+              },
+              "target_page_id": {
+                "type": "integer",
+                "description": "Target page"
+              },
+              "icon_class": {
+                "type": "string",
+                "description": "CSS icon class"
+              },
+              "parent_entry": {
+                "type": "string",
+                "description": "Parent entry for hierarchical menus"
+              },
+              "display_sequence": {
+                "type": "integer",
+                "description": "Display order"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Breadcrumb": {
+      "type": "object",
+      "description": "A breadcrumb definition for hierarchical navigation",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the breadcrumb"
+        },
+        "entries": {
+          "type": "array",
+          "description": "Breadcrumb entries",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "target_page_id": {
+                "type": "integer"
+              },
+              "parent_entry": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ApplicationItem": {
+      "type": "object",
+      "description": "An application-level session state item accessible from any page",
+      "properties": {
+        "item_name": {
+          "type": "string",
+          "description": "Name of the application item"
+        },
+        "scope": {
+          "type": "string",
+          "description": "Scope of the item",
+          "enum": ["Application", "Global"]
+        },
+        "session_state_protection": {
+          "type": "string",
+          "description": "Level of session state protection",
+          "enum": ["Unrestricted", "Restricted", "Checksum Required"]
+        }
+      }
+    },
+    "ApplicationProcess": {
+      "type": "object",
+      "description": "An application-level process that executes on every page request",
+      "properties": {
+        "process_name": {
+          "type": "string",
+          "description": "Name of the application process"
+        },
+        "process_point": {
+          "type": "string",
+          "description": "Execution point in the page lifecycle",
+          "enum": ["On Load: Before Header", "On Load: After Header", "On Submit: After Page Submission", "On Demand"]
+        },
+        "source": {
+          "type": "string",
+          "description": "PL/SQL code block"
+        }
+      }
+    },
+    "ApplicationComputation": {
+      "type": "object",
+      "description": "An application-level computation that sets an application item value",
+      "properties": {
+        "item_name": {
+          "type": "string",
+          "description": "Name of the application item to set"
+        },
+        "computation_type": {
+          "type": "string",
+          "description": "Type of computation"
+        },
+        "computation_point": {
+          "type": "string",
+          "description": "When the computation executes"
+        },
+        "computation": {
+          "type": "string",
+          "description": "Computation expression"
+        }
+      }
+    },
+    "AuthorizationScheme": {
+      "type": "object",
+      "description": "An authorization scheme that controls access to application components based on user attributes or roles",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the authorization scheme"
+        },
+        "scheme_type": {
+          "type": "string",
+          "description": "Type of authorization check",
+          "enum": [
+            "Is In Role or Group",
+            "PL/SQL Function Returning Boolean",
+            "Exists SQL Query",
+            "Not Exists SQL Query",
+            "Item Value Comparison",
+            "Must Not Be Public User"
+          ]
+        },
+        "expression": {
+          "type": "string",
+          "description": "Authorization expression, query, or role name"
+        },
+        "error_message": {
+          "type": "string",
+          "description": "Error message displayed when authorization fails"
+        },
+        "evaluate_once": {
+          "type": "boolean",
+          "description": "Whether to cache the result for the session instead of re-evaluating on each access"
+        }
+      }
+    },
+    "BuildOption": {
+      "type": "object",
+      "description": "A build option that controls conditional inclusion or exclusion of application components during deployment",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the build option"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of the build option",
+          "enum": ["Include", "Exclude"]
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of what the build option controls"
+        }
+      }
+    },
+    "EmailTemplate": {
+      "type": "object",
+      "description": "An email template for sending formatted notifications from the application",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the email template"
+        },
+        "static_id": {
+          "type": "string",
+          "description": "Static identifier used to reference the template in PL/SQL"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Email subject line, may include substitution strings"
+        },
+        "html_body": {
+          "type": "string",
+          "description": "HTML body of the email template"
+        },
+        "text_body": {
+          "type": "string",
+          "description": "Plain text body of the email template"
+        }
+      }
+    },
+    "RestDataSource": {
+      "type": "object",
+      "description": "A REST data source definition for consuming external REST APIs from within APEX components",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the REST data source"
+        },
+        "url_endpoint": {
+          "type": "string",
+          "description": "Base URL of the REST endpoint"
+        },
+        "http_method": {
+          "type": "string",
+          "description": "Default HTTP method",
+          "enum": ["GET", "POST", "PUT", "DELETE", "PATCH"]
+        },
+        "format": {
+          "type": "string",
+          "description": "Response format",
+          "enum": ["JSON", "XML", "CSV"]
+        },
+        "pagination_type": {
+          "type": "string",
+          "description": "Type of pagination used by the external API",
+          "enum": [
+            "None",
+            "Page Number",
+            "Page Token",
+            "Page Size, Offset",
+            "Cursor",
+            "Header Links"
+          ]
+        },
+        "credential_name": {
+          "type": "string",
+          "description": "Name of the web credential used for authentication"
+        },
+        "static_id": {
+          "type": "string",
+          "description": "Static identifier for referencing the data source"
+        }
+      }
+    },
+    "WebCredential": {
+      "type": "object",
+      "description": "A web credential store used to authenticate outbound REST requests",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the web credential"
+        },
+        "static_id": {
+          "type": "string",
+          "description": "Static identifier for the credential"
+        },
+        "authentication_type": {
+          "type": "string",
+          "description": "Type of authentication the credential provides",
+          "enum": [
+            "Basic Authentication",
+            "OAuth2 Client Credentials",
+            "OAuth2 Authorization Code",
+            "HTTP Header",
+            "URL Query String",
+            "Oracle Cloud Infrastructure (OCI)"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "description": "OAuth scope if applicable"
+        },
+        "valid_for_urls": {
+          "type": "string",
+          "description": "URL pattern the credential is valid for"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,2302 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Oracle REST Data Services (ORDS) REST API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.",
+    "version": "25.4",
+    "contact": {
+      "name": "Oracle APEX Support",
+      "url": "https://apex.oracle.com/community",
+      "email": "apex-info_us@oracle.com"
+    },
+    "license": {
+      "name": "Oracle Technology Network License",
+      "url": "https://www.oracle.com/downloads/licenses/distribution-license.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{host}:{port}/ords/_/db-api/stable",
+      "description": "ORDS Database API stable endpoint",
+      "variables": {
+        "host": {
+          "default": "localhost",
+          "description": "Hostname of the ORDS instance"
+        },
+        "port": {
+          "default": "8443",
+          "description": "Port number for the ORDS instance"
+        }
+      }
+    },
+    {
+      "url": "https://{host}/ords/_/db-api/stable",
+      "description": "ORDS Database API stable endpoint (default port)",
+      "variables": {
+        "host": {
+          "default": "example.com",
+          "description": "Hostname of the ORDS instance"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "basicAuth": []
+    },
+    {
+      "oauth2": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Modules",
+      "description": "REST module management. A module is a container for one or more templates with an associated base path."
+    },
+    {
+      "name": "Templates",
+      "description": "REST module template management. A template defines a URI pattern within a module for routing requests."
+    },
+    {
+      "name": "Handlers",
+      "description": "REST template handler management. A handler implements an HTTP method on a template with source code."
+    },
+    {
+      "name": "Parameters",
+      "description": "REST handler parameter management. Parameters define input bindings for handlers."
+    },
+    {
+      "name": "Privileges",
+      "description": "ORDS privilege management. Privileges control access to REST modules and URL patterns."
+    },
+    {
+      "name": "Roles",
+      "description": "ORDS role management. Roles group privileges for assignment to users and OAuth clients."
+    },
+    {
+      "name": "OAuth Clients",
+      "description": "ORDS OAuth client management. OAuth clients enable third-party applications to access protected resources."
+    },
+    {
+      "name": "AutoREST",
+      "description": "AutoREST object management. AutoREST enables automatic REST access to database tables and views."
+    },
+    {
+      "name": "Overview",
+      "description": "ORDS schema overview and REST object summaries."
+    },
+    {
+      "name": "Properties",
+      "description": "ORDS configuration property management."
+    }
+  ],
+  "paths": {
+    "/ords/rest/modules/": {
+      "get": {
+        "operationId": "listModules",
+        "summary": "Get all REST modules",
+        "description": "Retrieves a paginated list of all REST service modules defined in the current schema.",
+        "tags": ["Modules"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of REST modules",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createModule",
+        "summary": "Create a REST module",
+        "description": "Creates a new REST service module with the specified name and base path. A module is a container for templates that defines the root URI pattern for a group of related REST services.",
+        "tags": ["Modules"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Source code preview of the module creation (when run_mode is codePreview)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "REST module created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No name or base_path parameter provided"
+          },
+          "409": {
+            "description": "A module with that name or base path already exists"
+          }
+        }
+      }
+    },
+    "/ords/rest/modules/{id}": {
+      "get": {
+        "operationId": "getModule",
+        "summary": "Get a REST module",
+        "description": "Retrieves details of a specific REST service module by its identifier.",
+        "tags": ["Modules"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST module details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Module not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateModule",
+        "summary": "Update a REST module",
+        "description": "Updates an existing REST service module. All mutable properties of the module can be modified.",
+        "tags": ["Modules"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "REST module updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Module not found"
+          },
+          "409": {
+            "description": "A module with that name or base path already exists"
+          }
+        }
+      }
+    },
+    "/ords/rest/modules/{id}/source": {
+      "get": {
+        "operationId": "getModuleSource",
+        "summary": "Get a REST module source",
+        "description": "Retrieves the PL/SQL source code that defines the specified REST service module.",
+        "tags": ["Modules"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST module source code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Module not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/templates/": {
+      "get": {
+        "operationId": "listTemplates",
+        "summary": "Get all REST module templates",
+        "description": "Retrieves a paginated list of all REST module templates defined in the current schema.",
+        "tags": ["Templates"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of REST templates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTemplate",
+        "summary": "Create a REST module template",
+        "description": "Creates a new REST module template associated with a specific module. A template defines a URI pattern within a module and serves as a container for one or more handlers.",
+        "tags": ["Templates"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TemplateCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "REST template created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No pattern parameter provided or module not specified"
+          },
+          "404": {
+            "description": "Module does not exist"
+          },
+          "409": {
+            "description": "A template with that pattern already exists in the module"
+          }
+        }
+      }
+    },
+    "/ords/rest/templates/{id}": {
+      "get": {
+        "operationId": "getTemplate",
+        "summary": "Get a REST module template",
+        "description": "Retrieves details of a specific REST module template by its identifier.",
+        "tags": ["Templates"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST template details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Template not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateTemplate",
+        "summary": "Update a REST module template",
+        "description": "Updates an existing REST module template including its URI pattern, priority, and ETag configuration.",
+        "tags": ["Templates"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TemplateUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "REST template updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing etag_type, pattern, or priority parameter"
+          },
+          "404": {
+            "description": "Template does not exist"
+          },
+          "409": {
+            "description": "Template pattern already exists in the module"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTemplate",
+        "summary": "Delete a REST module template",
+        "description": "Deletes a specific REST module template and all of its associated handlers.",
+        "tags": ["Templates"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST template deleted successfully"
+          },
+          "404": {
+            "description": "Template not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/handlers/": {
+      "get": {
+        "operationId": "listHandlers",
+        "summary": "Get all REST template handlers",
+        "description": "Retrieves a paginated list of all REST template handlers defined in the current schema.",
+        "tags": ["Handlers"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of REST handlers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createHandler",
+        "summary": "Create a REST template handler",
+        "description": "Creates a new REST template handler that implements a specific HTTP method on a template. The handler contains the source code (SQL query or PL/SQL block) that will be executed when the template URI is accessed with the specified HTTP method.",
+        "tags": ["Handlers"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandlerCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "REST handler created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required parameters"
+          },
+          "404": {
+            "description": "Template does not exist"
+          },
+          "409": {
+            "description": "A handler for that method already exists on the template"
+          }
+        }
+      }
+    },
+    "/ords/rest/handlers/{id}": {
+      "get": {
+        "operationId": "getHandler",
+        "summary": "Get a REST template handler",
+        "description": "Retrieves details of a specific REST template handler by its identifier.",
+        "tags": ["Handlers"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST handler details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Handler not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateHandler",
+        "summary": "Update a REST template handler",
+        "description": "Updates an existing REST template handler including its source code, source type, and pagination settings.",
+        "tags": ["Handlers"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandlerCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "REST handler updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Handler not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteHandler",
+        "summary": "Delete a REST template handler",
+        "description": "Deletes a specific REST template handler.",
+        "tags": ["Handlers"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST handler deleted successfully"
+          },
+          "404": {
+            "description": "Handler not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/handlers/{id}/source": {
+      "get": {
+        "operationId": "getHandlerSource",
+        "summary": "Get a REST handler source",
+        "description": "Retrieves the source code implementation of a specific REST template handler.",
+        "tags": ["Handlers"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST handler source code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Handler not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/parameters/": {
+      "get": {
+        "operationId": "listParameters",
+        "summary": "Get all REST handler parameters",
+        "description": "Retrieves a paginated list of all REST handler parameters defined in the current schema.",
+        "tags": ["Parameters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of REST handler parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createParameter",
+        "summary": "Create a REST handler parameter",
+        "description": "Creates a new parameter binding for a REST template handler, defining how request parameters map to handler source bind variables.",
+        "tags": ["Parameters"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "REST handler parameter created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required parameters"
+          },
+          "404": {
+            "description": "Handler does not exist"
+          }
+        }
+      }
+    },
+    "/ords/rest/parameters/{id}": {
+      "get": {
+        "operationId": "getParameter",
+        "summary": "Get a REST handler parameter",
+        "description": "Retrieves details of a specific REST handler parameter by its identifier.",
+        "tags": ["Parameters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST handler parameter details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Parameter not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateParameter",
+        "summary": "Update a REST handler parameter",
+        "description": "Updates an existing REST handler parameter binding.",
+        "tags": ["Parameters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "REST handler parameter updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Parameter not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteParameter",
+        "summary": "Delete a REST handler parameter",
+        "description": "Deletes a specific REST handler parameter.",
+        "tags": ["Parameters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST handler parameter deleted successfully"
+          },
+          "404": {
+            "description": "Parameter not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/privileges/": {
+      "get": {
+        "operationId": "listPrivileges",
+        "summary": "Get all ORDS privileges",
+        "description": "Retrieves a paginated list of all ORDS privileges defined in the current schema.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of ORDS privileges",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPrivilege",
+        "summary": "Create an ORDS privilege",
+        "description": "Creates a new ORDS privilege that controls access to REST modules and URL patterns. Privileges can be associated with roles, patterns, and modules.",
+        "tags": ["Privileges"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrivilegeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "ORDS privilege created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing name parameter"
+          },
+          "409": {
+            "description": "A privilege with that name already exists"
+          }
+        }
+      }
+    },
+    "/ords/rest/privileges/{id}": {
+      "get": {
+        "operationId": "getPrivilege",
+        "summary": "Get an ORDS privilege",
+        "description": "Retrieves details of a specific ORDS privilege by its identifier.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ORDS privilege details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Privilege not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updatePrivilege",
+        "summary": "Update an ORDS privilege",
+        "description": "Updates an existing ORDS privilege including its label, description, and associated roles, patterns, and modules.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrivilegeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ORDS privilege updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Privilege not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deletePrivilege",
+        "summary": "Delete an ORDS privilege",
+        "description": "Deletes a specific ORDS privilege.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ORDS privilege deleted successfully"
+          },
+          "404": {
+            "description": "Privilege not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/privileges/{id}/roles/": {
+      "get": {
+        "operationId": "listPrivilegeRoles",
+        "summary": "Get all ORDS roles in a privilege",
+        "description": "Retrieves all roles associated with a specific ORDS privilege.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of roles in the privilege",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Privilege not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/privileges/{id}/modules/": {
+      "get": {
+        "operationId": "listPrivilegeModules",
+        "summary": "Get all REST modules in a privilege",
+        "description": "Retrieves all REST modules protected by a specific ORDS privilege.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of modules in the privilege",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Privilege not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/privileges/{id}/patterns/": {
+      "get": {
+        "operationId": "listPrivilegePatterns",
+        "summary": "Get all REST patterns in a privilege",
+        "description": "Retrieves all URL patterns protected by a specific ORDS privilege.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of patterns in the privilege",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Privilege not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/roles/": {
+      "get": {
+        "operationId": "listRoles",
+        "summary": "Get all ORDS roles",
+        "description": "Retrieves a paginated list of all ORDS roles defined in the current schema.",
+        "tags": ["Roles"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of ORDS roles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createRole",
+        "summary": "Create an ORDS role",
+        "description": "Creates a new ORDS role that can be assigned to privileges and OAuth clients to control access to REST services.",
+        "tags": ["Roles"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ORDS role created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No role_name parameter provided"
+          },
+          "409": {
+            "description": "A role with that name already exists"
+          }
+        }
+      }
+    },
+    "/ords/rest/roles/{id}": {
+      "get": {
+        "operationId": "getRole",
+        "summary": "Get an ORDS role",
+        "description": "Retrieves details of a specific ORDS role by its identifier.",
+        "tags": ["Roles"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ORDS role details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Role not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateRole",
+        "summary": "Update an ORDS role",
+        "description": "Updates an existing ORDS role.",
+        "tags": ["Roles"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ORDS role updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Role not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteRole",
+        "summary": "Delete an ORDS role",
+        "description": "Deletes a specific ORDS role.",
+        "tags": ["Roles"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ORDS role deleted successfully"
+          },
+          "404": {
+            "description": "Role not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/roles/{id}/privileges/": {
+      "get": {
+        "operationId": "listRolePrivileges",
+        "summary": "Get all ORDS privileges for a specific role",
+        "description": "Retrieves all privileges associated with a specific ORDS role.",
+        "tags": ["Roles"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of privileges for the role",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Role not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/clients/": {
+      "get": {
+        "operationId": "listOAuthClients",
+        "summary": "Get all ORDS OAuth clients",
+        "description": "Retrieves a paginated list of all ORDS OAuth clients registered in the current schema.",
+        "tags": ["OAuth Clients"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of OAuth clients",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOAuthClient",
+        "summary": "Create an ORDS OAuth client",
+        "description": "Creates a new ORDS OAuth client that enables third-party applications to access protected REST resources using OAuth 2.0 authorization flows.",
+        "tags": ["OAuth Clients"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OAuthClientCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OAuth client created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required parameters"
+          },
+          "409": {
+            "description": "An OAuth client with that name already exists"
+          }
+        }
+      }
+    },
+    "/ords/rest/clients/{id}": {
+      "get": {
+        "operationId": "getOAuthClient",
+        "summary": "Get an ORDS OAuth client",
+        "description": "Retrieves details of a specific ORDS OAuth client by its identifier.",
+        "tags": ["OAuth Clients"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth client details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "OAuth client not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateOAuthClient",
+        "summary": "Update an ORDS OAuth client",
+        "description": "Updates an existing ORDS OAuth client configuration.",
+        "tags": ["OAuth Clients"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OAuthClientCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OAuth client updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "OAuth client not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteOAuthClient",
+        "summary": "Delete an ORDS OAuth client",
+        "description": "Deletes a specific ORDS OAuth client and revokes all associated tokens.",
+        "tags": ["OAuth Clients"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth client deleted successfully"
+          },
+          "404": {
+            "description": "OAuth client not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/clients/{id}/privileges/": {
+      "get": {
+        "operationId": "listOAuthClientPrivileges",
+        "summary": "Get all ORDS privileges in an OAuth client",
+        "description": "Retrieves all privileges assigned to a specific ORDS OAuth client.",
+        "tags": ["OAuth Clients"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of privileges for the OAuth client",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "OAuth client not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/clients/{id}/roles/": {
+      "get": {
+        "operationId": "listOAuthClientRoles",
+        "summary": "Get all ORDS roles in an OAuth client",
+        "description": "Retrieves all roles assigned to a specific ORDS OAuth client.",
+        "tags": ["OAuth Clients"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of roles for the OAuth client",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "OAuth client not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/clients/{id}/logo/": {
+      "post": {
+        "operationId": "updateOAuthClientLogo",
+        "summary": "Update ORDS OAuth client avatar image",
+        "description": "Uploads or updates the avatar image displayed during OAuth authorization for a specific OAuth client.",
+        "tags": ["OAuth Clients"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "image/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OAuth client logo updated successfully"
+          },
+          "404": {
+            "description": "OAuth client not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/autorest/": {
+      "get": {
+        "operationId": "listAutoRestObjects",
+        "summary": "Get all REST enabled objects",
+        "description": "Retrieves a paginated list of all database objects that have been REST-enabled through AutoREST in the current schema.",
+        "tags": ["AutoREST"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of REST-enabled objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "enableAutoRest",
+        "summary": "REST enable an object",
+        "description": "Enables automatic REST access for a database table or view. AutoREST generates standard CRUD endpoints for the specified object without requiring manual module, template, or handler definitions.",
+        "tags": ["AutoREST"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoRestEnable"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Object REST-enabled successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required parameters"
+          },
+          "409": {
+            "description": "Object is already REST-enabled"
+          }
+        }
+      }
+    },
+    "/ords/rest/autorest/{id}": {
+      "get": {
+        "operationId": "getAutoRestObject",
+        "summary": "Get a REST enabled object",
+        "description": "Retrieves details of a specific REST-enabled object by its identifier.",
+        "tags": ["AutoREST"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST-enabled object details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "REST-enabled object not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateAutoRestObject",
+        "summary": "Update or disable a REST enabled object",
+        "description": "Updates the configuration of a REST-enabled object or disables REST access for the object.",
+        "tags": ["AutoREST"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoRestEnable"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "REST-enabled object updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "REST-enabled object not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/autorest/{id}/metadata": {
+      "get": {
+        "operationId": "getAutoRestObjectMetadata",
+        "summary": "Get a REST enabled object metadata",
+        "description": "Retrieves the metadata (column definitions, types, constraints) for a REST-enabled database object.",
+        "tags": ["AutoREST"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resourceId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "REST-enabled object metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "REST-enabled object not found"
+          }
+        }
+      }
+    },
+    "/ords/rest/autorest/summary": {
+      "get": {
+        "operationId": "getAutoRestSummary",
+        "summary": "Get count of all REST enabled objects",
+        "description": "Retrieves a summary count of all REST-enabled objects in the current schema.",
+        "tags": ["AutoREST"],
+        "responses": {
+          "200": {
+            "description": "Summary count of REST-enabled objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ords/rest/privilege/modules/": {
+      "get": {
+        "operationId": "listProtectedModules",
+        "summary": "Get all protected REST modules",
+        "description": "Retrieves all REST modules that are protected by one or more ORDS privileges.",
+        "tags": ["Privileges"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of protected REST modules",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ords/rest/overview/": {
+      "get": {
+        "operationId": "getOverview",
+        "summary": "Get current ORDS schema and REST objects count",
+        "description": "Retrieves an overview of the current schema including counts of REST modules, templates, handlers, privileges, roles, and OAuth clients.",
+        "tags": ["Overview"],
+        "responses": {
+          "200": {
+            "description": "ORDS schema overview with object counts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ords/rest/overview/objects_recent": {
+      "get": {
+        "operationId": "getRecentObjects",
+        "summary": "Get all current schema recent REST objects",
+        "description": "Retrieves the most recently created or modified REST objects in the current schema.",
+        "tags": ["Overview"],
+        "responses": {
+          "200": {
+            "description": "List of recent REST objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ords/properties/": {
+      "get": {
+        "operationId": "listProperties",
+        "summary": "Get all ORDS properties values",
+        "description": "Retrieves all configuration property values for the ORDS instance.",
+        "tags": ["Properties"],
+        "responses": {
+          "200": {
+            "description": "List of ORDS property values",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsCollection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ords/properties/{key}": {
+      "get": {
+        "operationId": "getProperty",
+        "summary": "Get an ORDS property value",
+        "description": "Retrieves the value of a specific ORDS configuration property.",
+        "tags": ["Properties"],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "description": "The property key name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ORDS property value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Property not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "setProperty",
+        "summary": "Set an ORDS property value",
+        "description": "Sets the value of a specific ORDS configuration property.",
+        "tags": ["Properties"],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "description": "The property key name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "description": "The property value to set"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ORDS property value set successfully"
+          },
+          "404": {
+            "description": "Property not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsetProperty",
+        "summary": "Unset an ORDS property value",
+        "description": "Removes a custom ORDS configuration property value, reverting it to the default.",
+        "tags": ["Properties"],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "description": "The property key name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ORDS property value unset successfully"
+          },
+          "404": {
+            "description": "Property not found"
+          }
+        }
+      }
+    },
+    "/ords/properties/{schema}/{key}": {
+      "get": {
+        "operationId": "getSchemaProperty",
+        "summary": "Get an ORDS property value for a schema",
+        "description": "Retrieves the value of a specific ORDS configuration property scoped to a particular schema.",
+        "tags": ["Properties"],
+        "parameters": [
+          {
+            "name": "schema",
+            "in": "path",
+            "required": true,
+            "description": "The schema name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "description": "The property key name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schema-scoped ORDS property value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Property or schema not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "setSchemaProperty",
+        "summary": "Set an ORDS property value for a schema",
+        "description": "Sets the value of a specific ORDS configuration property scoped to a particular schema.",
+        "tags": ["Properties"],
+        "parameters": [
+          {
+            "name": "schema",
+            "in": "path",
+            "required": true,
+            "description": "The schema name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "description": "The property key name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "description": "The property value to set"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Schema-scoped ORDS property value set successfully"
+          },
+          "404": {
+            "description": "Property or schema not found"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "unsetSchemaProperty",
+        "summary": "Unset an ORDS property value for a schema",
+        "description": "Removes a schema-scoped ORDS configuration property value, reverting it to the default.",
+        "tags": ["Properties"],
+        "parameters": [
+          {
+            "name": "schema",
+            "in": "path",
+            "required": true,
+            "description": "The schema name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "description": "The property key name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schema-scoped ORDS property value unset successfully"
+          },
+          "404": {
+            "description": "Property or schema not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "HTTP Basic authentication using ORDS-enabled database schema credentials"
+      },
+      "oauth2": {
+        "type": "oauth2",
+        "description": "OAuth 2.0 authorization using ORDS OAuth client credentials or authorization code flow",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "/ords/{schema}/oauth/token",
+            "scopes": {}
+          },
+          "authorizationCode": {
+            "authorizationUrl": "/ords/{schema}/oauth/auth",
+            "tokenUrl": "/ords/{schema}/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    },
+    "parameters": {
+      "resourceId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "Unique identifier of the resource",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "offset": {
+        "name": "offset",
+        "in": "query",
+        "required": false,
+        "description": "The index of the first item to return (0-based). Default is 0.",
+        "schema": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0
+        }
+      },
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "description": "Maximum number of items to return per page. Default is 25.",
+        "schema": {
+          "type": "integer",
+          "default": 25,
+          "minimum": 1,
+          "maximum": 500
+        }
+      }
+    },
+    "schemas": {
+      "LinkRelation": {
+        "type": "object",
+        "description": "HATEOAS link relation describing a related resource or action",
+        "required": ["rel", "href"],
+        "properties": {
+          "rel": {
+            "type": "string",
+            "description": "Link relationship type (e.g., self, describedby, edit, collection)"
+          },
+          "href": {
+            "type": "string",
+            "description": "URI of the related resource"
+          }
+        }
+      },
+      "ResourceItem": {
+        "type": "object",
+        "description": "A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.",
+        "additionalProperties": true,
+        "properties": {
+          "links": {
+            "type": "array",
+            "description": "HATEOAS links for the resource",
+            "items": {
+              "$ref": "#/components/schemas/LinkRelation"
+            }
+          }
+        }
+      },
+      "ItemsCollection": {
+        "type": "object",
+        "description": "Paginated collection of resource items following the ORDS standard collection format",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of records in the current response page"
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Indicates whether additional pages of results are available"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The page size limit applied by the server"
+          },
+          "offset": {
+            "type": "integer",
+            "description": "The starting index of items in this page"
+          },
+          "items": {
+            "type": "array",
+            "description": "Array of resource items in this page",
+            "items": {
+              "$ref": "#/components/schemas/ResourceItem"
+            }
+          },
+          "links": {
+            "type": "array",
+            "description": "Pagination navigation links (first, next, prev, last)",
+            "items": {
+              "$ref": "#/components/schemas/LinkRelation"
+            }
+          }
+        }
+      },
+      "ModuleCreate": {
+        "type": "object",
+        "description": "Request body for creating or updating a REST service module",
+        "required": ["name", "base_path"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the RESTful service module. Case sensitive."
+          },
+          "base_path": {
+            "type": "string",
+            "description": "The base URI path used to access this RESTful service. All URIs starting with this path will be serviced by this module.",
+            "examples": ["hr/", "api/v1/"]
+          },
+          "origins_allowed": {
+            "type": "string",
+            "description": "Comma-separated list of allowed CORS origins for the module"
+          },
+          "items_per_page": {
+            "type": "integer",
+            "description": "Default pagination size for GET handlers (number of rows per page)",
+            "default": 25,
+            "minimum": 1
+          },
+          "module_status": {
+            "type": "string",
+            "description": "Publication status of the module",
+            "enum": ["PUBLISHED", "NOT_PUBLISHED"],
+            "default": "PUBLISHED"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Descriptive comment for the module"
+          },
+          "run_mode": {
+            "type": "string",
+            "description": "Set to 'codePreview' to return the PL/SQL code that would be executed instead of executing it",
+            "enum": ["codePreview"]
+          }
+        }
+      },
+      "TemplateCreate": {
+        "type": "object",
+        "description": "Request body for creating a REST module template",
+        "required": ["module_id", "uri_prefix"],
+        "properties": {
+          "module_id": {
+            "type": "integer",
+            "description": "ID of the parent REST module"
+          },
+          "uri_prefix": {
+            "type": "string",
+            "description": "URI pattern for the template. Supports path parameters using :name syntax and optional parameters using :name? suffix.",
+            "examples": ["/objects/:object/:id?", "/employees/", "/departments/:dept_id"]
+          },
+          "priority": {
+            "type": "integer",
+            "description": "Priority for evaluating the template when multiple templates match. 0 is lowest, 9 is highest.",
+            "minimum": 0,
+            "maximum": 9,
+            "default": 0
+          },
+          "etag_type": {
+            "type": "string",
+            "description": "Type of entity tag generation for cache validation and optimistic locking",
+            "enum": ["HASH", "QUERY", "NONE"]
+          },
+          "etag_query": {
+            "type": "string",
+            "description": "SQL query used to generate the entity tag when etag_type is QUERY"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Descriptive comment for the template"
+          },
+          "run_mode": {
+            "type": "string",
+            "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+            "enum": ["codePreview"]
+          }
+        }
+      },
+      "TemplateUpdate": {
+        "type": "object",
+        "description": "Request body for updating a REST module template",
+        "required": ["uri_prefix", "priority", "etag_type"],
+        "properties": {
+          "uri_prefix": {
+            "type": "string",
+            "description": "URI pattern for the template"
+          },
+          "priority": {
+            "type": "integer",
+            "description": "Priority for evaluating the template (0-9)",
+            "minimum": 0,
+            "maximum": 9
+          },
+          "etag_type": {
+            "type": "string",
+            "description": "Type of entity tag generation",
+            "enum": ["HASH", "QUERY", "NONE"]
+          },
+          "etag_query": {
+            "type": "string",
+            "description": "SQL query for entity tag generation when etag_type is QUERY"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Descriptive comment for the template"
+          }
+        }
+      },
+      "HandlerCreate": {
+        "type": "object",
+        "description": "Request body for creating or updating a REST template handler",
+        "required": ["template_id", "source"],
+        "properties": {
+          "template_id": {
+            "type": "integer",
+            "description": "ID of the parent REST template"
+          },
+          "source": {
+            "type": "string",
+            "description": "The source code implementation (SQL query or PL/SQL block) executed when this handler processes a request"
+          },
+          "source_type": {
+            "type": "string",
+            "description": "The type of source code that determines how the source is executed",
+            "enum": [
+              "source_type_collection_feed",
+              "source_type_collection_item",
+              "source_type_media",
+              "source_type_plsql",
+              "source_type_query",
+              "source_type_csv_query",
+              "source_type_query_one_row",
+              "source_type_feed"
+            ]
+          },
+          "method": {
+            "type": "string",
+            "description": "HTTP method this handler responds to",
+            "enum": ["GET", "POST", "PUT", "DELETE"]
+          },
+          "items_per_page": {
+            "type": ["integer", "null"],
+            "description": "Pagination size for GET handlers. NULL defers to the module-level setting.",
+            "minimum": 1
+          },
+          "mimes_allowed": {
+            "type": "string",
+            "description": "Comma-separated list of MIME types accepted by PUT and POST handlers"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Descriptive comment for the handler"
+          },
+          "run_mode": {
+            "type": "string",
+            "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+            "enum": ["codePreview"]
+          }
+        }
+      },
+      "ParameterCreate": {
+        "type": "object",
+        "description": "Request body for creating or updating a REST handler parameter binding",
+        "required": ["handler_id", "name", "bind_variable_name", "source_type", "access_method"],
+        "properties": {
+          "handler_id": {
+            "type": "integer",
+            "description": "ID of the parent REST handler"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the parameter as it appears in the request"
+          },
+          "bind_variable_name": {
+            "type": "string",
+            "description": "Name of the bind variable in the handler source code"
+          },
+          "source_type": {
+            "type": "string",
+            "description": "Source of the parameter value",
+            "enum": ["HEADER", "RESPONSE", "URI"]
+          },
+          "access_method": {
+            "type": "string",
+            "description": "How the parameter is accessed",
+            "enum": ["IN", "OUT", "INOUT"]
+          },
+          "comments": {
+            "type": "string",
+            "description": "Descriptive comment for the parameter"
+          }
+        }
+      },
+      "PrivilegeCreate": {
+        "type": "object",
+        "description": "Request body for creating or updating an ORDS privilege",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Unique name of the ORDS privilege"
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable label for the privilege"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the privilege purpose"
+          },
+          "roles": {
+            "type": "string",
+            "description": "Null-character-separated list of ORDS roles assigned to this privilege"
+          },
+          "patterns": {
+            "type": "string",
+            "description": "Null-character-separated list of URL patterns protected by this privilege"
+          },
+          "modules": {
+            "type": "string",
+            "description": "Null-character-separated list of REST modules protected by this privilege"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Descriptive comment for the privilege"
+          },
+          "run_mode": {
+            "type": "string",
+            "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+            "enum": ["codePreview"]
+          }
+        }
+      },
+      "RoleCreate": {
+        "type": "object",
+        "description": "Request body for creating or updating an ORDS role",
+        "required": ["role_name"],
+        "properties": {
+          "role_name": {
+            "type": "string",
+            "description": "Unique name of the ORDS role"
+          },
+          "run_mode": {
+            "type": "string",
+            "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+            "enum": ["codePreview"]
+          }
+        }
+      },
+      "OAuthClientCreate": {
+        "type": "object",
+        "description": "Request body for creating or updating an ORDS OAuth client",
+        "required": ["name", "privilege_names"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Unique name for the OAuth client, displayed during the approval phase of three-legged OAuth"
+          },
+          "privilege_names": {
+            "type": "string",
+            "description": "Comma-separated list of privilege names the client requests access to"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the client purpose, displayed during the OAuth approval phase. Required for three-legged OAuth; may be null for client_credentials grant type."
+          },
+          "allowed_origins": {
+            "type": "string",
+            "description": "Comma-separated list of allowed origin URL prefixes for CORS"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "description": "URI where OAuth redirects with access token or error are sent. Required for three-legged OAuth; may be null for client_credentials grant type."
+          },
+          "role_names": {
+            "type": "string",
+            "description": "Comma-separated list of role names assigned to the client"
+          },
+          "support_email": {
+            "type": "string",
+            "description": "Contact email for end user support"
+          },
+          "support_uri": {
+            "type": "string",
+            "description": "Support URI for end users"
+          }
+        }
+      },
+      "AutoRestEnable": {
+        "type": "object",
+        "description": "Request body for enabling or updating AutoREST on a database object",
+        "required": ["object_name", "object_alias", "auth"],
+        "properties": {
+          "object_name": {
+            "type": "string",
+            "description": "Name of the database table or view to REST-enable"
+          },
+          "object_alias": {
+            "type": "string",
+            "description": "Alias used in the REST URI path for the object"
+          },
+          "auth": {
+            "type": "boolean",
+            "description": "When true, requires user authorization via ORDS roles before allowing access to the object metadata and data"
+          },
+          "run_mode": {
+            "type": "string",
+            "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+            "enum": ["codePreview"]
+          }
+        }
+      }
+    }
+  }
+}
