@@ -4,144 +4,53 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Oracle APEX
 providerId: oracle-apex
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - APEX
-  - Cloud
-  - Database
-  - Development Platform
-  - Enterprise
-  - Generative AI
   - Low-Code
-  - Oracle
-  - ORDS
-  - PL/SQL
-  - REST API
-  - Web Applications
-  - Workflow
+  - Database
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Oracle APEX API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Oracle
+notes: APEX itself does not impose request-rate limits — throughput is bounded by the underlying Oracle
+  Database / Autonomous Database compute and ORDS configuration. The free apex.oracle.com workspace and
+  Always-Free Autonomous instances apply soft fair-use throttling that is not numerically published.
+description: APEX inherits its API throughput from ORDS (Oracle REST Data Services) and the underlying
+  database. Operators tune ORDS connection pools and database resource manager rules to enforce rate limits.
+  Free-tier services (apex.oracle.com, Always-Free Autonomous) apply unpublished fair-use ceilings.
+sources:
+  - https://docs.oracle.com/en/database/oracle/application-express/
+  - https://www.oracle.com/database/technologies/appdev/rest.html
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  unavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Oracle APEX REST Data Services API
-      - Oracle APEX SQL Workshop API
-      - Oracle APEX Application API
-      - Oracle REST Data Services (ORDS) API
-      - Oracle APEX Cloud REST API
-      - Oracle APEX Export and Import API
-      - Oracle APEX Approval and Workflow API
-      - Oracle APEX Utility API
-      - Oracle APEX Generative AI API
-      - Oracle ORDS Database API
-      - Oracle APEX REST Administration API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Oracle APEX REST Data Services API
-      - Oracle APEX SQL Workshop API
-      - Oracle APEX Application API
-      - Oracle REST Data Services (ORDS) API
-      - Oracle APEX Cloud REST API
-      - Oracle APEX Export and Import API
-      - Oracle APEX Approval and Workflow API
-      - Oracle APEX Utility API
-      - Oracle APEX Generative AI API
-      - Oracle ORDS Database API
-      - Oracle APEX REST Administration API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Oracle APEX REST Data Services API
-      - Oracle APEX SQL Workshop API
-      - Oracle APEX Application API
-      - Oracle REST Data Services (ORDS) API
-      - Oracle APEX Cloud REST API
-      - Oracle APEX Export and Import API
-      - Oracle APEX Approval and Workflow API
-      - Oracle APEX Utility API
-      - Oracle APEX Generative AI API
-      - Oracle ORDS Database API
-      - Oracle APEX REST Administration API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Oracle APEX REST Data Services API
-      - Oracle APEX SQL Workshop API
-      - Oracle APEX Application API
-      - Oracle REST Data Services (ORDS) API
-      - Oracle APEX Cloud REST API
-      - Oracle APEX Export and Import API
-      - Oracle APEX Approval and Workflow API
-      - Oracle APEX Utility API
-      - Oracle APEX Generative AI API
-      - Oracle ORDS Database API
-      - Oracle APEX REST Administration API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Oracle APEX REST Data Services API
-      - Oracle APEX SQL Workshop API
-      - Oracle APEX Application API
-      - Oracle REST Data Services (ORDS) API
-      - Oracle APEX Cloud REST API
-      - Oracle APEX Export and Import API
-      - Oracle APEX Approval and Workflow API
-      - Oracle APEX Utility API
-      - Oracle APEX Generative AI API
-      - Oracle ORDS Database API
-      - Oracle APEX REST Administration API
+  - name: APEX hosted workspace (apex.oracle.com)
+    scope: workspace
+    metric: varies
+    limit: fair-use; not numerically published
+    notes: Free shared evaluation environment; suitable for prototyping, not production traffic.
+  - name: Always-Free Autonomous Database
+    scope: instance
+    metric: ECPU
+    limit: fixed-shape (2 ECPU, 20 GB)
+    notes: Throughput bounded by fixed-shape compute.
+  - name: Paid Autonomous (APEX Service / ATP)
+    scope: instance
+    metric: ECPU
+    limit: configured by instance shape and auto-scale settings
+  - name: Self-hosted Oracle Database
+    scope: database
+    metric: varies
+    limit: bounded by ORDS pool size and DB resource manager
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: ORDS pooling
+    description: ORDS controls concurrent DB connections; tune jdbc.MaxLimit and jdbc.InitialLimit to
+      shape throughput.
+  - name: Resource Manager
+    description: Use Oracle Database Resource Manager to cap CPU per consumer group when multi-tenant.
+  - name: Fair use on free tiers
+    description: apex.oracle.com and Always-Free instances are intended for prototyping; sustained production
+      load may be throttled or suspended.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
