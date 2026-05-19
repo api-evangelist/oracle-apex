@@ -1,0 +1,304 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle REST Data Services (ORDS) REST API — OAuth Clients
+  description: 'Oracle REST Data Services (ORDS) REST API — OAuth Clients. 8 operations. Lead operation: Get all ORDS OAuth
+    clients. Self-contained Naftiko capability covering one Oracle Apex business surface.'
+  tags:
+  - Oracle Apex
+  - OAuth Clients
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_APEX_API_KEY: ORACLE_APEX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ords-rest-oauth-clients
+    baseUri: https://{host}:{port}/ords/_/db-api/stable
+    description: Oracle REST Data Services (ORDS) REST API — OAuth Clients business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: ords-rest-clients
+      path: /ords/rest/clients/
+      operations:
+      - name: listoauthclients
+        method: GET
+        description: Get all ORDS OAuth clients
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createoauthclient
+        method: POST
+        description: Create an ORDS OAuth client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ords-rest-clients-id
+      path: /ords/rest/clients/{id}
+      operations:
+      - name: getoauthclient
+        method: GET
+        description: Get an ORDS OAuth client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateoauthclient
+        method: PUT
+        description: Update an ORDS OAuth client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteoauthclient
+        method: DELETE
+        description: Delete an ORDS OAuth client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-clients-id-logo
+      path: /ords/rest/clients/{id}/logo/
+      operations:
+      - name: updateoauthclientlogo
+        method: POST
+        description: Update ORDS OAuth client avatar image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ords-rest-clients-id-privileges
+      path: /ords/rest/clients/{id}/privileges/
+      operations:
+      - name: listoauthclientprivileges
+        method: GET
+        description: Get all ORDS privileges in an OAuth client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-clients-id-roles
+      path: /ords/rest/clients/{id}/roles/
+      operations:
+      - name: listoauthclientroles
+        method: GET
+        description: Get all ORDS roles in an OAuth client
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_APEX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ords-rest-oauth-clients-rest
+    port: 8080
+    description: REST adapter for Oracle REST Data Services (ORDS) REST API — OAuth Clients. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/ords/rest/clients
+      name: ords-rest-clients
+      description: REST surface for ords-rest-clients.
+      operations:
+      - method: GET
+        name: listoauthclients
+        description: Get all ORDS OAuth clients
+        call: ords-rest-oauth-clients.listoauthclients
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createoauthclient
+        description: Create an ORDS OAuth client
+        call: ords-rest-oauth-clients.createoauthclient
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/clients/{id}
+      name: ords-rest-clients-id
+      description: REST surface for ords-rest-clients-id.
+      operations:
+      - method: GET
+        name: getoauthclient
+        description: Get an ORDS OAuth client
+        call: ords-rest-oauth-clients.getoauthclient
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateoauthclient
+        description: Update an ORDS OAuth client
+        call: ords-rest-oauth-clients.updateoauthclient
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteoauthclient
+        description: Delete an ORDS OAuth client
+        call: ords-rest-oauth-clients.deleteoauthclient
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/clients/{id}/logo
+      name: ords-rest-clients-id-logo
+      description: REST surface for ords-rest-clients-id-logo.
+      operations:
+      - method: POST
+        name: updateoauthclientlogo
+        description: Update ORDS OAuth client avatar image
+        call: ords-rest-oauth-clients.updateoauthclientlogo
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/clients/{id}/privileges
+      name: ords-rest-clients-id-privileges
+      description: REST surface for ords-rest-clients-id-privileges.
+      operations:
+      - method: GET
+        name: listoauthclientprivileges
+        description: Get all ORDS privileges in an OAuth client
+        call: ords-rest-oauth-clients.listoauthclientprivileges
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/clients/{id}/roles
+      name: ords-rest-clients-id-roles
+      description: REST surface for ords-rest-clients-id-roles.
+      operations:
+      - method: GET
+        name: listoauthclientroles
+        description: Get all ORDS roles in an OAuth client
+        call: ords-rest-oauth-clients.listoauthclientroles
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ords-rest-oauth-clients-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle REST Data Services (ORDS) REST API — OAuth Clients. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-all-ords-oauth-clients
+      description: Get all ORDS OAuth clients
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-oauth-clients.listoauthclients
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-ords-oauth-client
+      description: Create an ORDS OAuth client
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ords-rest-oauth-clients.createoauthclient
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ords-oauth-client
+      description: Get an ORDS OAuth client
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-oauth-clients.getoauthclient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-ords-oauth-client
+      description: Update an ORDS OAuth client
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ords-rest-oauth-clients.updateoauthclient
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-ords-oauth-client
+      description: Delete an ORDS OAuth client
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ords-rest-oauth-clients.deleteoauthclient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-ords-oauth-client-avatar
+      description: Update ORDS OAuth client avatar image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ords-rest-oauth-clients.updateoauthclientlogo
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-ords-privileges-oauth
+      description: Get all ORDS privileges in an OAuth client
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-oauth-clients.listoauthclientprivileges
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-ords-roles-oauth
+      description: Get all ORDS roles in an OAuth client
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-oauth-clients.listoauthclientroles
+      outputParameters:
+      - type: object
+        mapping: $.

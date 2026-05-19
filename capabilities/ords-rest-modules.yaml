@@ -1,0 +1,204 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle REST Data Services (ORDS) REST API — Modules
+  description: 'Oracle REST Data Services (ORDS) REST API — Modules. 5 operations. Lead operation: Get all REST modules. Self-contained
+    Naftiko capability covering one Oracle Apex business surface.'
+  tags:
+  - Oracle Apex
+  - Modules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_APEX_API_KEY: ORACLE_APEX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ords-rest-modules
+    baseUri: https://{host}:{port}/ords/_/db-api/stable
+    description: Oracle REST Data Services (ORDS) REST API — Modules business capability. Self-contained, no shared references.
+    resources:
+    - name: ords-rest-modules
+      path: /ords/rest/modules/
+      operations:
+      - name: listmodules
+        method: GET
+        description: Get all REST modules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmodule
+        method: POST
+        description: Create a REST module
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ords-rest-modules-id
+      path: /ords/rest/modules/{id}
+      operations:
+      - name: getmodule
+        method: GET
+        description: Get a REST module
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatemodule
+        method: PUT
+        description: Update a REST module
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ords-rest-modules-id-source
+      path: /ords/rest/modules/{id}/source
+      operations:
+      - name: getmodulesource
+        method: GET
+        description: Get a REST module source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_APEX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ords-rest-modules-rest
+    port: 8080
+    description: REST adapter for Oracle REST Data Services (ORDS) REST API — Modules. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/ords/rest/modules
+      name: ords-rest-modules
+      description: REST surface for ords-rest-modules.
+      operations:
+      - method: GET
+        name: listmodules
+        description: Get all REST modules
+        call: ords-rest-modules.listmodules
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmodule
+        description: Create a REST module
+        call: ords-rest-modules.createmodule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/modules/{id}
+      name: ords-rest-modules-id
+      description: REST surface for ords-rest-modules-id.
+      operations:
+      - method: GET
+        name: getmodule
+        description: Get a REST module
+        call: ords-rest-modules.getmodule
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemodule
+        description: Update a REST module
+        call: ords-rest-modules.updatemodule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/modules/{id}/source
+      name: ords-rest-modules-id-source
+      description: REST surface for ords-rest-modules-id-source.
+      operations:
+      - method: GET
+        name: getmodulesource
+        description: Get a REST module source
+        call: ords-rest-modules.getmodulesource
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ords-rest-modules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle REST Data Services (ORDS) REST API — Modules. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-all-rest-modules
+      description: Get all REST modules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-modules.listmodules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-rest-module
+      description: Create a REST module
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ords-rest-modules.createmodule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rest-module
+      description: Get a REST module
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-modules.getmodule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-rest-module
+      description: Update a REST module
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ords-rest-modules.updatemodule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rest-module-source
+      description: Get a REST module source
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-modules.getmodulesource
+      outputParameters:
+      - type: object
+        mapping: $.

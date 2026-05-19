@@ -1,0 +1,325 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle REST Data Services (ORDS) REST API — Privileges
+  description: 'Oracle REST Data Services (ORDS) REST API — Privileges. 9 operations. Lead operation: Get all protected REST
+    modules. Self-contained Naftiko capability covering one Oracle Apex business surface.'
+  tags:
+  - Oracle Apex
+  - Privileges
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_APEX_API_KEY: ORACLE_APEX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ords-rest-privileges
+    baseUri: https://{host}:{port}/ords/_/db-api/stable
+    description: Oracle REST Data Services (ORDS) REST API — Privileges business capability. Self-contained, no shared references.
+    resources:
+    - name: ords-rest-privilege-modules
+      path: /ords/rest/privilege/modules/
+      operations:
+      - name: listprotectedmodules
+        method: GET
+        description: Get all protected REST modules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-privileges
+      path: /ords/rest/privileges/
+      operations:
+      - name: listprivileges
+        method: GET
+        description: Get all ORDS privileges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createprivilege
+        method: POST
+        description: Create an ORDS privilege
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ords-rest-privileges-id
+      path: /ords/rest/privileges/{id}
+      operations:
+      - name: getprivilege
+        method: GET
+        description: Get an ORDS privilege
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateprivilege
+        method: PUT
+        description: Update an ORDS privilege
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteprivilege
+        method: DELETE
+        description: Delete an ORDS privilege
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-privileges-id-modules
+      path: /ords/rest/privileges/{id}/modules/
+      operations:
+      - name: listprivilegemodules
+        method: GET
+        description: Get all REST modules in a privilege
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-privileges-id-patterns
+      path: /ords/rest/privileges/{id}/patterns/
+      operations:
+      - name: listprivilegepatterns
+        method: GET
+        description: Get all REST patterns in a privilege
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-privileges-id-roles
+      path: /ords/rest/privileges/{id}/roles/
+      operations:
+      - name: listprivilegeroles
+        method: GET
+        description: Get all ORDS roles in a privilege
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_APEX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ords-rest-privileges-rest
+    port: 8080
+    description: REST adapter for Oracle REST Data Services (ORDS) REST API — Privileges. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/ords/rest/privilege/modules
+      name: ords-rest-privilege-modules
+      description: REST surface for ords-rest-privilege-modules.
+      operations:
+      - method: GET
+        name: listprotectedmodules
+        description: Get all protected REST modules
+        call: ords-rest-privileges.listprotectedmodules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/privileges
+      name: ords-rest-privileges
+      description: REST surface for ords-rest-privileges.
+      operations:
+      - method: GET
+        name: listprivileges
+        description: Get all ORDS privileges
+        call: ords-rest-privileges.listprivileges
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createprivilege
+        description: Create an ORDS privilege
+        call: ords-rest-privileges.createprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/privileges/{id}
+      name: ords-rest-privileges-id
+      description: REST surface for ords-rest-privileges-id.
+      operations:
+      - method: GET
+        name: getprivilege
+        description: Get an ORDS privilege
+        call: ords-rest-privileges.getprivilege
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateprivilege
+        description: Update an ORDS privilege
+        call: ords-rest-privileges.updateprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprivilege
+        description: Delete an ORDS privilege
+        call: ords-rest-privileges.deleteprivilege
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/privileges/{id}/modules
+      name: ords-rest-privileges-id-modules
+      description: REST surface for ords-rest-privileges-id-modules.
+      operations:
+      - method: GET
+        name: listprivilegemodules
+        description: Get all REST modules in a privilege
+        call: ords-rest-privileges.listprivilegemodules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/privileges/{id}/patterns
+      name: ords-rest-privileges-id-patterns
+      description: REST surface for ords-rest-privileges-id-patterns.
+      operations:
+      - method: GET
+        name: listprivilegepatterns
+        description: Get all REST patterns in a privilege
+        call: ords-rest-privileges.listprivilegepatterns
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/privileges/{id}/roles
+      name: ords-rest-privileges-id-roles
+      description: REST surface for ords-rest-privileges-id-roles.
+      operations:
+      - method: GET
+        name: listprivilegeroles
+        description: Get all ORDS roles in a privilege
+        call: ords-rest-privileges.listprivilegeroles
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ords-rest-privileges-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle REST Data Services (ORDS) REST API — Privileges. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-all-protected-rest-modules
+      description: Get all protected REST modules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-privileges.listprotectedmodules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-ords-privileges
+      description: Get all ORDS privileges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-privileges.listprivileges
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-ords-privilege
+      description: Create an ORDS privilege
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ords-rest-privileges.createprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ords-privilege
+      description: Get an ORDS privilege
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-privileges.getprivilege
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-ords-privilege
+      description: Update an ORDS privilege
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ords-rest-privileges.updateprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-ords-privilege
+      description: Delete an ORDS privilege
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ords-rest-privileges.deleteprivilege
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-rest-modules-privilege
+      description: Get all REST modules in a privilege
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-privileges.listprivilegemodules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-rest-patterns-privilege
+      description: Get all REST patterns in a privilege
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-privileges.listprivilegepatterns
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-ords-roles-privilege
+      description: Get all ORDS roles in a privilege
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-privileges.listprivilegeroles
+      outputParameters:
+      - type: object
+        mapping: $.

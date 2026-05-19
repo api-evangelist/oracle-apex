@@ -1,0 +1,329 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle REST Data Services (ORDS) REST API — Properties
+  description: 'Oracle REST Data Services (ORDS) REST API — Properties. 7 operations. Lead operation: Get all ORDS properties
+    values. Self-contained Naftiko capability covering one Oracle Apex business surface.'
+  tags:
+  - Oracle Apex
+  - Properties
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_APEX_API_KEY: ORACLE_APEX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ords-rest-properties
+    baseUri: https://{host}:{port}/ords/_/db-api/stable
+    description: Oracle REST Data Services (ORDS) REST API — Properties business capability. Self-contained, no shared references.
+    resources:
+    - name: ords-properties
+      path: /ords/properties/
+      operations:
+      - name: listproperties
+        method: GET
+        description: Get all ORDS properties values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-properties-key
+      path: /ords/properties/{key}
+      operations:
+      - name: getproperty
+        method: GET
+        description: Get an ORDS property value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          description: The property key name
+          required: true
+      - name: setproperty
+        method: PUT
+        description: Set an ORDS property value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          description: The property key name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: unsetproperty
+        method: DELETE
+        description: Unset an ORDS property value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          description: The property key name
+          required: true
+    - name: ords-properties-schema-key
+      path: /ords/properties/{schema}/{key}
+      operations:
+      - name: getschemaproperty
+        method: GET
+        description: Get an ORDS property value for a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: schema
+          in: path
+          type: string
+          description: The schema name
+          required: true
+        - name: key
+          in: path
+          type: string
+          description: The property key name
+          required: true
+      - name: setschemaproperty
+        method: PUT
+        description: Set an ORDS property value for a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: schema
+          in: path
+          type: string
+          description: The schema name
+          required: true
+        - name: key
+          in: path
+          type: string
+          description: The property key name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: unsetschemaproperty
+        method: DELETE
+        description: Unset an ORDS property value for a schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: schema
+          in: path
+          type: string
+          description: The schema name
+          required: true
+        - name: key
+          in: path
+          type: string
+          description: The property key name
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_APEX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ords-rest-properties-rest
+    port: 8080
+    description: REST adapter for Oracle REST Data Services (ORDS) REST API — Properties. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/ords/properties
+      name: ords-properties
+      description: REST surface for ords-properties.
+      operations:
+      - method: GET
+        name: listproperties
+        description: Get all ORDS properties values
+        call: ords-rest-properties.listproperties
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/properties/{key}
+      name: ords-properties-key
+      description: REST surface for ords-properties-key.
+      operations:
+      - method: GET
+        name: getproperty
+        description: Get an ORDS property value
+        call: ords-rest-properties.getproperty
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: setproperty
+        description: Set an ORDS property value
+        call: ords-rest-properties.setproperty
+        with:
+          key: rest.key
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: unsetproperty
+        description: Unset an ORDS property value
+        call: ords-rest-properties.unsetproperty
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/properties/{schema}/{key}
+      name: ords-properties-schema-key
+      description: REST surface for ords-properties-schema-key.
+      operations:
+      - method: GET
+        name: getschemaproperty
+        description: Get an ORDS property value for a schema
+        call: ords-rest-properties.getschemaproperty
+        with:
+          schema: rest.schema
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: setschemaproperty
+        description: Set an ORDS property value for a schema
+        call: ords-rest-properties.setschemaproperty
+        with:
+          schema: rest.schema
+          key: rest.key
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: unsetschemaproperty
+        description: Unset an ORDS property value for a schema
+        call: ords-rest-properties.unsetschemaproperty
+        with:
+          schema: rest.schema
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ords-rest-properties-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle REST Data Services (ORDS) REST API — Properties. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-all-ords-properties-values
+      description: Get all ORDS properties values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-properties.listproperties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ords-property-value
+      description: Get an ORDS property value
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-properties.getproperty
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-ords-property-value
+      description: Set an ORDS property value
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ords-rest-properties.setproperty
+      with:
+        key: tools.key
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unset-ords-property-value
+      description: Unset an ORDS property value
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ords-rest-properties.unsetproperty
+      with:
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ords-property-value-schema
+      description: Get an ORDS property value for a schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-properties.getschemaproperty
+      with:
+        schema: tools.schema
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-ords-property-value-schema
+      description: Set an ORDS property value for a schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ords-rest-properties.setschemaproperty
+      with:
+        schema: tools.schema
+        key: tools.key
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unset-ords-property-value-schema
+      description: Unset an ORDS property value for a schema
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ords-rest-properties.unsetschemaproperty
+      with:
+        schema: tools.schema
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.

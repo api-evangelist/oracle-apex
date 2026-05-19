@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle REST Data Services (ORDS) REST API — Overview
+  description: 'Oracle REST Data Services (ORDS) REST API — Overview. 2 operations. Lead operation: Get current ORDS schema
+    and REST objects count. Self-contained Naftiko capability covering one Oracle Apex business surface.'
+  tags:
+  - Oracle Apex
+  - Overview
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_APEX_API_KEY: ORACLE_APEX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ords-rest-overview
+    baseUri: https://{host}:{port}/ords/_/db-api/stable
+    description: Oracle REST Data Services (ORDS) REST API — Overview business capability. Self-contained, no shared references.
+    resources:
+    - name: ords-rest-overview
+      path: /ords/rest/overview/
+      operations:
+      - name: getoverview
+        method: GET
+        description: Get current ORDS schema and REST objects count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-overview-objects_recent
+      path: /ords/rest/overview/objects_recent
+      operations:
+      - name: getrecentobjects
+        method: GET
+        description: Get all current schema recent REST objects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_APEX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ords-rest-overview-rest
+    port: 8080
+    description: REST adapter for Oracle REST Data Services (ORDS) REST API — Overview. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/ords/rest/overview
+      name: ords-rest-overview
+      description: REST surface for ords-rest-overview.
+      operations:
+      - method: GET
+        name: getoverview
+        description: Get current ORDS schema and REST objects count
+        call: ords-rest-overview.getoverview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/overview/objects-recent
+      name: ords-rest-overview-objects-recent
+      description: REST surface for ords-rest-overview-objects_recent.
+      operations:
+      - method: GET
+        name: getrecentobjects
+        description: Get all current schema recent REST objects
+        call: ords-rest-overview.getrecentobjects
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ords-rest-overview-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle REST Data Services (ORDS) REST API — Overview. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-current-ords-schema-and
+      description: Get current ORDS schema and REST objects count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-overview.getoverview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-current-schema-recent
+      description: Get all current schema recent REST objects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-overview.getrecentobjects
+      outputParameters:
+      - type: object
+        mapping: $.

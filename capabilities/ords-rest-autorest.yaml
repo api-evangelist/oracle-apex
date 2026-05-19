@@ -1,0 +1,236 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Oracle REST Data Services (ORDS) REST API — AutoREST
+  description: 'Oracle REST Data Services (ORDS) REST API — AutoREST. 6 operations. Lead operation: Get all REST enabled objects.
+    Self-contained Naftiko capability covering one Oracle Apex business surface.'
+  tags:
+  - Oracle Apex
+  - AutoREST
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ORACLE_APEX_API_KEY: ORACLE_APEX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ords-rest-autorest
+    baseUri: https://{host}:{port}/ords/_/db-api/stable
+    description: Oracle REST Data Services (ORDS) REST API — AutoREST business capability. Self-contained, no shared references.
+    resources:
+    - name: ords-rest-autorest
+      path: /ords/rest/autorest/
+      operations:
+      - name: listautorestobjects
+        method: GET
+        description: Get all REST enabled objects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: enableautorest
+        method: POST
+        description: REST enable an object
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ords-rest-autorest-summary
+      path: /ords/rest/autorest/summary
+      operations:
+      - name: getautorestsummary
+        method: GET
+        description: Get count of all REST enabled objects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ords-rest-autorest-id
+      path: /ords/rest/autorest/{id}
+      operations:
+      - name: getautorestobject
+        method: GET
+        description: Get a REST enabled object
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateautorestobject
+        method: PUT
+        description: Update or disable a REST enabled object
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ords-rest-autorest-id-metadata
+      path: /ords/rest/autorest/{id}/metadata
+      operations:
+      - name: getautorestobjectmetadata
+        method: GET
+        description: Get a REST enabled object metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ORACLE_APEX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ords-rest-autorest-rest
+    port: 8080
+    description: REST adapter for Oracle REST Data Services (ORDS) REST API — AutoREST. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/ords/rest/autorest
+      name: ords-rest-autorest
+      description: REST surface for ords-rest-autorest.
+      operations:
+      - method: GET
+        name: listautorestobjects
+        description: Get all REST enabled objects
+        call: ords-rest-autorest.listautorestobjects
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: enableautorest
+        description: REST enable an object
+        call: ords-rest-autorest.enableautorest
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/autorest/summary
+      name: ords-rest-autorest-summary
+      description: REST surface for ords-rest-autorest-summary.
+      operations:
+      - method: GET
+        name: getautorestsummary
+        description: Get count of all REST enabled objects
+        call: ords-rest-autorest.getautorestsummary
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/autorest/{id}
+      name: ords-rest-autorest-id
+      description: REST surface for ords-rest-autorest-id.
+      operations:
+      - method: GET
+        name: getautorestobject
+        description: Get a REST enabled object
+        call: ords-rest-autorest.getautorestobject
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateautorestobject
+        description: Update or disable a REST enabled object
+        call: ords-rest-autorest.updateautorestobject
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ords/rest/autorest/{id}/metadata
+      name: ords-rest-autorest-id-metadata
+      description: REST surface for ords-rest-autorest-id-metadata.
+      operations:
+      - method: GET
+        name: getautorestobjectmetadata
+        description: Get a REST enabled object metadata
+        call: ords-rest-autorest.getautorestobjectmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ords-rest-autorest-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Oracle REST Data Services (ORDS) REST API — AutoREST. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-all-rest-enabled-objects
+      description: Get all REST enabled objects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-autorest.listautorestobjects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rest-enable-object
+      description: REST enable an object
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ords-rest-autorest.enableautorest
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-count-all-rest-enabled
+      description: Get count of all REST enabled objects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-autorest.getautorestsummary
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rest-enabled-object
+      description: Get a REST enabled object
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-autorest.getautorestobject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-disable-rest-enabled-object
+      description: Update or disable a REST enabled object
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ords-rest-autorest.updateautorestobject
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rest-enabled-object-metadata
+      description: Get a REST enabled object metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ords-rest-autorest.getautorestobjectmetadata
+      outputParameters:
+      - type: object
+        mapping: $.
