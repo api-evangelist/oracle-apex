@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ParameterCreate",
+  "title": "ParameterCreate",
+  "type": "object",
+  "description": "Request body for creating or updating a REST handler parameter binding",
+  "required": [
+    "handler_id",
+    "name",
+    "bind_variable_name",
+    "source_type",
+    "access_method"
+  ],
+  "properties": {
+    "handler_id": {
+      "type": "integer",
+      "description": "ID of the parent REST handler"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the parameter as it appears in the request"
+    },
+    "bind_variable_name": {
+      "type": "string",
+      "description": "Name of the bind variable in the handler source code"
+    },
+    "source_type": {
+      "type": "string",
+      "description": "Source of the parameter value",
+      "enum": [
+        "HEADER",
+        "RESPONSE",
+        "URI"
+      ]
+    },
+    "access_method": {
+      "type": "string",
+      "description": "How the parameter is accessed",
+      "enum": [
+        "IN",
+        "OUT",
+        "INOUT"
+      ]
+    },
+    "comments": {
+      "type": "string",
+      "description": "Descriptive comment for the parameter"
+    }
+  }
+}

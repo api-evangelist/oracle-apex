@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LinkRelation",
+  "title": "LinkRelation",
+  "type": "object",
+  "description": "HATEOAS link relation describing a related resource or action",
+  "required": [
+    "rel",
+    "href"
+  ],
+  "properties": {
+    "rel": {
+      "type": "string",
+      "description": "Link relationship type (e.g., self, describedby, edit, collection)"
+    },
+    "href": {
+      "type": "string",
+      "description": "URI of the related resource"
+    }
+  }
+}

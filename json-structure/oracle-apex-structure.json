@@ -1,0 +1,648 @@
+{
+  "provider": "Oracle APEX",
+  "providerId": "oracle-apex",
+  "kind": "json-structure",
+  "description": "Structural overview of the Oracle APEX API surface; extracted from openapi/.",
+  "schemaCount": 12,
+  "operationCount": 59,
+  "schemas": [
+    {
+      "name": "LinkRelation",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "rel",
+        "href"
+      ]
+    },
+    {
+      "name": "ResourceItem",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ItemsCollection",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ModuleCreate",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "name",
+        "base_path"
+      ]
+    },
+    {
+      "name": "TemplateCreate",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "module_id",
+        "uri_prefix"
+      ]
+    },
+    {
+      "name": "TemplateUpdate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "uri_prefix",
+        "priority",
+        "etag_type"
+      ]
+    },
+    {
+      "name": "HandlerCreate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "template_id",
+        "source"
+      ]
+    },
+    {
+      "name": "ParameterCreate",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "handler_id",
+        "name",
+        "bind_variable_name",
+        "source_type",
+        "access_method"
+      ]
+    },
+    {
+      "name": "PrivilegeCreate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "RoleCreate",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "role_name"
+      ]
+    },
+    {
+      "name": "OAuthClientCreate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "name",
+        "privilege_names"
+      ]
+    },
+    {
+      "name": "AutoRestEnable",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "object_name",
+        "object_alias",
+        "auth"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/ords/rest/modules/",
+      "operationId": "listModules",
+      "summary": "Get all REST modules",
+      "tags": [
+        "Modules"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/modules/",
+      "operationId": "createModule",
+      "summary": "Create a REST module",
+      "tags": [
+        "Modules"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/modules/{id}",
+      "operationId": "getModule",
+      "summary": "Get a REST module",
+      "tags": [
+        "Modules"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/modules/{id}",
+      "operationId": "updateModule",
+      "summary": "Update a REST module",
+      "tags": [
+        "Modules"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/modules/{id}/source",
+      "operationId": "getModuleSource",
+      "summary": "Get a REST module source",
+      "tags": [
+        "Modules"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/templates/",
+      "operationId": "listTemplates",
+      "summary": "Get all REST module templates",
+      "tags": [
+        "Templates"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/templates/",
+      "operationId": "createTemplate",
+      "summary": "Create a REST module template",
+      "tags": [
+        "Templates"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/templates/{id}",
+      "operationId": "getTemplate",
+      "summary": "Get a REST module template",
+      "tags": [
+        "Templates"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/templates/{id}",
+      "operationId": "updateTemplate",
+      "summary": "Update a REST module template",
+      "tags": [
+        "Templates"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/rest/templates/{id}",
+      "operationId": "deleteTemplate",
+      "summary": "Delete a REST module template",
+      "tags": [
+        "Templates"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/handlers/",
+      "operationId": "listHandlers",
+      "summary": "Get all REST template handlers",
+      "tags": [
+        "Handlers"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/handlers/",
+      "operationId": "createHandler",
+      "summary": "Create a REST template handler",
+      "tags": [
+        "Handlers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/handlers/{id}",
+      "operationId": "getHandler",
+      "summary": "Get a REST template handler",
+      "tags": [
+        "Handlers"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/handlers/{id}",
+      "operationId": "updateHandler",
+      "summary": "Update a REST template handler",
+      "tags": [
+        "Handlers"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/rest/handlers/{id}",
+      "operationId": "deleteHandler",
+      "summary": "Delete a REST template handler",
+      "tags": [
+        "Handlers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/handlers/{id}/source",
+      "operationId": "getHandlerSource",
+      "summary": "Get a REST handler source",
+      "tags": [
+        "Handlers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/parameters/",
+      "operationId": "listParameters",
+      "summary": "Get all REST handler parameters",
+      "tags": [
+        "Parameters"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/parameters/",
+      "operationId": "createParameter",
+      "summary": "Create a REST handler parameter",
+      "tags": [
+        "Parameters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/parameters/{id}",
+      "operationId": "getParameter",
+      "summary": "Get a REST handler parameter",
+      "tags": [
+        "Parameters"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/parameters/{id}",
+      "operationId": "updateParameter",
+      "summary": "Update a REST handler parameter",
+      "tags": [
+        "Parameters"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/rest/parameters/{id}",
+      "operationId": "deleteParameter",
+      "summary": "Delete a REST handler parameter",
+      "tags": [
+        "Parameters"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/privileges/",
+      "operationId": "listPrivileges",
+      "summary": "Get all ORDS privileges",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/privileges/",
+      "operationId": "createPrivilege",
+      "summary": "Create an ORDS privilege",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/privileges/{id}",
+      "operationId": "getPrivilege",
+      "summary": "Get an ORDS privilege",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/privileges/{id}",
+      "operationId": "updatePrivilege",
+      "summary": "Update an ORDS privilege",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/rest/privileges/{id}",
+      "operationId": "deletePrivilege",
+      "summary": "Delete an ORDS privilege",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/privileges/{id}/roles/",
+      "operationId": "listPrivilegeRoles",
+      "summary": "Get all ORDS roles in a privilege",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/privileges/{id}/modules/",
+      "operationId": "listPrivilegeModules",
+      "summary": "Get all REST modules in a privilege",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/privileges/{id}/patterns/",
+      "operationId": "listPrivilegePatterns",
+      "summary": "Get all REST patterns in a privilege",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/roles/",
+      "operationId": "listRoles",
+      "summary": "Get all ORDS roles",
+      "tags": [
+        "Roles"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/roles/",
+      "operationId": "createRole",
+      "summary": "Create an ORDS role",
+      "tags": [
+        "Roles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/roles/{id}",
+      "operationId": "getRole",
+      "summary": "Get an ORDS role",
+      "tags": [
+        "Roles"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/roles/{id}",
+      "operationId": "updateRole",
+      "summary": "Update an ORDS role",
+      "tags": [
+        "Roles"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/rest/roles/{id}",
+      "operationId": "deleteRole",
+      "summary": "Delete an ORDS role",
+      "tags": [
+        "Roles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/roles/{id}/privileges/",
+      "operationId": "listRolePrivileges",
+      "summary": "Get all ORDS privileges for a specific role",
+      "tags": [
+        "Roles"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/clients/",
+      "operationId": "listOAuthClients",
+      "summary": "Get all ORDS OAuth clients",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/clients/",
+      "operationId": "createOAuthClient",
+      "summary": "Create an ORDS OAuth client",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/clients/{id}",
+      "operationId": "getOAuthClient",
+      "summary": "Get an ORDS OAuth client",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/clients/{id}",
+      "operationId": "updateOAuthClient",
+      "summary": "Update an ORDS OAuth client",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/rest/clients/{id}",
+      "operationId": "deleteOAuthClient",
+      "summary": "Delete an ORDS OAuth client",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/clients/{id}/privileges/",
+      "operationId": "listOAuthClientPrivileges",
+      "summary": "Get all ORDS privileges in an OAuth client",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/clients/{id}/roles/",
+      "operationId": "listOAuthClientRoles",
+      "summary": "Get all ORDS roles in an OAuth client",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/clients/{id}/logo/",
+      "operationId": "updateOAuthClientLogo",
+      "summary": "Update ORDS OAuth client avatar image",
+      "tags": [
+        "OAuth Clients"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/autorest/",
+      "operationId": "listAutoRestObjects",
+      "summary": "Get all REST enabled objects",
+      "tags": [
+        "AutoREST"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ords/rest/autorest/",
+      "operationId": "enableAutoRest",
+      "summary": "REST enable an object",
+      "tags": [
+        "AutoREST"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/autorest/{id}",
+      "operationId": "getAutoRestObject",
+      "summary": "Get a REST enabled object",
+      "tags": [
+        "AutoREST"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/rest/autorest/{id}",
+      "operationId": "updateAutoRestObject",
+      "summary": "Update or disable a REST enabled object",
+      "tags": [
+        "AutoREST"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/autorest/{id}/metadata",
+      "operationId": "getAutoRestObjectMetadata",
+      "summary": "Get a REST enabled object metadata",
+      "tags": [
+        "AutoREST"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/autorest/summary",
+      "operationId": "getAutoRestSummary",
+      "summary": "Get count of all REST enabled objects",
+      "tags": [
+        "AutoREST"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/privilege/modules/",
+      "operationId": "listProtectedModules",
+      "summary": "Get all protected REST modules",
+      "tags": [
+        "Privileges"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/overview/",
+      "operationId": "getOverview",
+      "summary": "Get current ORDS schema and REST objects count",
+      "tags": [
+        "Overview"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/rest/overview/objects_recent",
+      "operationId": "getRecentObjects",
+      "summary": "Get all current schema recent REST objects",
+      "tags": [
+        "Overview"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/properties/",
+      "operationId": "listProperties",
+      "summary": "Get all ORDS properties values",
+      "tags": [
+        "Properties"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/properties/{key}",
+      "operationId": "getProperty",
+      "summary": "Get an ORDS property value",
+      "tags": [
+        "Properties"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/properties/{key}",
+      "operationId": "setProperty",
+      "summary": "Set an ORDS property value",
+      "tags": [
+        "Properties"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/properties/{key}",
+      "operationId": "unsetProperty",
+      "summary": "Unset an ORDS property value",
+      "tags": [
+        "Properties"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ords/properties/{schema}/{key}",
+      "operationId": "getSchemaProperty",
+      "summary": "Get an ORDS property value for a schema",
+      "tags": [
+        "Properties"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ords/properties/{schema}/{key}",
+      "operationId": "setSchemaProperty",
+      "summary": "Set an ORDS property value for a schema",
+      "tags": [
+        "Properties"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ords/properties/{schema}/{key}",
+      "operationId": "unsetSchemaProperty",
+      "summary": "Unset an ORDS property value for a schema",
+      "tags": [
+        "Properties"
+      ]
+    }
+  ]
+}

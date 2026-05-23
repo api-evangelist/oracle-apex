@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RoleCreate",
+  "title": "RoleCreate",
+  "type": "object",
+  "description": "Request body for creating or updating an ORDS role",
+  "required": [
+    "role_name"
+  ],
+  "properties": {
+    "role_name": {
+      "type": "string",
+      "description": "Unique name of the ORDS role"
+    },
+    "run_mode": {
+      "type": "string",
+      "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+      "enum": [
+        "codePreview"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+name: Oracle APEX Domain Vocabulary
+provider: Oracle APEX
+providerId: oracle-apex
+description: Tag-derived vocabulary for the Oracle APEX API surface; sourced from openapi/ tags.
+terms:
+- term: Modules
+  description: REST module management. A module is a container for one or more templates with an associated base path.
+- term: Templates
+  description: REST module template management. A template defines a URI pattern within a module for routing requests.
+- term: Handlers
+  description: REST template handler management. A handler implements an HTTP method on a template with source code.
+- term: Parameters
+  description: REST handler parameter management. Parameters define input bindings for handlers.
+- term: Privileges
+  description: ORDS privilege management. Privileges control access to REST modules and URL patterns.
+- term: Roles
+  description: ORDS role management. Roles group privileges for assignment to users and OAuth clients.
+- term: OAuth Clients
+  description: ORDS OAuth client management. OAuth clients enable third-party applications to access protected resources.
+- term: AutoREST
+  description: AutoREST object management. AutoREST enables automatic REST access to database tables and views.
+- term: Overview
+  description: ORDS schema overview and REST object summaries.
+- term: Properties
+  description: ORDS configuration property management.

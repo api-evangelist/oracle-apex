@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutoRestEnable",
+  "title": "AutoRestEnable",
+  "type": "object",
+  "description": "Request body for enabling or updating AutoREST on a database object",
+  "required": [
+    "object_name",
+    "object_alias",
+    "auth"
+  ],
+  "properties": {
+    "object_name": {
+      "type": "string",
+      "description": "Name of the database table or view to REST-enable"
+    },
+    "object_alias": {
+      "type": "string",
+      "description": "Alias used in the REST URI path for the object"
+    },
+    "auth": {
+      "type": "boolean",
+      "description": "When true, requires user authorization via ORDS roles before allowing access to the object metadata and data"
+    },
+    "run_mode": {
+      "type": "string",
+      "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+      "enum": [
+        "codePreview"
+      ]
+    }
+  }
+}

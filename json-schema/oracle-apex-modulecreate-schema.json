@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ModuleCreate",
+  "title": "ModuleCreate",
+  "type": "object",
+  "description": "Request body for creating or updating a REST service module",
+  "required": [
+    "name",
+    "base_path"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the RESTful service module. Case sensitive."
+    },
+    "base_path": {
+      "type": "string",
+      "description": "The base URI path used to access this RESTful service. All URIs starting with this path will be serviced by this module.",
+      "examples": [
+        "hr/",
+        "api/v1/"
+      ]
+    },
+    "origins_allowed": {
+      "type": "string",
+      "description": "Comma-separated list of allowed CORS origins for the module"
+    },
+    "items_per_page": {
+      "type": "integer",
+      "description": "Default pagination size for GET handlers (number of rows per page)",
+      "default": 25,
+      "minimum": 1
+    },
+    "module_status": {
+      "type": "string",
+      "description": "Publication status of the module",
+      "enum": [
+        "PUBLISHED",
+        "NOT_PUBLISHED"
+      ],
+      "default": "PUBLISHED"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Descriptive comment for the module"
+    },
+    "run_mode": {
+      "type": "string",
+      "description": "Set to 'codePreview' to return the PL/SQL code that would be executed instead of executing it",
+      "enum": [
+        "codePreview"
+      ]
+    }
+  }
+}

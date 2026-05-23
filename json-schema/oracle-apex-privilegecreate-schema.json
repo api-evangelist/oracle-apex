@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PrivilegeCreate",
+  "title": "PrivilegeCreate",
+  "type": "object",
+  "description": "Request body for creating or updating an ORDS privilege",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name of the ORDS privilege"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-readable label for the privilege"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the privilege purpose"
+    },
+    "roles": {
+      "type": "string",
+      "description": "Null-character-separated list of ORDS roles assigned to this privilege"
+    },
+    "patterns": {
+      "type": "string",
+      "description": "Null-character-separated list of URL patterns protected by this privilege"
+    },
+    "modules": {
+      "type": "string",
+      "description": "Null-character-separated list of REST modules protected by this privilege"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Descriptive comment for the privilege"
+    },
+    "run_mode": {
+      "type": "string",
+      "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+      "enum": [
+        "codePreview"
+      ]
+    }
+  }
+}

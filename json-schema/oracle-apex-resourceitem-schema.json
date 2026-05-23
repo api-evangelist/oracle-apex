@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ResourceItem",
+  "title": "ResourceItem",
+  "type": "object",
+  "description": "A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.",
+  "additionalProperties": true,
+  "properties": {
+    "links": {
+      "type": "array",
+      "description": "HATEOAS links for the resource",
+      "items": {
+        "$ref": "#/components/schemas/LinkRelation"
+      }
+    }
+  }
+}

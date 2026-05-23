@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TemplateCreate",
+  "title": "TemplateCreate",
+  "type": "object",
+  "description": "Request body for creating a REST module template",
+  "required": [
+    "module_id",
+    "uri_prefix"
+  ],
+  "properties": {
+    "module_id": {
+      "type": "integer",
+      "description": "ID of the parent REST module"
+    },
+    "uri_prefix": {
+      "type": "string",
+      "description": "URI pattern for the template. Supports path parameters using :name syntax and optional parameters using :name? suffix.",
+      "examples": [
+        "/objects/:object/:id?",
+        "/employees/",
+        "/departments/:dept_id"
+      ]
+    },
+    "priority": {
+      "type": "integer",
+      "description": "Priority for evaluating the template when multiple templates match. 0 is lowest, 9 is highest.",
+      "minimum": 0,
+      "maximum": 9,
+      "default": 0
+    },
+    "etag_type": {
+      "type": "string",
+      "description": "Type of entity tag generation for cache validation and optimistic locking",
+      "enum": [
+        "HASH",
+        "QUERY",
+        "NONE"
+      ]
+    },
+    "etag_query": {
+      "type": "string",
+      "description": "SQL query used to generate the entity tag when etag_type is QUERY"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Descriptive comment for the template"
+    },
+    "run_mode": {
+      "type": "string",
+      "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+      "enum": [
+        "codePreview"
+      ]
+    }
+  }
+}

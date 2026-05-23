@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OAuthClientCreate",
+  "title": "OAuthClientCreate",
+  "type": "object",
+  "description": "Request body for creating or updating an ORDS OAuth client",
+  "required": [
+    "name",
+    "privilege_names"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name for the OAuth client, displayed during the approval phase of three-legged OAuth"
+    },
+    "privilege_names": {
+      "type": "string",
+      "description": "Comma-separated list of privilege names the client requests access to"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the client purpose, displayed during the OAuth approval phase. Required for three-legged OAuth; may be null for client_credentials grant type."
+    },
+    "allowed_origins": {
+      "type": "string",
+      "description": "Comma-separated list of allowed origin URL prefixes for CORS"
+    },
+    "redirect_uri": {
+      "type": "string",
+      "description": "URI where OAuth redirects with access token or error are sent. Required for three-legged OAuth; may be null for client_credentials grant type."
+    },
+    "role_names": {
+      "type": "string",
+      "description": "Comma-separated list of role names assigned to the client"
+    },
+    "support_email": {
+      "type": "string",
+      "description": "Contact email for end user support"
+    },
+    "support_uri": {
+      "type": "string",
+      "description": "Support URI for end users"
+    }
+  }
+}

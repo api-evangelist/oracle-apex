@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HandlerCreate",
+  "title": "HandlerCreate",
+  "type": "object",
+  "description": "Request body for creating or updating a REST template handler",
+  "required": [
+    "template_id",
+    "source"
+  ],
+  "properties": {
+    "template_id": {
+      "type": "integer",
+      "description": "ID of the parent REST template"
+    },
+    "source": {
+      "type": "string",
+      "description": "The source code implementation (SQL query or PL/SQL block) executed when this handler processes a request"
+    },
+    "source_type": {
+      "type": "string",
+      "description": "The type of source code that determines how the source is executed",
+      "enum": [
+        "source_type_collection_feed",
+        "source_type_collection_item",
+        "source_type_media",
+        "source_type_plsql",
+        "source_type_query",
+        "source_type_csv_query",
+        "source_type_query_one_row",
+        "source_type_feed"
+      ]
+    },
+    "method": {
+      "type": "string",
+      "description": "HTTP method this handler responds to",
+      "enum": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ]
+    },
+    "items_per_page": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Pagination size for GET handlers. NULL defers to the module-level setting.",
+      "minimum": 1
+    },
+    "mimes_allowed": {
+      "type": "string",
+      "description": "Comma-separated list of MIME types accepted by PUT and POST handlers"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Descriptive comment for the handler"
+    },
+    "run_mode": {
+      "type": "string",
+      "description": "Set to 'codePreview' to return the PL/SQL code instead of executing it",
+      "enum": [
+        "codePreview"
+      ]
+    }
+  }
+}
