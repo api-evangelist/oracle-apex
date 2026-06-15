@@ -1,0 +1,1266 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle REST Data Services (ORDS) REST API",
+    "version": "25.4"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Modules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all REST modules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/modules/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all REST service modules defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create a REST module",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/modules/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new REST service module with the specified name and base path. A module is a container for templates that defines the root URI pattern for a group of related REST services."
+        },
+        {
+          "info": {
+            "name": "Get a REST module",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/modules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific REST service module by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update a REST module",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/modules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing REST service module. All mutable properties of the module can be modified."
+        },
+        {
+          "info": {
+            "name": "Get a REST module source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/modules/:id/source",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves the PL/SQL source code that defines the specified REST service module."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all REST module templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/templates/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all REST module templates defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create a REST module template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/templates/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new REST module template associated with a specific module. A template defines a URI pattern within a module and serves as a container for one or more handlers."
+        },
+        {
+          "info": {
+            "name": "Get a REST module template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific REST module template by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update a REST module template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing REST module template including its URI pattern, priority, and ETag configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a REST module template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific REST module template and all of its associated handlers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Handlers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all REST template handlers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/handlers/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all REST template handlers defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create a REST template handler",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/handlers/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new REST template handler that implements a specific HTTP method on a template. The handler contains the source code (SQL query or PL/SQL block) that will be executed when the template URI is accessed with the specified HTTP method."
+        },
+        {
+          "info": {
+            "name": "Get a REST template handler",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/handlers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific REST template handler by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update a REST template handler",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/handlers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing REST template handler including its source code, source type, and pagination settings."
+        },
+        {
+          "info": {
+            "name": "Delete a REST template handler",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/handlers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific REST template handler."
+        },
+        {
+          "info": {
+            "name": "Get a REST handler source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/handlers/:id/source",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves the source code implementation of a specific REST template handler."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Parameters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all REST handler parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/parameters/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all REST handler parameters defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create a REST handler parameter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/parameters/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new parameter binding for a REST template handler, defining how request parameters map to handler source bind variables."
+        },
+        {
+          "info": {
+            "name": "Get a REST handler parameter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/parameters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific REST handler parameter by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update a REST handler parameter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/parameters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing REST handler parameter binding."
+        },
+        {
+          "info": {
+            "name": "Delete a REST handler parameter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/parameters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific REST handler parameter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Privileges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS privileges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all ORDS privileges defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ORDS privilege that controls access to REST modules and URL patterns. Privileges can be associated with roles, patterns, and modules."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific ORDS privilege by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ORDS privilege including its label, description, and associated roles, patterns, and modules."
+        },
+        {
+          "info": {
+            "name": "Delete an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS roles in a privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id/roles/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all roles associated with a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all REST modules in a privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id/modules/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all REST modules protected by a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all REST patterns in a privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id/patterns/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all URL patterns protected by a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all protected REST modules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privilege/modules/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves all REST modules that are protected by one or more ORDS privileges."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all ORDS roles defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ORDS role that can be assigned to privileges and OAuth clients to control access to REST services."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific ORDS role by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ORDS role."
+        },
+        {
+          "info": {
+            "name": "Delete an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ORDS role."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS privileges for a specific role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id/privileges/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all privileges associated with a specific ORDS role."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OAuth Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS OAuth clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all ORDS OAuth clients registered in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ORDS OAuth client that enables third-party applications to access protected REST resources using OAuth 2.0 authorization flows."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific ORDS OAuth client by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ORDS OAuth client configuration."
+        },
+        {
+          "info": {
+            "name": "Delete an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ORDS OAuth client and revokes all associated tokens."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS privileges in an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id/privileges/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all privileges assigned to a specific ORDS OAuth client."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS roles in an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id/roles/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all roles assigned to a specific ORDS OAuth client."
+        },
+        {
+          "info": {
+            "name": "Update ORDS OAuth client avatar image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id/logo/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Uploads or updates the avatar image displayed during OAuth authorization for a specific OAuth client."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AutoREST",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all REST enabled objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/autorest/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all database objects that have been REST-enabled through AutoREST in the current schema."
+        },
+        {
+          "info": {
+            "name": "REST enable an object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/autorest/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables automatic REST access for a database table or view. AutoREST generates standard CRUD endpoints for the specified object without requiring manual module, template, or handler definitions."
+        },
+        {
+          "info": {
+            "name": "Get a REST enabled object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/autorest/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific REST-enabled object by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update or disable a REST enabled object",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/autorest/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of a REST-enabled object or disables REST access for the object."
+        },
+        {
+          "info": {
+            "name": "Get a REST enabled object metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/autorest/:id/metadata",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves the metadata (column definitions, types, constraints) for a REST-enabled database object."
+        },
+        {
+          "info": {
+            "name": "Get count of all REST enabled objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/autorest/summary"
+          },
+          "docs": "Retrieves a summary count of all REST-enabled objects in the current schema."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Overview",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current ORDS schema and REST objects count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/overview/"
+          },
+          "docs": "Retrieves an overview of the current schema including counts of REST modules, templates, handlers, privileges, roles, and OAuth clients."
+        },
+        {
+          "info": {
+            "name": "Get all current schema recent REST objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/overview/objects_recent"
+          },
+          "docs": "Retrieves the most recently created or modified REST objects in the current schema."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS properties values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/"
+          },
+          "docs": "Retrieves all configuration property values for the ORDS instance."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Retrieves the value of a specific ORDS configuration property."
+        },
+        {
+          "info": {
+            "name": "Set an ORDS property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the value of a specific ORDS configuration property."
+        },
+        {
+          "info": {
+            "name": "Unset an ORDS property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Removes a custom ORDS configuration property value, reverting it to the default."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS property value for a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:schema/:key",
+            "params": [
+              {
+                "name": "schema",
+                "value": "",
+                "type": "path",
+                "description": "The schema name"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Retrieves the value of a specific ORDS configuration property scoped to a particular schema."
+        },
+        {
+          "info": {
+            "name": "Set an ORDS property value for a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:schema/:key",
+            "params": [
+              {
+                "name": "schema",
+                "value": "",
+                "type": "path",
+                "description": "The schema name"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the value of a specific ORDS configuration property scoped to a particular schema."
+        },
+        {
+          "info": {
+            "name": "Unset an ORDS property value for a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:schema/:key",
+            "params": [
+              {
+                "name": "schema",
+                "value": "",
+                "type": "path",
+                "description": "The schema name"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Removes a schema-scoped ORDS configuration property value, reverting it to the default."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
