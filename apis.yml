@@ -3,7 +3,7 @@ name: Oracle APEX
 description: >-
   Oracle Application Express (APEX) is a low-code development platform that enables you to build scalable, secure
   enterprise apps with world-class features.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/oracle-apex/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
