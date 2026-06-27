@@ -294,7 +294,7 @@ common:
     url: https://www.oracle.com/tools/technologies/faq-rest-data-services.html
   - type: Support
     url: https://apex.oracle.com/community
-  - type: SignUp
+  - type: Signup
     url: https://docs.oracle.com/en/cloud/paas/apex/gsadd/sign-up-for-apex-service.html
   - type: Features
     data:
