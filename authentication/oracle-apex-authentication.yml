@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ords-rest-api-openapi.json
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using ORDS-enabled database schema credentials
+  sources:
+  - openapi/ords-rest-api-openapi.json
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /ords/{schema}/oauth/token
+    scopes: 0
+  - flow: authorizationCode
+    authorizationUrl: /ords/{schema}/oauth/auth
+    tokenUrl: /ords/{schema}/oauth/token
+    scopes: 0
+  description: OAuth 2.0 authorization using ORDS OAuth client credentials or authorization
+    code flow
+  sources:
+  - openapi/ords-rest-api-openapi.json
