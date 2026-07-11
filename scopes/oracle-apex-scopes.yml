@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ords-rest-api-openapi.json
+docs: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orddg/OAUTH-reference.html
+note: ORDS OAuth publishes no fixed scope catalog; access is granted through developer-defined
+  ORDS privileges and roles per REST-enabled schema (OAUTH.CREATE_CLIENT p_privilege_names,
+  OAUTH.GRANT_CLIENT_ROLE), with JWT scope claims expected to match privilege names
+  (https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orddg/OAUTH-reference.html).
+schemes:
+- name: oauth2
+  source: openapi/ords-rest-api-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /ords/{schema}/oauth/token
+  - flow: authorizationCode
+    authorizationUrl: /ords/{schema}/oauth/auth
+    tokenUrl: /ords/{schema}/oauth/token
+  description: OAuth 2.0 authorization using ORDS OAuth client credentials or authorization
+    code flow
+scopes: []
