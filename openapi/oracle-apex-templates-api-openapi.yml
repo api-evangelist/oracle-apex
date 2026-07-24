@@ -1,0 +1,299 @@
+openapi: 3.1.0
+info:
+  title: Oracle REST Data Services (ORDS) REST AutoREST Templates API
+  description: REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.
+  version: '25.4'
+  contact:
+    name: Oracle APEX Support
+    url: https://apex.oracle.com/community
+    email: apex-info_us@oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/downloads/licenses/distribution-license.html
+servers:
+- url: https://{host}:{port}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint
+  variables:
+    host:
+      default: localhost
+      description: Hostname of the ORDS instance
+    port:
+      default: '8443'
+      description: Port number for the ORDS instance
+- url: https://{host}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint (default port)
+  variables:
+    host:
+      default: example.com
+      description: Hostname of the ORDS instance
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Templates
+  description: REST module template management. A template defines a URI pattern within a module for routing requests.
+paths:
+  /ords/rest/templates/:
+    get:
+      operationId: listTemplates
+      summary: Get all REST module templates
+      description: Retrieves a paginated list of all REST module templates defined in the current schema.
+      tags:
+      - Templates
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Paginated list of REST templates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+    post:
+      operationId: createTemplate
+      summary: Create a REST module template
+      description: Creates a new REST module template associated with a specific module. A template defines a URI pattern within a module and serves as a container for one or more handlers.
+      tags:
+      - Templates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateCreate'
+      responses:
+        '201':
+          description: REST template created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '400':
+          description: No pattern parameter provided or module not specified
+        '404':
+          description: Module does not exist
+        '409':
+          description: A template with that pattern already exists in the module
+  /ords/rest/templates/{id}:
+    get:
+      operationId: getTemplate
+      summary: Get a REST module template
+      description: Retrieves details of a specific REST module template by its identifier.
+      tags:
+      - Templates
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: REST template details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '404':
+          description: Template not found
+    put:
+      operationId: updateTemplate
+      summary: Update a REST module template
+      description: Updates an existing REST module template including its URI pattern, priority, and ETag configuration.
+      tags:
+      - Templates
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateUpdate'
+      responses:
+        '200':
+          description: REST template updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '400':
+          description: Missing etag_type, pattern, or priority parameter
+        '404':
+          description: Template does not exist
+        '409':
+          description: Template pattern already exists in the module
+    delete:
+      operationId: deleteTemplate
+      summary: Delete a REST module template
+      description: Deletes a specific REST module template and all of its associated handlers.
+      tags:
+      - Templates
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: REST template deleted successfully
+        '404':
+          description: Template not found
+components:
+  schemas:
+    TemplateCreate:
+      type: object
+      description: Request body for creating a REST module template
+      required:
+      - module_id
+      - uri_prefix
+      properties:
+        module_id:
+          type: integer
+          description: ID of the parent REST module
+        uri_prefix:
+          type: string
+          description: URI pattern for the template. Supports path parameters using :name syntax and optional parameters using :name? suffix.
+          examples:
+          - /objects/:object/:id?
+          - /employees/
+          - /departments/:dept_id
+        priority:
+          type: integer
+          description: Priority for evaluating the template when multiple templates match. 0 is lowest, 9 is highest.
+          minimum: 0
+          maximum: 9
+          default: 0
+        etag_type:
+          type: string
+          description: Type of entity tag generation for cache validation and optimistic locking
+          enum:
+          - HASH
+          - QUERY
+          - NONE
+        etag_query:
+          type: string
+          description: SQL query used to generate the entity tag when etag_type is QUERY
+        comments:
+          type: string
+          description: Descriptive comment for the template
+        run_mode:
+          type: string
+          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
+          enum:
+          - codePreview
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    TemplateUpdate:
+      type: object
+      description: Request body for updating a REST module template
+      required:
+      - uri_prefix
+      - priority
+      - etag_type
+      properties:
+        uri_prefix:
+          type: string
+          description: URI pattern for the template
+        priority:
+          type: integer
+          description: Priority for evaluating the template (0-9)
+          minimum: 0
+          maximum: 9
+        etag_type:
+          type: string
+          description: Type of entity tag generation
+          enum:
+          - HASH
+          - QUERY
+          - NONE
+        etag_query:
+          type: string
+          description: SQL query for entity tag generation when etag_type is QUERY
+        comments:
+          type: string
+          description: Descriptive comment for the template
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The index of the first item to return (0-based). Default is 0.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return per page. Default is 25.
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 500
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using ORDS-enabled database schema credentials
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization using ORDS OAuth client credentials or authorization code flow
+      flows:
+        clientCredentials:
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: /ords/{schema}/oauth/auth
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}

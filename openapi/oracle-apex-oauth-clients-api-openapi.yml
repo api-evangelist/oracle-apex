@@ -1,0 +1,311 @@
+openapi: 3.1.0
+info:
+  title: Oracle REST Data Services (ORDS) REST AutoREST OAuth Clients API
+  description: REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.
+  version: '25.4'
+  contact:
+    name: Oracle APEX Support
+    url: https://apex.oracle.com/community
+    email: apex-info_us@oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/downloads/licenses/distribution-license.html
+servers:
+- url: https://{host}:{port}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint
+  variables:
+    host:
+      default: localhost
+      description: Hostname of the ORDS instance
+    port:
+      default: '8443'
+      description: Port number for the ORDS instance
+- url: https://{host}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint (default port)
+  variables:
+    host:
+      default: example.com
+      description: Hostname of the ORDS instance
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: OAuth Clients
+  description: ORDS OAuth client management. OAuth clients enable third-party applications to access protected resources.
+paths:
+  /ords/rest/clients/:
+    get:
+      operationId: listOAuthClients
+      summary: Get all ORDS OAuth clients
+      description: Retrieves a paginated list of all ORDS OAuth clients registered in the current schema.
+      tags:
+      - OAuth Clients
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Paginated list of OAuth clients
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+    post:
+      operationId: createOAuthClient
+      summary: Create an ORDS OAuth client
+      description: Creates a new ORDS OAuth client that enables third-party applications to access protected REST resources using OAuth 2.0 authorization flows.
+      tags:
+      - OAuth Clients
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthClientCreate'
+      responses:
+        '201':
+          description: OAuth client created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '400':
+          description: Missing required parameters
+        '409':
+          description: An OAuth client with that name already exists
+  /ords/rest/clients/{id}:
+    get:
+      operationId: getOAuthClient
+      summary: Get an ORDS OAuth client
+      description: Retrieves details of a specific ORDS OAuth client by its identifier.
+      tags:
+      - OAuth Clients
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: OAuth client details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '404':
+          description: OAuth client not found
+    put:
+      operationId: updateOAuthClient
+      summary: Update an ORDS OAuth client
+      description: Updates an existing ORDS OAuth client configuration.
+      tags:
+      - OAuth Clients
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthClientCreate'
+      responses:
+        '200':
+          description: OAuth client updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '404':
+          description: OAuth client not found
+    delete:
+      operationId: deleteOAuthClient
+      summary: Delete an ORDS OAuth client
+      description: Deletes a specific ORDS OAuth client and revokes all associated tokens.
+      tags:
+      - OAuth Clients
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: OAuth client deleted successfully
+        '404':
+          description: OAuth client not found
+  /ords/rest/clients/{id}/privileges/:
+    get:
+      operationId: listOAuthClientPrivileges
+      summary: Get all ORDS privileges in an OAuth client
+      description: Retrieves all privileges assigned to a specific ORDS OAuth client.
+      tags:
+      - OAuth Clients
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: List of privileges for the OAuth client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+        '404':
+          description: OAuth client not found
+  /ords/rest/clients/{id}/roles/:
+    get:
+      operationId: listOAuthClientRoles
+      summary: Get all ORDS roles in an OAuth client
+      description: Retrieves all roles assigned to a specific ORDS OAuth client.
+      tags:
+      - OAuth Clients
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: List of roles for the OAuth client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+        '404':
+          description: OAuth client not found
+  /ords/rest/clients/{id}/logo/:
+    post:
+      operationId: updateOAuthClientLogo
+      summary: Update ORDS OAuth client avatar image
+      description: Uploads or updates the avatar image displayed during OAuth authorization for a specific OAuth client.
+      tags:
+      - OAuth Clients
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      requestBody:
+        required: true
+        content:
+          image/*:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: OAuth client logo updated successfully
+        '404':
+          description: OAuth client not found
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The index of the first item to return (0-based). Default is 0.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return per page. Default is 25.
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 500
+  schemas:
+    OAuthClientCreate:
+      type: object
+      description: Request body for creating or updating an ORDS OAuth client
+      required:
+      - name
+      - privilege_names
+      properties:
+        name:
+          type: string
+          description: Unique name for the OAuth client, displayed during the approval phase of three-legged OAuth
+        privilege_names:
+          type: string
+          description: Comma-separated list of privilege names the client requests access to
+        description:
+          type: string
+          description: Description of the client purpose, displayed during the OAuth approval phase. Required for three-legged OAuth; may be null for client_credentials grant type.
+        allowed_origins:
+          type: string
+          description: Comma-separated list of allowed origin URL prefixes for CORS
+        redirect_uri:
+          type: string
+          description: URI where OAuth redirects with access token or error are sent. Required for three-legged OAuth; may be null for client_credentials grant type.
+        role_names:
+          type: string
+          description: Comma-separated list of role names assigned to the client
+        support_email:
+          type: string
+          description: Contact email for end user support
+        support_uri:
+          type: string
+          description: Support URI for end users
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using ORDS-enabled database schema credentials
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization using ORDS OAuth client credentials or authorization code flow
+      flows:
+        clientCredentials:
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: /ords/{schema}/oauth/auth
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}

@@ -1,0 +1,130 @@
+openapi: 3.1.0
+info:
+  title: Oracle REST Data Services (ORDS) REST AutoREST Overview API
+  description: REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.
+  version: '25.4'
+  contact:
+    name: Oracle APEX Support
+    url: https://apex.oracle.com/community
+    email: apex-info_us@oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/downloads/licenses/distribution-license.html
+servers:
+- url: https://{host}:{port}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint
+  variables:
+    host:
+      default: localhost
+      description: Hostname of the ORDS instance
+    port:
+      default: '8443'
+      description: Port number for the ORDS instance
+- url: https://{host}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint (default port)
+  variables:
+    host:
+      default: example.com
+      description: Hostname of the ORDS instance
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Overview
+  description: ORDS schema overview and REST object summaries.
+paths:
+  /ords/rest/overview/:
+    get:
+      operationId: getOverview
+      summary: Get current ORDS schema and REST objects count
+      description: Retrieves an overview of the current schema including counts of REST modules, templates, handlers, privileges, roles, and OAuth clients.
+      tags:
+      - Overview
+      responses:
+        '200':
+          description: ORDS schema overview with object counts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+  /ords/rest/overview/objects_recent:
+    get:
+      operationId: getRecentObjects
+      summary: Get all current schema recent REST objects
+      description: Retrieves the most recently created or modified REST objects in the current schema.
+      tags:
+      - Overview
+      responses:
+        '200':
+          description: List of recent REST objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+components:
+  schemas:
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using ORDS-enabled database schema credentials
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization using ORDS OAuth client credentials or authorization code flow
+      flows:
+        clientCredentials:
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: /ords/{schema}/oauth/auth
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}

@@ -1,0 +1,326 @@
+openapi: 3.1.0
+info:
+  title: Oracle REST Data Services (ORDS) REST AutoREST Privileges API
+  description: REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.
+  version: '25.4'
+  contact:
+    name: Oracle APEX Support
+    url: https://apex.oracle.com/community
+    email: apex-info_us@oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/downloads/licenses/distribution-license.html
+servers:
+- url: https://{host}:{port}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint
+  variables:
+    host:
+      default: localhost
+      description: Hostname of the ORDS instance
+    port:
+      default: '8443'
+      description: Port number for the ORDS instance
+- url: https://{host}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint (default port)
+  variables:
+    host:
+      default: example.com
+      description: Hostname of the ORDS instance
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Privileges
+  description: ORDS privilege management. Privileges control access to REST modules and URL patterns.
+paths:
+  /ords/rest/privileges/:
+    get:
+      operationId: listPrivileges
+      summary: Get all ORDS privileges
+      description: Retrieves a paginated list of all ORDS privileges defined in the current schema.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Paginated list of ORDS privileges
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+    post:
+      operationId: createPrivilege
+      summary: Create an ORDS privilege
+      description: Creates a new ORDS privilege that controls access to REST modules and URL patterns. Privileges can be associated with roles, patterns, and modules.
+      tags:
+      - Privileges
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivilegeCreate'
+      responses:
+        '201':
+          description: ORDS privilege created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '400':
+          description: Missing name parameter
+        '409':
+          description: A privilege with that name already exists
+  /ords/rest/privileges/{id}:
+    get:
+      operationId: getPrivilege
+      summary: Get an ORDS privilege
+      description: Retrieves details of a specific ORDS privilege by its identifier.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: ORDS privilege details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '404':
+          description: Privilege not found
+    put:
+      operationId: updatePrivilege
+      summary: Update an ORDS privilege
+      description: Updates an existing ORDS privilege including its label, description, and associated roles, patterns, and modules.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivilegeCreate'
+      responses:
+        '200':
+          description: ORDS privilege updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '404':
+          description: Privilege not found
+    delete:
+      operationId: deletePrivilege
+      summary: Delete an ORDS privilege
+      description: Deletes a specific ORDS privilege.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: ORDS privilege deleted successfully
+        '404':
+          description: Privilege not found
+  /ords/rest/privileges/{id}/roles/:
+    get:
+      operationId: listPrivilegeRoles
+      summary: Get all ORDS roles in a privilege
+      description: Retrieves all roles associated with a specific ORDS privilege.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: List of roles in the privilege
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+        '404':
+          description: Privilege not found
+  /ords/rest/privileges/{id}/modules/:
+    get:
+      operationId: listPrivilegeModules
+      summary: Get all REST modules in a privilege
+      description: Retrieves all REST modules protected by a specific ORDS privilege.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: List of modules in the privilege
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+        '404':
+          description: Privilege not found
+  /ords/rest/privileges/{id}/patterns/:
+    get:
+      operationId: listPrivilegePatterns
+      summary: Get all REST patterns in a privilege
+      description: Retrieves all URL patterns protected by a specific ORDS privilege.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: List of patterns in the privilege
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+        '404':
+          description: Privilege not found
+  /ords/rest/privilege/modules/:
+    get:
+      operationId: listProtectedModules
+      summary: Get all protected REST modules
+      description: Retrieves all REST modules that are protected by one or more ORDS privileges.
+      tags:
+      - Privileges
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Paginated list of protected REST modules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The index of the first item to return (0-based). Default is 0.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return per page. Default is 25.
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 500
+  schemas:
+    PrivilegeCreate:
+      type: object
+      description: Request body for creating or updating an ORDS privilege
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Unique name of the ORDS privilege
+        label:
+          type: string
+          description: Human-readable label for the privilege
+        description:
+          type: string
+          description: Description of the privilege purpose
+        roles:
+          type: string
+          description: Null-character-separated list of ORDS roles assigned to this privilege
+        patterns:
+          type: string
+          description: Null-character-separated list of URL patterns protected by this privilege
+        modules:
+          type: string
+          description: Null-character-separated list of REST modules protected by this privilege
+        comments:
+          type: string
+          description: Descriptive comment for the privilege
+        run_mode:
+          type: string
+          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
+          enum:
+          - codePreview
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using ORDS-enabled database schema credentials
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization using ORDS OAuth client credentials or authorization code flow
+      flows:
+        clientCredentials:
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: /ords/{schema}/oauth/auth
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}

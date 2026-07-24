@@ -1,0 +1,272 @@
+openapi: 3.1.0
+info:
+  title: Oracle REST Data Services (ORDS) REST AutoREST Properties API
+  description: REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.
+  version: '25.4'
+  contact:
+    name: Oracle APEX Support
+    url: https://apex.oracle.com/community
+    email: apex-info_us@oracle.com
+  license:
+    name: Oracle Technology Network License
+    url: https://www.oracle.com/downloads/licenses/distribution-license.html
+servers:
+- url: https://{host}:{port}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint
+  variables:
+    host:
+      default: localhost
+      description: Hostname of the ORDS instance
+    port:
+      default: '8443'
+      description: Port number for the ORDS instance
+- url: https://{host}/ords/_/db-api/stable
+  description: ORDS Database API stable endpoint (default port)
+  variables:
+    host:
+      default: example.com
+      description: Hostname of the ORDS instance
+security:
+- basicAuth: []
+- oauth2: []
+tags:
+- name: Properties
+  description: ORDS configuration property management.
+paths:
+  /ords/properties/:
+    get:
+      operationId: listProperties
+      summary: Get all ORDS properties values
+      description: Retrieves all configuration property values for the ORDS instance.
+      tags:
+      - Properties
+      responses:
+        '200':
+          description: List of ORDS property values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsCollection'
+  /ords/properties/{key}:
+    get:
+      operationId: getProperty
+      summary: Get an ORDS property value
+      description: Retrieves the value of a specific ORDS configuration property.
+      tags:
+      - Properties
+      parameters:
+      - name: key
+        in: path
+        required: true
+        description: The property key name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ORDS property value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '404':
+          description: Property not found
+    put:
+      operationId: setProperty
+      summary: Set an ORDS property value
+      description: Sets the value of a specific ORDS configuration property.
+      tags:
+      - Properties
+      parameters:
+      - name: key
+        in: path
+        required: true
+        description: The property key name
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The property value to set
+      responses:
+        '200':
+          description: ORDS property value set successfully
+        '404':
+          description: Property not found
+    delete:
+      operationId: unsetProperty
+      summary: Unset an ORDS property value
+      description: Removes a custom ORDS configuration property value, reverting it to the default.
+      tags:
+      - Properties
+      parameters:
+      - name: key
+        in: path
+        required: true
+        description: The property key name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ORDS property value unset successfully
+        '404':
+          description: Property not found
+  /ords/properties/{schema}/{key}:
+    get:
+      operationId: getSchemaProperty
+      summary: Get an ORDS property value for a schema
+      description: Retrieves the value of a specific ORDS configuration property scoped to a particular schema.
+      tags:
+      - Properties
+      parameters:
+      - name: schema
+        in: path
+        required: true
+        description: The schema name
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        description: The property key name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Schema-scoped ORDS property value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceItem'
+        '404':
+          description: Property or schema not found
+    put:
+      operationId: setSchemaProperty
+      summary: Set an ORDS property value for a schema
+      description: Sets the value of a specific ORDS configuration property scoped to a particular schema.
+      tags:
+      - Properties
+      parameters:
+      - name: schema
+        in: path
+        required: true
+        description: The schema name
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        description: The property key name
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The property value to set
+      responses:
+        '200':
+          description: Schema-scoped ORDS property value set successfully
+        '404':
+          description: Property or schema not found
+    delete:
+      operationId: unsetSchemaProperty
+      summary: Unset an ORDS property value for a schema
+      description: Removes a schema-scoped ORDS configuration property value, reverting it to the default.
+      tags:
+      - Properties
+      parameters:
+      - name: schema
+        in: path
+        required: true
+        description: The schema name
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        description: The property key name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Schema-scoped ORDS property value unset successfully
+        '404':
+          description: Property or schema not found
+components:
+  schemas:
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using ORDS-enabled database schema credentials
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization using ORDS OAuth client credentials or authorization code flow
+      flows:
+        clientCredentials:
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: /ords/{schema}/oauth/auth
+          tokenUrl: /ords/{schema}/oauth/token
+          scopes: {}
