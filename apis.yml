@@ -3,7 +3,20 @@ name: Oracle APEX
 description: >-
   Oracle Application Express (APEX) is a low-code development platform that enables you to build scalable, secure
   enterprise apps with world-class features.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/oracle-apex.png
 url: https://raw.githubusercontent.com/api-evangelist/oracle-apex/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
@@ -26,248 +39,360 @@ tags:
   - Web Applications
   - Workflow
 apis:
-  - name: Oracle APEX REST Data Services API
-    description: RESTful API for Oracle APEX applications enabling data access and manipulation through REST endpoints.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://apex.oracle.com/
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Data Services
-      - Database
-      - Low-Code
-      - REST
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/
-      - type: Authentication
-        url: https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/authentication.html
-      - type: GettingStarted
-        url: https://apex.oracle.com/en/learn/getting-started/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX SQL Workshop API
-    description: API for accessing SQL Workshop functionality programmatically.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://apex.oracle.com/
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Database
-      - Development
-      - SQL
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/apex/latest/
-      - type: Tutorials
-        url: https://apex.oracle.com/en/learn/tutorials/
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX Application API
-    description: API for managing APEX applications, pages, and components.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://apex.oracle.com/
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Applications
-      - Development
-      - Management
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/APEX_APPLICATION.html
-      - type: GettingStarted
-        url: https://apex.oracle.com/en/learn/getting-started/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle REST Data Services (ORDS) API
-    description: >-
-      REST API framework integrated with APEX for creating RESTful services including modules, templates, handlers,
-      privileges, roles, OAuth clients, and AutoREST-enabled objects.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://www.oracle.com/database/technologies/appdev/rest.html
-    baseURL: https://example.com/ords/_/db-api/stable/
-    tags:
-      - Integration
-      - ORDS
-      - REST
-      - Web Services
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orrst/index.html
-      - type: FAQ
-        url: https://www.oracle.com/tools/technologies/faq-rest-data-services.html
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX Cloud REST API
-    description: >-
-      REST APIs for provisioning and managing Oracle APEX instances in Oracle Cloud Infrastructure, including workspace
-      and application lifecycle management.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://docs.oracle.com/en/cloud/paas/apex/rest-apis.html
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Administration
-      - Cloud
-      - Oracle Cloud
-      - Provisioning
-      - REST
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/cloud/paas/apex/rest-apis.html
-      - type: GettingStarted
-        url: https://docs.oracle.com/en/cloud/paas/apex/gsadd/sign-up-for-apex-service.html
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX Export and Import API
-    description: >-
-      PL/SQL and REST APIs for exporting and importing APEX applications, workspaces, and components using APEX_EXPORT
-      and related packages.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Applications
-      - Deployment
-      - Export
-      - Import
-      - PL/SQL
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX Approval and Workflow API
-    description: >-
-      PL/SQL APIs for managing approvals, human tasks, and workflows in APEX applications using the APEX_APPROVAL and
-      workflow packages.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Approval
-      - Automation
-      - Human Tasks
-      - PL/SQL
-      - Workflow
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/apex/23.2/aeapi/APEX_APPROVAL.html
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX Utility API
-    description: >-
-      The APEX_UTIL PL/SQL package provides utility functions for user management, authentication, session management,
-      and other common APEX operations.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Authentication
-      - PL/SQL
-      - Session
-      - User Management
-      - Utility
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_UTIL.html
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX Generative AI API
-    description: >-
-      APIs for integrating generative AI capabilities into APEX applications, including chat, text generation, and
-      vector embeddings introduced in APEX 24.2.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://apex.oracle.com/en/platform/features/whats-new-242/
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - AI
-      - Generative AI
-      - Machine Learning
-      - PL/SQL
-      - Vector Search
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-      - type: ReleaseNotes
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/changes-in-this-release.html
-      - type: Features
-        url: https://apex.oracle.com/en/platform/features/whats-new-242/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle ORDS Database API
-    description: >-
-      REST API for Oracle Database management and monitoring operations through ORDS, including pluggable database
-      management, data export, and performance monitoring.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/
-    baseURL: https://example.com/ords/
-    tags:
-      - Database
-      - Management
-      - Monitoring
-      - ORDS
-      - REST
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orrst/toc.htm
-      - type: GettingStarted
-        url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
-  - name: Oracle APEX REST Administration API
-    description: >-
-      REST Administration API enabling APEX instance administrators to perform administrative functions over REST and
-      HTTP protocols for machine-to-machine communication.
-    image: https://www.oracle.com/a/ocom/img/apex-logo.png
-    humanURL: https://docs.oracle.com/database/apex-5.1/AEAPI/Using-REST-Administration-Interface-API.htm
-    baseURL: https://apex.oracle.com/pls/apex/
-    tags:
-      - Administration
-      - Automation
-      - Instance Management
-      - REST
-    properties:
-      - type: Documentation
-        url: https://docs.oracle.com/database/apex-5.1/AEAPI/Using-REST-Administration-Interface-API.htm
-      - type: APIReference
-        url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
-    contact:
-      - FN: Oracle APEX Support
-        email: apex-info_us@oracle.com
-        url: https://apex.oracle.com/community
+- name: Oracle APEX REST Data Services API
+  description: >-
+    RESTful API for Oracle APEX applications enabling data access and manipulation through REST endpoints.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Data Services
+  - Database
+  - Low-Code
+  - REST
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/
+  - type: Authentication
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/authentication.html
+  - type: GettingStarted
+    url: https://apex.oracle.com/en/learn/getting-started/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX SQL Workshop API
+  description: API for accessing SQL Workshop functionality programmatically.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Database
+  - Development
+  - SQL
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/
+  - type: Tutorials
+    url: https://apex.oracle.com/en/learn/tutorials/
+  - type: APIReference
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX Application API
+  description: API for managing APEX applications, pages, and components.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Applications
+  - Development
+  - Management
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/
+  - type: APIReference
+    url: https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/APEX_APPLICATION.html
+  - type: GettingStarted
+    url: https://apex.oracle.com/en/learn/getting-started/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle REST Data Services (ORDS) API
+  description: >-
+    REST API framework integrated with APEX for creating RESTful services including modules, templates,
+    handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://www.oracle.com/database/technologies/appdev/rest.html
+  baseURL: https://example.com/ords/_/db-api/stable/
+  tags:
+  - Integration
+  - ORDS
+  - REST
+  - Web Services
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/
+  - type: APIReference
+    url: >-
+      https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orrst/index.html
+  - type: FAQ
+    url: https://www.oracle.com/tools/technologies/faq-rest-data-services.html
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX Cloud REST API
+  description: >-
+    REST APIs for provisioning and managing Oracle APEX instances in Oracle Cloud Infrastructure, including
+    workspace and application lifecycle management.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://docs.oracle.com/en/cloud/paas/apex/rest-apis.html
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Administration
+  - Cloud
+  - Oracle Cloud
+  - Provisioning
+  - REST
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/cloud/paas/apex/rest-apis.html
+  - type: GettingStarted
+    url: https://docs.oracle.com/en/cloud/paas/apex/gsadd/sign-up-for-apex-service.html
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX Export and Import API
+  description: >-
+    PL/SQL and REST APIs for exporting and importing APEX applications, workspaces, and components using
+    APEX_EXPORT and related packages.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Applications
+  - Deployment
+  - Export
+  - Import
+  - PL/SQL
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html
+  - type: APIReference
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX Approval and Workflow API
+  description: >-
+    PL/SQL APIs for managing approvals, human tasks, and workflows in APEX applications using the APEX_APPROVAL
+    and workflow packages.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Approval
+  - Automation
+  - Human Tasks
+  - PL/SQL
+  - Workflow
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/23.2/aeapi/APEX_APPROVAL.html
+  - type: APIReference
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX Utility API
+  description: >-
+    The APEX_UTIL PL/SQL package provides utility functions for user management, authentication, session
+    management, and other common APEX operations.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Authentication
+  - PL/SQL
+  - Session
+  - User Management
+  - Utility
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  - type: APIReference
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_UTIL.html
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX Generative AI API
+  description: >-
+    APIs for integrating generative AI capabilities into APEX applications, including chat, text generation,
+    and vector embeddings introduced in APEX 24.2.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://apex.oracle.com/en/platform/features/whats-new-242/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - AI
+  - Generative AI
+  - Machine Learning
+  - PL/SQL
+  - Vector Search
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  - type: ReleaseNotes
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/changes-in-this-release.html
+  - type: Features
+    url: https://apex.oracle.com/en/platform/features/whats-new-242/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle ORDS Database API
+  description: >-
+    REST API for Oracle Database management and monitoring operations through ORDS, including pluggable
+    database management, data export, and performance monitoring.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/
+  baseURL: https://example.com/ords/
+  tags:
+  - Database
+  - Management
+  - Monitoring
+  - ORDS
+  - REST
+  properties:
+  - type: Documentation
+    url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/
+  - type: APIReference
+    url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orrst/toc.htm
+  - type: GettingStarted
+    url: https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- name: Oracle APEX REST Administration API
+  description: >-
+    REST Administration API enabling APEX instance administrators to perform administrative functions
+    over REST and HTTP protocols for machine-to-machine communication.
+  image: https://www.oracle.com/a/ocom/img/apex-logo.png
+  humanURL: >-
+    https://docs.oracle.com/database/apex-5.1/AEAPI/Using-REST-Administration-Interface-API.htm
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Administration
+  - Automation
+  - Instance Management
+  - REST
+  properties:
+  - type: Documentation
+    url: >-
+      https://docs.oracle.com/database/apex-5.1/AEAPI/Using-REST-Administration-Interface-API.htm
+  - type: APIReference
+    url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
+  contact:
+  - FN: Oracle APEX Support
+    email: apex-info_us@oracle.com
+    url: https://apex.oracle.com/community
+- aid: oracle-apex:oracle-apex-autorest-api
+  name: Oracle APEX AutoREST API
+  description: >-
+    AutoREST object management. AutoREST enables automatic REST access to database tables and views.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - AutoREST
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-autorest-api-openapi.yml
+- aid: oracle-apex:oracle-apex-handlers-api
+  name: Oracle APEX Handlers API
+  description: >-
+    REST template handler management. A handler implements an HTTP method on a template with source code.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Handlers
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-handlers-api-openapi.yml
+- aid: oracle-apex:oracle-apex-modules-api
+  name: Oracle APEX Modules API
+  description: >-
+    REST module management. A module is a container for one or more templates with an associated base
+    path.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Modules
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-modules-api-openapi.yml
+- aid: oracle-apex:oracle-apex-oauth-clients-api
+  name: Oracle APEX OAuth Clients API
+  description: >-
+    ORDS OAuth client management. OAuth clients enable third-party applications to access protected resources.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - OAuth Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-oauth-clients-api-openapi.yml
+- aid: oracle-apex:oracle-apex-overview-api
+  name: Oracle APEX Overview API
+  description: ORDS schema overview and REST object summaries.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Overview
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-overview-api-openapi.yml
+- aid: oracle-apex:oracle-apex-parameters-api
+  name: Oracle APEX Parameters API
+  description: REST handler parameter management. Parameters define input bindings for handlers.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Parameters
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-parameters-api-openapi.yml
+- aid: oracle-apex:oracle-apex-privileges-api
+  name: Oracle APEX Privileges API
+  description: ORDS privilege management. Privileges control access to REST modules and URL patterns.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Privileges
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-privileges-api-openapi.yml
+- aid: oracle-apex:oracle-apex-properties-api
+  name: Oracle APEX Properties API
+  description: ORDS configuration property management.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-properties-api-openapi.yml
+- aid: oracle-apex:oracle-apex-roles-api
+  name: Oracle APEX Roles API
+  description: ORDS role management. Roles group privileges for assignment to users and OAuth clients.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-roles-api-openapi.yml
+- aid: oracle-apex:oracle-apex-templates-api
+  name: Oracle APEX Templates API
+  description: >-
+    REST module template management. A template defines a URI pattern within a module for routing requests.
+  humanURL: https://apex.oracle.com/
+  baseURL: https://apex.oracle.com/pls/apex/
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/oracle-apex-templates-api-openapi.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/oracle-apex/overview
   - type: AgenticAccess
     url: agentic-access/oracle-apex-agentic-access.yml
   - type: DomainSecurity
