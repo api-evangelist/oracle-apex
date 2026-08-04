@@ -1,0 +1,964 @@
+{
+  "info": {
+    "_postman_id": "c8c3f7e7-80dd-4fca-ad9f-d7ede4645e8e",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Roles API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:27:03.000Z",
+    "updatedAt": "2026-07-28T02:27:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c8c3f7e7-80dd-4fca-ad9f-d7ede4645e8e"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "roles",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "privileges",
+                      "item": [
+                        {
+                          "name": "Get all ORDS privileges for a specific role",
+                          "id": "f2ace2e4-433a-4919-be43-83e3880bcd8f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/roles/:id/privileges/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "roles",
+                                ":id",
+                                "privileges",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bba2ecaa-c6da-4f45-bf64-9f2171427eca",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves all privileges associated with a specific ORDS role."
+                          },
+                          "response": [
+                            {
+                              "id": "485d1988-e449-4f76-9f98-834d3f2d1305",
+                              "name": "List of privileges for the role",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/roles/:id/privileges/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "roles",
+                                    ":id",
+                                    "privileges",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"incididunte7\": true,\n      \"nisi8\": 90860221\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"officia66\": 82903142.16960901,\n      \"labore9\": \"sunt tempor aliqua\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:27:03.000Z",
+                              "updatedAt": "2026-07-28T02:27:03.000Z",
+                              "uid": "35240-485d1988-e449-4f76-9f98-834d3f2d1305"
+                            },
+                            {
+                              "id": "df9ddeff-abe2-419a-8134-dd7bb0a0aaea",
+                              "name": "Role not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/roles/:id/privileges/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "roles",
+                                    ":id",
+                                    "privileges",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:27:03.000Z",
+                              "updatedAt": "2026-07-28T02:27:03.000Z",
+                              "uid": "35240-df9ddeff-abe2-419a-8134-dd7bb0a0aaea"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:27:03.000Z",
+                          "updatedAt": "2026-07-28T02:27:03.000Z",
+                          "uid": "35240-f2ace2e4-433a-4919-be43-83e3880bcd8f"
+                        }
+                      ],
+                      "id": "29185853-0309-4406-96bd-04a076e5ddec",
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-29185853-0309-4406-96bd-04a076e5ddec"
+                    },
+                    {
+                      "name": "Get an ORDS role",
+                      "id": "a1a47b4b-9c65-4c96-b611-d4bbbb86dc78",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "roles",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "03b78b1b-7584-448c-9b10-d7e1a23ea380",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details of a specific ORDS role by its identifier."
+                      },
+                      "response": [
+                        {
+                          "id": "8c86d738-73a3-4d06-aca6-09f689341377",
+                          "name": "ORDS role details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "roles",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"consectetur8\": \"sed dolor mollit irure\",\n  \"aliquip_3\": -8186801,\n  \"in_658\": true\n}",
+                          "createdAt": "2026-07-28T02:27:03.000Z",
+                          "updatedAt": "2026-07-28T02:27:03.000Z",
+                          "uid": "35240-8c86d738-73a3-4d06-aca6-09f689341377"
+                        },
+                        {
+                          "id": "ebdece2a-f617-464e-a148-04caef0cf3b6",
+                          "name": "Role not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "roles",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:03.000Z",
+                          "updatedAt": "2026-07-28T02:27:03.000Z",
+                          "uid": "35240-ebdece2a-f617-464e-a148-04caef0cf3b6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-a1a47b4b-9c65-4c96-b611-d4bbbb86dc78"
+                    },
+                    {
+                      "name": "Update an ORDS role",
+                      "id": "e803fa1c-8e0a-4f66-b046-faf56d5079c3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role_name\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "roles",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bf3c36d1-2c06-4e0a-a483-9f4e64d3bb1f",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing ORDS role."
+                      },
+                      "response": [
+                        {
+                          "id": "ae998888-d080-48f2-a685-8810bbefd39b",
+                          "name": "ORDS role updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"role_name\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "roles",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"consectetur8\": \"sed dolor mollit irure\",\n  \"aliquip_3\": -8186801,\n  \"in_658\": true\n}",
+                          "createdAt": "2026-07-28T02:27:03.000Z",
+                          "updatedAt": "2026-07-28T02:27:03.000Z",
+                          "uid": "35240-ae998888-d080-48f2-a685-8810bbefd39b"
+                        },
+                        {
+                          "id": "197471d5-bbee-4313-8d9f-b8b74c063ea0",
+                          "name": "Role not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"role_name\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "roles",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:03.000Z",
+                          "updatedAt": "2026-07-28T02:27:03.000Z",
+                          "uid": "35240-197471d5-bbee-4313-8d9f-b8b74c063ea0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-e803fa1c-8e0a-4f66-b046-faf56d5079c3"
+                    },
+                    {
+                      "name": "Delete an ORDS role",
+                      "id": "1cb10ef0-aabb-44db-b808-35d5f6373979",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "roles",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "807ba654-f5ae-4ab8-a6b7-136ee1239e41",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a specific ORDS role."
+                      },
+                      "response": [
+                        {
+                          "id": "210058ff-ff30-4b24-a143-55aec6af5805",
+                          "name": "ORDS role deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "roles",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:03.000Z",
+                          "updatedAt": "2026-07-28T02:27:03.000Z",
+                          "uid": "35240-210058ff-ff30-4b24-a143-55aec6af5805"
+                        },
+                        {
+                          "id": "c08ea18d-f4c2-4098-9304-59dfe1c858bd",
+                          "name": "Role not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/roles/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "roles",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:03.000Z",
+                          "updatedAt": "2026-07-28T02:27:03.000Z",
+                          "uid": "35240-c08ea18d-f4c2-4098-9304-59dfe1c858bd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-1cb10ef0-aabb-44db-b808-35d5f6373979"
+                    }
+                  ],
+                  "id": "a1a059bb-4efa-4e6d-bcdf-27c1f5da4648",
+                  "createdAt": "2026-07-28T02:27:03.000Z",
+                  "updatedAt": "2026-07-28T02:27:03.000Z",
+                  "uid": "35240-a1a059bb-4efa-4e6d-bcdf-27c1f5da4648"
+                },
+                {
+                  "name": "Get all ORDS roles",
+                  "id": "be76b3b4-97cc-4c2b-93cd-59997d4da508",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/roles/?offset=0&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "roles",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The index of the first item to return (0-based). Default is 0.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return per page. Default is 25.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of all ORDS roles defined in the current schema."
+                  },
+                  "response": [
+                    {
+                      "id": "15ae372c-f66f-407b-83fd-f91bed30ab34",
+                      "name": "Paginated list of ORDS roles",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/roles/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "roles",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"incididunte7\": true,\n      \"nisi8\": 90860221\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"officia66\": 82903142.16960901,\n      \"labore9\": \"sunt tempor aliqua\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-15ae372c-f66f-407b-83fd-f91bed30ab34"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:03.000Z",
+                  "updatedAt": "2026-07-28T02:27:03.000Z",
+                  "uid": "35240-be76b3b4-97cc-4c2b-93cd-59997d4da508"
+                },
+                {
+                  "name": "Create an ORDS role",
+                  "id": "5b61adda-cf98-4ae0-ab55-27bddc171b3f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"role_name\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/roles/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "roles",
+                        ""
+                      ]
+                    },
+                    "description": "Creates a new ORDS role that can be assigned to privileges and OAuth clients to control access to REST services."
+                  },
+                  "response": [
+                    {
+                      "id": "26b41aa1-860b-43ef-89aa-9bbb95747ff5",
+                      "name": "ORDS role created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role_name\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/roles/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "roles",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"consectetur8\": \"sed dolor mollit irure\",\n  \"aliquip_3\": -8186801,\n  \"in_658\": true\n}",
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-26b41aa1-860b-43ef-89aa-9bbb95747ff5"
+                    },
+                    {
+                      "id": "60d9f200-05cb-430a-aa9e-e4b3730ab7b3",
+                      "name": "No role_name parameter provided",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role_name\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/roles/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "roles",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-60d9f200-05cb-430a-aa9e-e4b3730ab7b3"
+                    },
+                    {
+                      "id": "272caeb0-28ae-4ca0-89d7-5408d7fd24fd",
+                      "name": "A role with that name already exists",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role_name\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/roles/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "roles",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:03.000Z",
+                      "updatedAt": "2026-07-28T02:27:03.000Z",
+                      "uid": "35240-272caeb0-28ae-4ca0-89d7-5408d7fd24fd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:03.000Z",
+                  "updatedAt": "2026-07-28T02:27:03.000Z",
+                  "uid": "35240-5b61adda-cf98-4ae0-ab55-27bddc171b3f"
+                }
+              ],
+              "id": "cc3351e5-c2f5-42e6-8bba-76ce819aadb2",
+              "createdAt": "2026-07-28T02:27:03.000Z",
+              "updatedAt": "2026-07-28T02:27:03.000Z",
+              "uid": "35240-cc3351e5-c2f5-42e6-8bba-76ce819aadb2"
+            }
+          ],
+          "id": "05e46e3b-6a98-4d50-8b6e-5bac39bfbd03",
+          "createdAt": "2026-07-28T02:27:03.000Z",
+          "updatedAt": "2026-07-28T02:27:03.000Z",
+          "uid": "35240-05e46e3b-6a98-4d50-8b6e-5bac39bfbd03"
+        }
+      ],
+      "id": "601bad02-3007-474f-a449-fc21f8e3e560",
+      "createdAt": "2026-07-28T02:27:03.000Z",
+      "updatedAt": "2026-07-28T02:27:03.000Z",
+      "uid": "35240-601bad02-3007-474f-a449-fc21f8e3e560"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

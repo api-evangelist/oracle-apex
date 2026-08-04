@@ -1,0 +1,32 @@
+{
+  "provider": "oracle-apex",
+  "sources": [
+    "oracle-apex-autorest-api-openapi.yml",
+    "oracle-apex-handlers-api-openapi.yml",
+    "oracle-apex-modules-api-openapi.yml",
+    "oracle-apex-oauth-clients-api-openapi.yml",
+    "oracle-apex-overview-api-openapi.yml",
+    "oracle-apex-parameters-api-openapi.yml",
+    "oracle-apex-privileges-api-openapi.yml",
+    "oracle-apex-properties-api-openapi.yml",
+    "oracle-apex-roles-api-openapi.yml",
+    "oracle-apex-templates-api-openapi.yml"
+  ],
+  "outputs": [
+    "oracle-apex-autorest-api-openapi.yml",
+    "oracle-apex-handlers-api-openapi.yml",
+    "oracle-apex-modules-api-openapi.yml",
+    "oracle-apex-oauth-clients-api-openapi.yml",
+    "oracle-apex-overview-api-openapi.yml",
+    "oracle-apex-parameters-api-openapi.yml",
+    "oracle-apex-privileges-api-openapi.yml",
+    "oracle-apex-properties-api-openapi.yml",
+    "oracle-apex-roles-api-openapi.yml",
+    "oracle-apex-templates-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

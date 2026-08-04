@@ -1,0 +1,237 @@
+{
+  "info": {
+    "_postman_id": "92a2344d-040b-43e1-8c69-9d54ddbf9bc0",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Overview API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:59.000Z",
+    "updatedAt": "2026-07-28T02:26:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-92a2344d-040b-43e1-8c69-9d54ddbf9bc0"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "overview",
+              "item": [
+                {
+                  "name": "objects_recent",
+                  "item": [
+                    {
+                      "name": "Get all current schema recent REST objects",
+                      "id": "38a36099-3592-435c-9c11-22459c8f1e20",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/overview/objects_recent",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "overview",
+                            "objects_recent"
+                          ]
+                        },
+                        "description": "Retrieves the most recently created or modified REST objects in the current schema."
+                      },
+                      "response": [
+                        {
+                          "id": "ed81326a-9ace-419d-aced-4eb5ec6bb074",
+                          "name": "List of recent REST objects",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/overview/objects_recent",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "overview",
+                                "objects_recent"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"nulla05_\": 20509414.860502824\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"irure_4\": \"deserunt sit elit dolore\",\n      \"dolore_1e\": 48320765.47249335,\n      \"ipsum_c_\": \"sed in\",\n      \"minim531\": 12571667.281326622,\n      \"dolor_3c\": true\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:26:59.000Z",
+                          "updatedAt": "2026-07-28T02:26:59.000Z",
+                          "uid": "35240-ed81326a-9ace-419d-aced-4eb5ec6bb074"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:59.000Z",
+                      "updatedAt": "2026-07-28T02:26:59.000Z",
+                      "uid": "35240-38a36099-3592-435c-9c11-22459c8f1e20"
+                    }
+                  ],
+                  "id": "56b8b5e0-bdb1-4dac-a119-7a9bc1b16129",
+                  "createdAt": "2026-07-28T02:26:59.000Z",
+                  "updatedAt": "2026-07-28T02:26:59.000Z",
+                  "uid": "35240-56b8b5e0-bdb1-4dac-a119-7a9bc1b16129"
+                },
+                {
+                  "name": "Get current ORDS schema and REST objects count",
+                  "id": "d14f4d1e-b76a-44cf-b586-74d00779b713",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/overview/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "overview",
+                        ""
+                      ]
+                    },
+                    "description": "Retrieves an overview of the current schema including counts of REST modules, templates, handlers, privileges, roles, and OAuth clients."
+                  },
+                  "response": [
+                    {
+                      "id": "af2e4204-7796-4b94-82f1-fed6aeb6404c",
+                      "name": "ORDS schema overview with object counts",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/overview/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "overview",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:26:59.000Z",
+                      "updatedAt": "2026-07-28T02:26:59.000Z",
+                      "uid": "35240-af2e4204-7796-4b94-82f1-fed6aeb6404c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:59.000Z",
+                  "updatedAt": "2026-07-28T02:26:59.000Z",
+                  "uid": "35240-d14f4d1e-b76a-44cf-b586-74d00779b713"
+                }
+              ],
+              "id": "342ef35c-d348-46e4-a684-b4e1c41f41f3",
+              "createdAt": "2026-07-28T02:26:59.000Z",
+              "updatedAt": "2026-07-28T02:26:59.000Z",
+              "uid": "35240-342ef35c-d348-46e4-a684-b4e1c41f41f3"
+            }
+          ],
+          "id": "3498295d-e674-41b4-b11d-c7c4aef81d8c",
+          "createdAt": "2026-07-28T02:26:59.000Z",
+          "updatedAt": "2026-07-28T02:26:59.000Z",
+          "uid": "35240-3498295d-e674-41b4-b11d-c7c4aef81d8c"
+        }
+      ],
+      "id": "bb894a1e-b1ae-438b-a042-aac7c837a450",
+      "createdAt": "2026-07-28T02:26:59.000Z",
+      "updatedAt": "2026-07-28T02:26:59.000Z",
+      "uid": "35240-bb894a1e-b1ae-438b-a042-aac7c837a450"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

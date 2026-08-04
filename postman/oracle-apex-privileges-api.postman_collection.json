@@ -1,0 +1,1383 @@
+{
+  "info": {
+    "_postman_id": "f881bf0f-65bb-4e27-b6e8-cd696fdf29a1",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Privileges API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:27:01.000Z",
+    "updatedAt": "2026-07-28T02:27:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f881bf0f-65bb-4e27-b6e8-cd696fdf29a1"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "privileges",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "roles",
+                      "item": [
+                        {
+                          "name": "Get all ORDS roles in a privilege",
+                          "id": "7245d4ba-b0b4-4976-a2dc-7bcae89a197f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id/roles/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id",
+                                "roles",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "aec0b39e-3110-44ce-853c-73b2b6291467",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves all roles associated with a specific ORDS privilege."
+                          },
+                          "response": [
+                            {
+                              "id": "ff972e73-6c66-4cdb-9ed0-60cd307345c2",
+                              "name": "List of roles in the privilege",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/privileges/:id/roles/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "privileges",
+                                    ":id",
+                                    "roles",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"adipisicing_a6\": true,\n      \"in_d6a\": 48258642,\n      \"quic\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"incididuntc3\": \"sint\",\n      \"ea_d\": \"Duis elit incididunt\",\n      \"dolor_e5\": true,\n      \"consectetur_e9\": \"nulla do\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:27:01.000Z",
+                              "updatedAt": "2026-07-28T02:27:01.000Z",
+                              "uid": "35240-ff972e73-6c66-4cdb-9ed0-60cd307345c2"
+                            },
+                            {
+                              "id": "ab4ae52f-2d0d-403e-8228-f7a52e2e81cd",
+                              "name": "Privilege not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/privileges/:id/roles/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "privileges",
+                                    ":id",
+                                    "roles",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:27:01.000Z",
+                              "updatedAt": "2026-07-28T02:27:01.000Z",
+                              "uid": "35240-ab4ae52f-2d0d-403e-8228-f7a52e2e81cd"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-7245d4ba-b0b4-4976-a2dc-7bcae89a197f"
+                        }
+                      ],
+                      "id": "d7b74d51-e9a9-4eb6-9529-e3b00ba0aa42",
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-d7b74d51-e9a9-4eb6-9529-e3b00ba0aa42"
+                    },
+                    {
+                      "name": "modules",
+                      "item": [
+                        {
+                          "name": "Get all REST modules in a privilege",
+                          "id": "02b75acb-db1e-4f74-b671-03020104ce60",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id/modules/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id",
+                                "modules",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1e12ffd5-e5f5-4cc9-8d67-41000bd2dbb3",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves all REST modules protected by a specific ORDS privilege."
+                          },
+                          "response": [
+                            {
+                              "id": "6ce5873b-73f9-4a1b-b7c6-973f333bf73a",
+                              "name": "List of modules in the privilege",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/privileges/:id/modules/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "privileges",
+                                    ":id",
+                                    "modules",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"adipisicing_a6\": true,\n      \"in_d6a\": 48258642,\n      \"quic\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"incididuntc3\": \"sint\",\n      \"ea_d\": \"Duis elit incididunt\",\n      \"dolor_e5\": true,\n      \"consectetur_e9\": \"nulla do\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:27:01.000Z",
+                              "updatedAt": "2026-07-28T02:27:01.000Z",
+                              "uid": "35240-6ce5873b-73f9-4a1b-b7c6-973f333bf73a"
+                            },
+                            {
+                              "id": "73f5cbe0-7daa-423e-b60d-bc3290311fe3",
+                              "name": "Privilege not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/privileges/:id/modules/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "privileges",
+                                    ":id",
+                                    "modules",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:27:01.000Z",
+                              "updatedAt": "2026-07-28T02:27:01.000Z",
+                              "uid": "35240-73f5cbe0-7daa-423e-b60d-bc3290311fe3"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-02b75acb-db1e-4f74-b671-03020104ce60"
+                        }
+                      ],
+                      "id": "bb65d06e-7ebc-4c0f-9fee-22b226195527",
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-bb65d06e-7ebc-4c0f-9fee-22b226195527"
+                    },
+                    {
+                      "name": "patterns",
+                      "item": [
+                        {
+                          "name": "Get all REST patterns in a privilege",
+                          "id": "dd066652-be1c-4969-b187-f82f462014ec",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id/patterns/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id",
+                                "patterns",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4af9c2aa-df59-467c-b4e0-b554f07c0798",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves all URL patterns protected by a specific ORDS privilege."
+                          },
+                          "response": [
+                            {
+                              "id": "2b7d5253-3ef9-4712-a6cc-e38d3a920d6b",
+                              "name": "List of patterns in the privilege",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/privileges/:id/patterns/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "privileges",
+                                    ":id",
+                                    "patterns",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"adipisicing_a6\": true,\n      \"in_d6a\": 48258642,\n      \"quic\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"incididuntc3\": \"sint\",\n      \"ea_d\": \"Duis elit incididunt\",\n      \"dolor_e5\": true,\n      \"consectetur_e9\": \"nulla do\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:27:01.000Z",
+                              "updatedAt": "2026-07-28T02:27:01.000Z",
+                              "uid": "35240-2b7d5253-3ef9-4712-a6cc-e38d3a920d6b"
+                            },
+                            {
+                              "id": "db860a3a-ad18-442c-bd75-ee0595ef9228",
+                              "name": "Privilege not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/privileges/:id/patterns/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "privileges",
+                                    ":id",
+                                    "patterns",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:27:01.000Z",
+                              "updatedAt": "2026-07-28T02:27:01.000Z",
+                              "uid": "35240-db860a3a-ad18-442c-bd75-ee0595ef9228"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-dd066652-be1c-4969-b187-f82f462014ec"
+                        }
+                      ],
+                      "id": "0020450c-e41e-4c06-8f42-1a8455662eb2",
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-0020450c-e41e-4c06-8f42-1a8455662eb2"
+                    },
+                    {
+                      "name": "Get an ORDS privilege",
+                      "id": "6a02c268-dbd3-4cc7-ae49-70234e3a0694",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privileges",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "21e9ba6f-c575-45f1-888c-673022d08bed",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details of a specific ORDS privilege by its identifier."
+                      },
+                      "response": [
+                        {
+                          "id": "20fa1506-ce5b-498e-ae3a-48b4e39215a4",
+                          "name": "ORDS privilege details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"ad__d6\": \"ullamco tempor exercitation sunt\",\n  \"in_41\": -14070680.376254037\n}",
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-20fa1506-ce5b-498e-ae3a-48b4e39215a4"
+                        },
+                        {
+                          "id": "79c19b10-af15-482b-9346-475b90eded16",
+                          "name": "Privilege not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-79c19b10-af15-482b-9346-475b90eded16"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-6a02c268-dbd3-4cc7-ae49-70234e3a0694"
+                    },
+                    {
+                      "name": "Update an ORDS privilege",
+                      "id": "671ac276-a875-420d-ab14-37a2ca503cc9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roles\": \"<string>\",\n  \"patterns\": \"<string>\",\n  \"modules\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privileges",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1a2e15da-b5da-4c28-81dd-c2f9eaae1189",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing ORDS privilege including its label, description, and associated roles, patterns, and modules."
+                      },
+                      "response": [
+                        {
+                          "id": "a01bf7e7-5d23-4931-bf2b-4f989a7ec82c",
+                          "name": "ORDS privilege updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roles\": \"<string>\",\n  \"patterns\": \"<string>\",\n  \"modules\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"ad__d6\": \"ullamco tempor exercitation sunt\",\n  \"in_41\": -14070680.376254037\n}",
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-a01bf7e7-5d23-4931-bf2b-4f989a7ec82c"
+                        },
+                        {
+                          "id": "ab690ccc-b585-4e1f-85be-74f13a7be2b2",
+                          "name": "Privilege not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roles\": \"<string>\",\n  \"patterns\": \"<string>\",\n  \"modules\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-ab690ccc-b585-4e1f-85be-74f13a7be2b2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-671ac276-a875-420d-ab14-37a2ca503cc9"
+                    },
+                    {
+                      "name": "Delete an ORDS privilege",
+                      "id": "fade7f01-4b60-4b82-8235-648eb4db8183",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privileges",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9bdae414-e009-4fdc-9e3d-fbda861313bd",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a specific ORDS privilege."
+                      },
+                      "response": [
+                        {
+                          "id": "78b979ed-79fc-4222-9595-1845043423b3",
+                          "name": "ORDS privilege deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-78b979ed-79fc-4222-9595-1845043423b3"
+                        },
+                        {
+                          "id": "b27e1fe3-ac8f-44fb-b492-0a1c50fa0025",
+                          "name": "Privilege not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privileges/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privileges",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-b27e1fe3-ac8f-44fb-b492-0a1c50fa0025"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-fade7f01-4b60-4b82-8235-648eb4db8183"
+                    }
+                  ],
+                  "id": "b52589cf-d738-49ac-b768-7f1fa1fe8635",
+                  "createdAt": "2026-07-28T02:27:01.000Z",
+                  "updatedAt": "2026-07-28T02:27:01.000Z",
+                  "uid": "35240-b52589cf-d738-49ac-b768-7f1fa1fe8635"
+                },
+                {
+                  "name": "Get all ORDS privileges",
+                  "id": "28f2f116-a21d-4ea1-b50f-79e56014f0b9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/privileges/?offset=0&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "privileges",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The index of the first item to return (0-based). Default is 0.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return per page. Default is 25.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of all ORDS privileges defined in the current schema."
+                  },
+                  "response": [
+                    {
+                      "id": "31fe646d-5ef3-46ae-a798-83621cd995bd",
+                      "name": "Paginated list of ORDS privileges",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privileges/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privileges",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"adipisicing_a6\": true,\n      \"in_d6a\": 48258642,\n      \"quic\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"incididuntc3\": \"sint\",\n      \"ea_d\": \"Duis elit incididunt\",\n      \"dolor_e5\": true,\n      \"consectetur_e9\": \"nulla do\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-31fe646d-5ef3-46ae-a798-83621cd995bd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:01.000Z",
+                  "updatedAt": "2026-07-28T02:27:01.000Z",
+                  "uid": "35240-28f2f116-a21d-4ea1-b50f-79e56014f0b9"
+                },
+                {
+                  "name": "Create an ORDS privilege",
+                  "id": "97736008-f44b-4e36-aedb-376e74d08d29",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roles\": \"<string>\",\n  \"patterns\": \"<string>\",\n  \"modules\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/privileges/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "privileges",
+                        ""
+                      ]
+                    },
+                    "description": "Creates a new ORDS privilege that controls access to REST modules and URL patterns. Privileges can be associated with roles, patterns, and modules."
+                  },
+                  "response": [
+                    {
+                      "id": "9a19006b-7a24-41b4-97e8-b21455eb63e8",
+                      "name": "ORDS privilege created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roles\": \"<string>\",\n  \"patterns\": \"<string>\",\n  \"modules\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privileges/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privileges",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"ad__d6\": \"ullamco tempor exercitation sunt\",\n  \"in_41\": -14070680.376254037\n}",
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-9a19006b-7a24-41b4-97e8-b21455eb63e8"
+                    },
+                    {
+                      "id": "f1b4121c-6a0f-4792-b049-112f591ee489",
+                      "name": "Missing name parameter",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roles\": \"<string>\",\n  \"patterns\": \"<string>\",\n  \"modules\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privileges/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privileges",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-f1b4121c-6a0f-4792-b049-112f591ee489"
+                    },
+                    {
+                      "id": "5f4f0d70-8b3b-4fa2-ad85-e1a37f316fb6",
+                      "name": "A privilege with that name already exists",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"label\": \"<string>\",\n  \"description\": \"<string>\",\n  \"roles\": \"<string>\",\n  \"patterns\": \"<string>\",\n  \"modules\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privileges/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privileges",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-5f4f0d70-8b3b-4fa2-ad85-e1a37f316fb6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:01.000Z",
+                  "updatedAt": "2026-07-28T02:27:01.000Z",
+                  "uid": "35240-97736008-f44b-4e36-aedb-376e74d08d29"
+                }
+              ],
+              "id": "d454b588-87d3-4754-9547-ab8c27f268f1",
+              "createdAt": "2026-07-28T02:27:01.000Z",
+              "updatedAt": "2026-07-28T02:27:01.000Z",
+              "uid": "35240-d454b588-87d3-4754-9547-ab8c27f268f1"
+            },
+            {
+              "name": "privilege",
+              "item": [
+                {
+                  "name": "modules",
+                  "item": [
+                    {
+                      "name": "Get all protected REST modules",
+                      "id": "4fe258bf-437b-49b9-bc65-660bd9601a1a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/privilege/modules/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "privilege",
+                            "modules",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves all REST modules that are protected by one or more ORDS privileges."
+                      },
+                      "response": [
+                        {
+                          "id": "203bf998-1a32-4d13-9094-af2f5ce0bfea",
+                          "name": "Paginated list of protected REST modules",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/privilege/modules/?offset=0&limit=25",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "privilege",
+                                "modules",
+                                ""
+                              ],
+                              "query": [
+                                {
+                                  "description": "The index of the first item to return (0-based). Default is 0.",
+                                  "key": "offset",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Maximum number of items to return per page. Default is 25.",
+                                  "key": "limit",
+                                  "value": "25"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"adipisicing_a6\": true,\n      \"in_d6a\": 48258642,\n      \"quic\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"incididuntc3\": \"sint\",\n      \"ea_d\": \"Duis elit incididunt\",\n      \"dolor_e5\": true,\n      \"consectetur_e9\": \"nulla do\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:27:01.000Z",
+                          "updatedAt": "2026-07-28T02:27:01.000Z",
+                          "uid": "35240-203bf998-1a32-4d13-9094-af2f5ce0bfea"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:01.000Z",
+                      "updatedAt": "2026-07-28T02:27:01.000Z",
+                      "uid": "35240-4fe258bf-437b-49b9-bc65-660bd9601a1a"
+                    }
+                  ],
+                  "id": "371facbd-213c-452f-a0c7-ce215211cc12",
+                  "createdAt": "2026-07-28T02:27:01.000Z",
+                  "updatedAt": "2026-07-28T02:27:01.000Z",
+                  "uid": "35240-371facbd-213c-452f-a0c7-ce215211cc12"
+                }
+              ],
+              "id": "4e57710c-0ce2-43b6-a41a-8d6dfc86eec1",
+              "createdAt": "2026-07-28T02:27:01.000Z",
+              "updatedAt": "2026-07-28T02:27:01.000Z",
+              "uid": "35240-4e57710c-0ce2-43b6-a41a-8d6dfc86eec1"
+            }
+          ],
+          "id": "82d7d48b-0e16-4420-a907-38867c9a7ec5",
+          "createdAt": "2026-07-28T02:27:01.000Z",
+          "updatedAt": "2026-07-28T02:27:01.000Z",
+          "uid": "35240-82d7d48b-0e16-4420-a907-38867c9a7ec5"
+        }
+      ],
+      "id": "b40e79a7-4e24-4dd2-bd29-c65cce1bcf33",
+      "createdAt": "2026-07-28T02:27:01.000Z",
+      "updatedAt": "2026-07-28T02:27:01.000Z",
+      "uid": "35240-b40e79a7-4e24-4dd2-bd29-c65cce1bcf33"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

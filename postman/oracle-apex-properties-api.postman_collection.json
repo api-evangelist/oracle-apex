@@ -1,0 +1,1020 @@
+{
+  "info": {
+    "_postman_id": "7295aa42-970c-4d93-a6ba-d9ba80a317c7",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Properties API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:27:02.000Z",
+    "updatedAt": "2026-07-28T02:27:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7295aa42-970c-4d93-a6ba-d9ba80a317c7"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "properties",
+          "item": [
+            {
+              "name": "{key}",
+              "item": [
+                {
+                  "name": "Get an ORDS property value",
+                  "id": "9313ed29-9e73-4c13-b0ea-3aca735cc353",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/properties/:key",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "properties",
+                        ":key"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3fe24c60-aa7a-4bad-abfe-edbf273bf56c",
+                          "key": "key",
+                          "value": "<string>",
+                          "description": "(Required) The property key name"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the value of a specific ORDS configuration property."
+                  },
+                  "response": [
+                    {
+                      "id": "85143759-7713-412f-b5eb-d20003acb6ee",
+                      "name": "ORDS property value",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "key": "key"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"qui_b\": -32221295,\n  \"fugiatb\": -89855429\n}",
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-85143759-7713-412f-b5eb-d20003acb6ee"
+                    },
+                    {
+                      "id": "11f4a68b-d0e4-418b-8008-3077c26ef697",
+                      "name": "Property not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "key": "key"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-11f4a68b-d0e4-418b-8008-3077c26ef697"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:02.000Z",
+                  "updatedAt": "2026-07-28T02:27:02.000Z",
+                  "uid": "35240-9313ed29-9e73-4c13-b0ea-3aca735cc353"
+                },
+                {
+                  "name": "Set an ORDS property value",
+                  "id": "acc3d132-ed96-4dfd-ab7c-8ac43c7386a1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/properties/:key",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "properties",
+                        ":key"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5849223a-fdaa-4c49-b78b-278ebcf6db74",
+                          "key": "key",
+                          "value": "<string>",
+                          "description": "(Required) The property key name"
+                        }
+                      ]
+                    },
+                    "description": "Sets the value of a specific ORDS configuration property."
+                  },
+                  "response": [
+                    {
+                      "id": "a10fb045-cc72-48bc-8d52-1ec8ab58bca6",
+                      "name": "ORDS property value set successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "key": "key"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-a10fb045-cc72-48bc-8d52-1ec8ab58bca6"
+                    },
+                    {
+                      "id": "672fb190-beb3-41d4-be34-a9ca4ad1daa0",
+                      "name": "Property not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "key": "key"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-672fb190-beb3-41d4-be34-a9ca4ad1daa0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:02.000Z",
+                  "updatedAt": "2026-07-28T02:27:02.000Z",
+                  "uid": "35240-acc3d132-ed96-4dfd-ab7c-8ac43c7386a1"
+                },
+                {
+                  "name": "Unset an ORDS property value",
+                  "id": "23a0ed84-f8e7-4d90-aeec-67f3157bb2ad",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/properties/:key",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "properties",
+                        ":key"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e81c7dcd-4a89-4b9d-8216-5af3f983738d",
+                          "key": "key",
+                          "value": "<string>",
+                          "description": "(Required) The property key name"
+                        }
+                      ]
+                    },
+                    "description": "Removes a custom ORDS configuration property value, reverting it to the default."
+                  },
+                  "response": [
+                    {
+                      "id": "3542c37d-f552-42c7-8708-a56bb9135a4e",
+                      "name": "ORDS property value unset successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "key": "key"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-3542c37d-f552-42c7-8708-a56bb9135a4e"
+                    },
+                    {
+                      "id": "2974fbc0-e8fd-4b63-afd6-0df5ba5cf3cf",
+                      "name": "Property not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "key": "key"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-2974fbc0-e8fd-4b63-afd6-0df5ba5cf3cf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:02.000Z",
+                  "updatedAt": "2026-07-28T02:27:02.000Z",
+                  "uid": "35240-23a0ed84-f8e7-4d90-aeec-67f3157bb2ad"
+                }
+              ],
+              "id": "11b6d9a8-14bd-423e-9d0c-9e752cc37c6d",
+              "createdAt": "2026-07-28T02:27:02.000Z",
+              "updatedAt": "2026-07-28T02:27:02.000Z",
+              "uid": "35240-11b6d9a8-14bd-423e-9d0c-9e752cc37c6d"
+            },
+            {
+              "name": "{schema}",
+              "item": [
+                {
+                  "name": "{key}",
+                  "item": [
+                    {
+                      "name": "Get an ORDS property value for a schema",
+                      "id": "7999e9d9-aeda-4188-b605-1e6a99ecc8dc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":schema",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ae2433a4-abe0-43d2-b6ae-ddf90c09e533",
+                              "key": "schema",
+                              "value": "<string>",
+                              "description": "(Required) The schema name"
+                            },
+                            {
+                              "id": "6e0e3706-5cc6-42e7-b137-1e9578a385ef",
+                              "key": "key",
+                              "value": "<string>",
+                              "description": "(Required) The property key name"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the value of a specific ORDS configuration property scoped to a particular schema."
+                      },
+                      "response": [
+                        {
+                          "id": "f57c5c5f-f34c-485d-acc3-dbdef9c534fb",
+                          "name": "Schema-scoped ORDS property value",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "properties",
+                                ":schema",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "schema"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"qui_b\": -32221295,\n  \"fugiatb\": -89855429\n}",
+                          "createdAt": "2026-07-28T02:27:02.000Z",
+                          "updatedAt": "2026-07-28T02:27:02.000Z",
+                          "uid": "35240-f57c5c5f-f34c-485d-acc3-dbdef9c534fb"
+                        },
+                        {
+                          "id": "cf0557df-c1ee-43e2-9475-eecde46f88fa",
+                          "name": "Property or schema not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "properties",
+                                ":schema",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "schema"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:02.000Z",
+                          "updatedAt": "2026-07-28T02:27:02.000Z",
+                          "uid": "35240-cf0557df-c1ee-43e2-9475-eecde46f88fa"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-7999e9d9-aeda-4188-b605-1e6a99ecc8dc"
+                    },
+                    {
+                      "name": "Set an ORDS property value for a schema",
+                      "id": "c608b904-7935-44ed-9aa3-3fa1f57090bd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":schema",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "id": "768db800-9eae-4d9a-9402-ea69f8fae55e",
+                              "key": "schema",
+                              "value": "<string>",
+                              "description": "(Required) The schema name"
+                            },
+                            {
+                              "id": "573b8b37-9e61-46a9-99d9-c5535522cb32",
+                              "key": "key",
+                              "value": "<string>",
+                              "description": "(Required) The property key name"
+                            }
+                          ]
+                        },
+                        "description": "Sets the value of a specific ORDS configuration property scoped to a particular schema."
+                      },
+                      "response": [
+                        {
+                          "id": "c895cc59-90c8-427d-93b5-420981c2b69b",
+                          "name": "Schema-scoped ORDS property value set successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "properties",
+                                ":schema",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "schema"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:02.000Z",
+                          "updatedAt": "2026-07-28T02:27:02.000Z",
+                          "uid": "35240-c895cc59-90c8-427d-93b5-420981c2b69b"
+                        },
+                        {
+                          "id": "36f6ec3d-1a24-4cf2-a3da-91aebd07d16a",
+                          "name": "Property or schema not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "properties",
+                                ":schema",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "schema"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:02.000Z",
+                          "updatedAt": "2026-07-28T02:27:02.000Z",
+                          "uid": "35240-36f6ec3d-1a24-4cf2-a3da-91aebd07d16a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-c608b904-7935-44ed-9aa3-3fa1f57090bd"
+                    },
+                    {
+                      "name": "Unset an ORDS property value for a schema",
+                      "id": "1d04dc35-c82f-4b65-a672-4922d31c15ff",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "properties",
+                            ":schema",
+                            ":key"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a94d9d4d-a44b-46a9-8254-33a5e2532ccf",
+                              "key": "schema",
+                              "value": "<string>",
+                              "description": "(Required) The schema name"
+                            },
+                            {
+                              "id": "6d54430f-57b2-4789-9c86-35139b8ec05a",
+                              "key": "key",
+                              "value": "<string>",
+                              "description": "(Required) The property key name"
+                            }
+                          ]
+                        },
+                        "description": "Removes a schema-scoped ORDS configuration property value, reverting it to the default."
+                      },
+                      "response": [
+                        {
+                          "id": "0b73eb31-9a75-4a9a-92f2-9cde6291625f",
+                          "name": "Schema-scoped ORDS property value unset successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "properties",
+                                ":schema",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "schema"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:02.000Z",
+                          "updatedAt": "2026-07-28T02:27:02.000Z",
+                          "uid": "35240-0b73eb31-9a75-4a9a-92f2-9cde6291625f"
+                        },
+                        {
+                          "id": "d0e64394-5076-45c6-a279-80f4a8f09565",
+                          "name": "Property or schema not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/properties/:schema/:key",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "properties",
+                                ":schema",
+                                ":key"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "schema"
+                                },
+                                {
+                                  "key": "key"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:02.000Z",
+                          "updatedAt": "2026-07-28T02:27:02.000Z",
+                          "uid": "35240-d0e64394-5076-45c6-a279-80f4a8f09565"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:02.000Z",
+                      "updatedAt": "2026-07-28T02:27:02.000Z",
+                      "uid": "35240-1d04dc35-c82f-4b65-a672-4922d31c15ff"
+                    }
+                  ],
+                  "id": "ec8a33f1-f49e-4d5e-8d98-b93e671220f8",
+                  "createdAt": "2026-07-28T02:27:02.000Z",
+                  "updatedAt": "2026-07-28T02:27:02.000Z",
+                  "uid": "35240-ec8a33f1-f49e-4d5e-8d98-b93e671220f8"
+                }
+              ],
+              "id": "ec29e759-d7af-4cb4-b889-be262792d009",
+              "createdAt": "2026-07-28T02:27:02.000Z",
+              "updatedAt": "2026-07-28T02:27:02.000Z",
+              "uid": "35240-ec29e759-d7af-4cb4-b889-be262792d009"
+            },
+            {
+              "name": "Get all ORDS properties values",
+              "id": "1f373643-2c3c-49a1-b9e0-cfe575abb37f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ords/properties/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ords",
+                    "properties",
+                    ""
+                  ]
+                },
+                "description": "Retrieves all configuration property values for the ORDS instance."
+              },
+              "response": [
+                {
+                  "id": "8d54462f-6769-447d-b4c6-aa503813041c",
+                  "name": "List of ORDS property values",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/properties/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "properties",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"ex_3\": \"commodo eu\"\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"fugiat_a\": \"anim deserunt\",\n      \"in89\": false,\n      \"dolor765\": -90654288.27157103\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:27:02.000Z",
+                  "updatedAt": "2026-07-28T02:27:02.000Z",
+                  "uid": "35240-8d54462f-6769-447d-b4c6-aa503813041c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:27:02.000Z",
+              "updatedAt": "2026-07-28T02:27:02.000Z",
+              "uid": "35240-1f373643-2c3c-49a1-b9e0-cfe575abb37f"
+            }
+          ],
+          "id": "1741f1e8-1781-4e15-a1e8-916af8a3c1f6",
+          "createdAt": "2026-07-28T02:27:02.000Z",
+          "updatedAt": "2026-07-28T02:27:02.000Z",
+          "uid": "35240-1741f1e8-1781-4e15-a1e8-916af8a3c1f6"
+        }
+      ],
+      "id": "10fe95ac-4cf6-4cc3-bff5-c4b618698a67",
+      "createdAt": "2026-07-28T02:27:02.000Z",
+      "updatedAt": "2026-07-28T02:27:02.000Z",
+      "uid": "35240-10fe95ac-4cf6-4cc3-bff5-c4b618698a67"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

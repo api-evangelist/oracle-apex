@@ -1,0 +1,976 @@
+{
+  "info": {
+    "_postman_id": "ffa6e5b3-c591-4bb7-90e2-731369e846f7",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Templates API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:27:04.000Z",
+    "updatedAt": "2026-07-28T02:27:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ffa6e5b3-c591-4bb7-90e2-731369e846f7"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "templates",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Get a REST module template",
+                      "id": "f62b1ce9-bb1a-401c-acc6-a40900a50d67",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4bcbec9a-4eda-4f23-9001-34eae607b84e",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details of a specific REST module template by its identifier."
+                      },
+                      "response": [
+                        {
+                          "id": "20726b3e-d5ce-4928-bad0-64d75deeed5a",
+                          "name": "REST template details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"sunt9\": true,\n  \"aliquaa4d\": -27490344,\n  \"pariaturb3\": -29170130\n}",
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-20726b3e-d5ce-4928-bad0-64d75deeed5a"
+                        },
+                        {
+                          "id": "bb9f097f-a041-4d9b-8ca5-32fb4c1d443d",
+                          "name": "Template not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-bb9f097f-a041-4d9b-8ca5-32fb4c1d443d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-f62b1ce9-bb1a-401c-acc6-a40900a50d67"
+                    },
+                    {
+                      "name": "Update a REST module template",
+                      "id": "d697eb57-f321-4177-91ca-a8e4726a7285",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uri_prefix\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"etag_type\": \"NONE\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "561acfcc-5639-4fda-a84f-504608ac09b0",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing REST module template including its URI pattern, priority, and ETag configuration."
+                      },
+                      "response": [
+                        {
+                          "id": "3923557c-f464-4494-b34a-721a3f779fe0",
+                          "name": "REST template updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uri_prefix\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"etag_type\": \"NONE\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"sunt9\": true,\n  \"aliquaa4d\": -27490344,\n  \"pariaturb3\": -29170130\n}",
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-3923557c-f464-4494-b34a-721a3f779fe0"
+                        },
+                        {
+                          "id": "11ee47ef-9e78-4dd5-9d0c-c6f1eb3309c2",
+                          "name": "Missing etag_type, pattern, or priority parameter",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uri_prefix\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"etag_type\": \"NONE\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-11ee47ef-9e78-4dd5-9d0c-c6f1eb3309c2"
+                        },
+                        {
+                          "id": "67f5d31c-731c-4ecb-b16d-0184517c9443",
+                          "name": "Template does not exist",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uri_prefix\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"etag_type\": \"NONE\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-67f5d31c-731c-4ecb-b16d-0184517c9443"
+                        },
+                        {
+                          "id": "74c973fc-fb31-4deb-8c5d-c362dae74eeb",
+                          "name": "Template pattern already exists in the module",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uri_prefix\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"etag_type\": \"NONE\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-74c973fc-fb31-4deb-8c5d-c362dae74eeb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-d697eb57-f321-4177-91ca-a8e4726a7285"
+                    },
+                    {
+                      "name": "Delete a REST module template",
+                      "id": "52ed7444-76d1-469b-b7ef-55a2a71ff1a2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "42420655-d50f-463a-ab57-72b521c9c254",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a specific REST module template and all of its associated handlers."
+                      },
+                      "response": [
+                        {
+                          "id": "5e6cf140-718a-4189-a55b-556a25f3901e",
+                          "name": "REST template deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-5e6cf140-718a-4189-a55b-556a25f3901e"
+                        },
+                        {
+                          "id": "a60111d2-9a9c-4d6a-8b0d-32f78d9c62e6",
+                          "name": "Template not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/templates/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "templates",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:04.000Z",
+                          "updatedAt": "2026-07-28T02:27:04.000Z",
+                          "uid": "35240-a60111d2-9a9c-4d6a-8b0d-32f78d9c62e6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-52ed7444-76d1-469b-b7ef-55a2a71ff1a2"
+                    }
+                  ],
+                  "id": "a5b933b4-5303-418d-b0b5-e58aa013b7d4",
+                  "createdAt": "2026-07-28T02:27:04.000Z",
+                  "updatedAt": "2026-07-28T02:27:04.000Z",
+                  "uid": "35240-a5b933b4-5303-418d-b0b5-e58aa013b7d4"
+                },
+                {
+                  "name": "Get all REST module templates",
+                  "id": "0284bc15-6ebf-418d-ac2e-ccba5c5f19db",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/templates/?offset=0&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "templates",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The index of the first item to return (0-based). Default is 0.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return per page. Default is 25.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of all REST module templates defined in the current schema."
+                  },
+                  "response": [
+                    {
+                      "id": "c8cd88df-2f21-469b-bdc0-005213f18796",
+                      "name": "Paginated list of REST templates",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"consequatf\": false,\n      \"cupidatat_b\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"suntf\": 89133433,\n      \"elit_08\": -29344050.25220661,\n      \"id2b\": \"voluptate aliqua aute dolor\",\n      \"in_ae\": \"nisi in\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-c8cd88df-2f21-469b-bdc0-005213f18796"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:04.000Z",
+                  "updatedAt": "2026-07-28T02:27:04.000Z",
+                  "uid": "35240-0284bc15-6ebf-418d-ac2e-ccba5c5f19db"
+                },
+                {
+                  "name": "Create a REST module template",
+                  "id": "f7a083fd-0f12-4996-aa71-9cae362d621b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"module_id\": \"<integer>\",\n  \"uri_prefix\": \"<string>\",\n  \"priority\": 0,\n  \"etag_type\": \"HASH\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/templates/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "templates",
+                        ""
+                      ]
+                    },
+                    "description": "Creates a new REST module template associated with a specific module. A template defines a URI pattern within a module and serves as a container for one or more handlers."
+                  },
+                  "response": [
+                    {
+                      "id": "4fa88b45-e016-488a-b10e-228f4473b8f1",
+                      "name": "REST template created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"module_id\": \"<integer>\",\n  \"uri_prefix\": \"<string>\",\n  \"priority\": 0,\n  \"etag_type\": \"HASH\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"sunt9\": true,\n  \"aliquaa4d\": -27490344,\n  \"pariaturb3\": -29170130\n}",
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-4fa88b45-e016-488a-b10e-228f4473b8f1"
+                    },
+                    {
+                      "id": "229b4034-5d8f-4dec-b86a-f1721c214941",
+                      "name": "No pattern parameter provided or module not specified",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"module_id\": \"<integer>\",\n  \"uri_prefix\": \"<string>\",\n  \"priority\": 0,\n  \"etag_type\": \"HASH\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-229b4034-5d8f-4dec-b86a-f1721c214941"
+                    },
+                    {
+                      "id": "45f62cb2-7d6c-4f4e-8d8f-00ca826369c6",
+                      "name": "Module does not exist",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"module_id\": \"<integer>\",\n  \"uri_prefix\": \"<string>\",\n  \"priority\": 0,\n  \"etag_type\": \"HASH\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-45f62cb2-7d6c-4f4e-8d8f-00ca826369c6"
+                    },
+                    {
+                      "id": "64241fc7-8fbc-4605-b443-558bb0641a77",
+                      "name": "A template with that pattern already exists in the module",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"module_id\": \"<integer>\",\n  \"uri_prefix\": \"<string>\",\n  \"priority\": 0,\n  \"etag_type\": \"HASH\",\n  \"etag_query\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/templates/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "templates",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:04.000Z",
+                      "updatedAt": "2026-07-28T02:27:04.000Z",
+                      "uid": "35240-64241fc7-8fbc-4605-b443-558bb0641a77"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:04.000Z",
+                  "updatedAt": "2026-07-28T02:27:04.000Z",
+                  "uid": "35240-f7a083fd-0f12-4996-aa71-9cae362d621b"
+                }
+              ],
+              "id": "4fca7bee-f5b4-4aae-a8e4-02635e6020ef",
+              "createdAt": "2026-07-28T02:27:04.000Z",
+              "updatedAt": "2026-07-28T02:27:04.000Z",
+              "uid": "35240-4fca7bee-f5b4-4aae-a8e4-02635e6020ef"
+            }
+          ],
+          "id": "965019c9-7743-435a-ac78-9143011bf0e1",
+          "createdAt": "2026-07-28T02:27:04.000Z",
+          "updatedAt": "2026-07-28T02:27:04.000Z",
+          "uid": "35240-965019c9-7743-435a-ac78-9143011bf0e1"
+        }
+      ],
+      "id": "39cd9315-db9d-4a25-8788-be19c4a26cf7",
+      "createdAt": "2026-07-28T02:27:04.000Z",
+      "updatedAt": "2026-07-28T02:27:04.000Z",
+      "uid": "35240-39cd9315-db9d-4a25-8788-be19c4a26cf7"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

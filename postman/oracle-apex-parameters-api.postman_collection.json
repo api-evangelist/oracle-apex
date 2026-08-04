@@ -1,0 +1,816 @@
+{
+  "info": {
+    "_postman_id": "e56e3a74-75bc-46a5-a061-50e0fc24a1f4",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Parameters API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:59.000Z",
+    "updatedAt": "2026-07-28T02:27:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e56e3a74-75bc-46a5-a061-50e0fc24a1f4"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "parameters",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "Get a REST handler parameter",
+                      "id": "f78bc335-f56e-4e57-acc0-9ecaaa3ab371",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "parameters",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "74bad194-32f5-486f-9aa5-b77b2fcbc106",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details of a specific REST handler parameter by its identifier."
+                      },
+                      "response": [
+                        {
+                          "id": "6cab731e-2893-4852-80b5-a6c1234baa06",
+                          "name": "REST handler parameter details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "parameters",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"amet_56\": -2590969.536448911,\n  \"pariatur1e\": true,\n  \"pariatura\": false\n}",
+                          "createdAt": "2026-07-28T02:27:00.000Z",
+                          "updatedAt": "2026-07-28T02:27:00.000Z",
+                          "uid": "35240-6cab731e-2893-4852-80b5-a6c1234baa06"
+                        },
+                        {
+                          "id": "4801821c-fd26-4394-936b-664257cdada2",
+                          "name": "Parameter not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "parameters",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:00.000Z",
+                          "updatedAt": "2026-07-28T02:27:00.000Z",
+                          "uid": "35240-4801821c-fd26-4394-936b-664257cdada2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:00.000Z",
+                      "updatedAt": "2026-07-28T02:27:00.000Z",
+                      "uid": "35240-f78bc335-f56e-4e57-acc0-9ecaaa3ab371"
+                    },
+                    {
+                      "name": "Update a REST handler parameter",
+                      "id": "f042fb7f-3dc9-467d-8bd4-a4ce89bd6859",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"handler_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"bind_variable_name\": \"<string>\",\n  \"source_type\": \"HEADER\",\n  \"access_method\": \"IN\",\n  \"comments\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "parameters",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cbad0bf0-b3d0-4ae2-8b05-47c5ebf1a2fd",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing REST handler parameter binding."
+                      },
+                      "response": [
+                        {
+                          "id": "7718c61d-1fb5-4759-80ad-45fa4e1e6358",
+                          "name": "REST handler parameter updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"handler_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"bind_variable_name\": \"<string>\",\n  \"source_type\": \"HEADER\",\n  \"access_method\": \"IN\",\n  \"comments\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "parameters",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"amet_56\": -2590969.536448911,\n  \"pariatur1e\": true,\n  \"pariatura\": false\n}",
+                          "createdAt": "2026-07-28T02:27:00.000Z",
+                          "updatedAt": "2026-07-28T02:27:00.000Z",
+                          "uid": "35240-7718c61d-1fb5-4759-80ad-45fa4e1e6358"
+                        },
+                        {
+                          "id": "8ccf437d-940c-4759-b08a-8506339bfd00",
+                          "name": "Parameter not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"handler_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"bind_variable_name\": \"<string>\",\n  \"source_type\": \"HEADER\",\n  \"access_method\": \"IN\",\n  \"comments\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "parameters",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:00.000Z",
+                          "updatedAt": "2026-07-28T02:27:00.000Z",
+                          "uid": "35240-8ccf437d-940c-4759-b08a-8506339bfd00"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:00.000Z",
+                      "updatedAt": "2026-07-28T02:27:00.000Z",
+                      "uid": "35240-f042fb7f-3dc9-467d-8bd4-a4ce89bd6859"
+                    },
+                    {
+                      "name": "Delete a REST handler parameter",
+                      "id": "6d7e6368-37a9-4be8-a36d-c4a3d73bfa50",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "parameters",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c96be3a0-d9ca-4b08-9b6b-8fee116cc08e",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a specific REST handler parameter."
+                      },
+                      "response": [
+                        {
+                          "id": "57f34c89-dffc-4cd1-98e1-f0ed41db2fc8",
+                          "name": "REST handler parameter deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "parameters",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:00.000Z",
+                          "updatedAt": "2026-07-28T02:27:00.000Z",
+                          "uid": "35240-57f34c89-dffc-4cd1-98e1-f0ed41db2fc8"
+                        },
+                        {
+                          "id": "2868271b-6271-417e-a240-38e5c30209b1",
+                          "name": "Parameter not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/parameters/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "parameters",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:27:00.000Z",
+                          "updatedAt": "2026-07-28T02:27:00.000Z",
+                          "uid": "35240-2868271b-6271-417e-a240-38e5c30209b1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:27:00.000Z",
+                      "updatedAt": "2026-07-28T02:27:00.000Z",
+                      "uid": "35240-6d7e6368-37a9-4be8-a36d-c4a3d73bfa50"
+                    }
+                  ],
+                  "id": "e82d7fdb-75c3-45d7-8094-a107bf776e5e",
+                  "createdAt": "2026-07-28T02:27:00.000Z",
+                  "updatedAt": "2026-07-28T02:27:00.000Z",
+                  "uid": "35240-e82d7fdb-75c3-45d7-8094-a107bf776e5e"
+                },
+                {
+                  "name": "Get all REST handler parameters",
+                  "id": "b90a0293-14d7-48db-88e3-d0c5503bf1fe",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/parameters/?offset=0&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "parameters",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The index of the first item to return (0-based). Default is 0.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return per page. Default is 25.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of all REST handler parameters defined in the current schema."
+                  },
+                  "response": [
+                    {
+                      "id": "1657536d-e404-4d20-b683-3541efdcf8e6",
+                      "name": "Paginated list of REST handler parameters",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/parameters/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "parameters",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"laboris02\": -44951705.84845605\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:27:00.000Z",
+                      "updatedAt": "2026-07-28T02:27:00.000Z",
+                      "uid": "35240-1657536d-e404-4d20-b683-3541efdcf8e6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:00.000Z",
+                  "updatedAt": "2026-07-28T02:27:00.000Z",
+                  "uid": "35240-b90a0293-14d7-48db-88e3-d0c5503bf1fe"
+                },
+                {
+                  "name": "Create a REST handler parameter",
+                  "id": "066417bd-f6ff-4137-97ac-12ad3aa34d43",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"handler_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"bind_variable_name\": \"<string>\",\n  \"source_type\": \"HEADER\",\n  \"access_method\": \"IN\",\n  \"comments\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/parameters/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "parameters",
+                        ""
+                      ]
+                    },
+                    "description": "Creates a new parameter binding for a REST template handler, defining how request parameters map to handler source bind variables."
+                  },
+                  "response": [
+                    {
+                      "id": "7c1088ad-4789-4815-9a6b-1d825731020d",
+                      "name": "REST handler parameter created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"handler_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"bind_variable_name\": \"<string>\",\n  \"source_type\": \"HEADER\",\n  \"access_method\": \"IN\",\n  \"comments\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/parameters/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "parameters",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"amet_56\": -2590969.536448911,\n  \"pariatur1e\": true,\n  \"pariatura\": false\n}",
+                      "createdAt": "2026-07-28T02:27:00.000Z",
+                      "updatedAt": "2026-07-28T02:27:00.000Z",
+                      "uid": "35240-7c1088ad-4789-4815-9a6b-1d825731020d"
+                    },
+                    {
+                      "id": "63278a59-8d2d-4219-b98d-4bffe1f7b204",
+                      "name": "Missing required parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"handler_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"bind_variable_name\": \"<string>\",\n  \"source_type\": \"HEADER\",\n  \"access_method\": \"IN\",\n  \"comments\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/parameters/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "parameters",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:00.000Z",
+                      "updatedAt": "2026-07-28T02:27:00.000Z",
+                      "uid": "35240-63278a59-8d2d-4219-b98d-4bffe1f7b204"
+                    },
+                    {
+                      "id": "79dbb6f6-766c-4a86-b1c3-842542d42950",
+                      "name": "Handler does not exist",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"handler_id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"bind_variable_name\": \"<string>\",\n  \"source_type\": \"HEADER\",\n  \"access_method\": \"IN\",\n  \"comments\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/parameters/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "parameters",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:27:00.000Z",
+                      "updatedAt": "2026-07-28T02:27:00.000Z",
+                      "uid": "35240-79dbb6f6-766c-4a86-b1c3-842542d42950"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:27:00.000Z",
+                  "updatedAt": "2026-07-28T02:27:00.000Z",
+                  "uid": "35240-066417bd-f6ff-4137-97ac-12ad3aa34d43"
+                }
+              ],
+              "id": "f641911d-c29e-4be8-b2b9-7d1239b1ab00",
+              "createdAt": "2026-07-28T02:27:00.000Z",
+              "updatedAt": "2026-07-28T02:27:00.000Z",
+              "uid": "35240-f641911d-c29e-4be8-b2b9-7d1239b1ab00"
+            }
+          ],
+          "id": "7720b7ab-8baa-4819-bbd7-1a26cc316d32",
+          "createdAt": "2026-07-28T02:27:00.000Z",
+          "updatedAt": "2026-07-28T02:27:00.000Z",
+          "uid": "35240-7720b7ab-8baa-4819-bbd7-1a26cc316d32"
+        }
+      ],
+      "id": "8619b34e-15b4-433d-9dd1-d25f67ebfd98",
+      "createdAt": "2026-07-28T02:27:00.000Z",
+      "updatedAt": "2026-07-28T02:27:00.000Z",
+      "uid": "35240-8619b34e-15b4-433d-9dd1-d25f67ebfd98"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

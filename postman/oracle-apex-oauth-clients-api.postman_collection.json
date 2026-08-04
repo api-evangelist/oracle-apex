@@ -1,0 +1,1271 @@
+{
+  "info": {
+    "_postman_id": "61a83fac-d978-4354-a5b1-4e4631928c11",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST OAuth Clients API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:57.000Z",
+    "updatedAt": "2026-07-28T02:26:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-61a83fac-d978-4354-a5b1-4e4631928c11"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "clients",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "privileges",
+                      "item": [
+                        {
+                          "name": "Get all ORDS privileges in an OAuth client",
+                          "id": "4dd974ec-4a61-4a96-b0ee-2b1d60b17766",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id/privileges/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id",
+                                "privileges",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "012c7ae4-812d-4a0a-9eed-f6dee992b6fb",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves all privileges assigned to a specific ORDS OAuth client."
+                          },
+                          "response": [
+                            {
+                              "id": "4989ab45-9428-4bab-96e9-76b5d4183f19",
+                              "name": "List of privileges for the OAuth client",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/clients/:id/privileges/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "clients",
+                                    ":id",
+                                    "privileges",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"reprehenderit8\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"irured3\": 62995349.433018625,\n      \"adipisicingfd\": \"Ut eiusmod proident exercitation minim\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:26:58.000Z",
+                              "updatedAt": "2026-07-28T02:26:58.000Z",
+                              "uid": "35240-4989ab45-9428-4bab-96e9-76b5d4183f19"
+                            },
+                            {
+                              "id": "400aa56d-b344-4b98-aee5-cf857d7279d6",
+                              "name": "OAuth client not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/clients/:id/privileges/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "clients",
+                                    ":id",
+                                    "privileges",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:26:58.000Z",
+                              "updatedAt": "2026-07-28T02:26:58.000Z",
+                              "uid": "35240-400aa56d-b344-4b98-aee5-cf857d7279d6"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-4dd974ec-4a61-4a96-b0ee-2b1d60b17766"
+                        }
+                      ],
+                      "id": "c619cebf-ef2a-49b0-a95c-7c5343eb0e9b",
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-c619cebf-ef2a-49b0-a95c-7c5343eb0e9b"
+                    },
+                    {
+                      "name": "roles",
+                      "item": [
+                        {
+                          "name": "Get all ORDS roles in an OAuth client",
+                          "id": "9b9a18d7-fe4b-4221-bdd9-52045c7d5e7a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id/roles/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id",
+                                "roles",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b0b3544d-a7a8-4b85-81a5-2e26541e6a99",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves all roles assigned to a specific ORDS OAuth client."
+                          },
+                          "response": [
+                            {
+                              "id": "8450f769-8a9b-488d-ae73-d02de5a1a2ab",
+                              "name": "List of roles for the OAuth client",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/clients/:id/roles/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "clients",
+                                    ":id",
+                                    "roles",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"reprehenderit8\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"irured3\": 62995349.433018625,\n      \"adipisicingfd\": \"Ut eiusmod proident exercitation minim\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T02:26:58.000Z",
+                              "updatedAt": "2026-07-28T02:26:58.000Z",
+                              "uid": "35240-8450f769-8a9b-488d-ae73-d02de5a1a2ab"
+                            },
+                            {
+                              "id": "a99bda77-6ea4-4f8d-b918-e2c6e45b9a8d",
+                              "name": "OAuth client not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/clients/:id/roles/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "clients",
+                                    ":id",
+                                    "roles",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:26:58.000Z",
+                              "updatedAt": "2026-07-28T02:26:58.000Z",
+                              "uid": "35240-a99bda77-6ea4-4f8d-b918-e2c6e45b9a8d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-9b9a18d7-fe4b-4221-bdd9-52045c7d5e7a"
+                        }
+                      ],
+                      "id": "35645871-1aaa-43b5-bc61-7f378f34048f",
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-35645871-1aaa-43b5-bc61-7f378f34048f"
+                    },
+                    {
+                      "name": "logo",
+                      "item": [
+                        {
+                          "name": "Update ORDS OAuth client avatar image",
+                          "id": "23f7638f-815b-4c79-a9c7-c14a1e34ea2c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "image/*"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "<binary>"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id/logo/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id",
+                                "logo",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "49bdb42c-7584-4bc1-9388-622e96875be4",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Uploads or updates the avatar image displayed during OAuth authorization for a specific OAuth client."
+                          },
+                          "response": [
+                            {
+                              "id": "259afee9-b999-4e9c-ba21-faa5ecb8432f",
+                              "name": "OAuth client logo updated successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "image/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "<binary>"
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/clients/:id/logo/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "clients",
+                                    ":id",
+                                    "logo",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:26:58.000Z",
+                              "updatedAt": "2026-07-28T02:26:58.000Z",
+                              "uid": "35240-259afee9-b999-4e9c-ba21-faa5ecb8432f"
+                            },
+                            {
+                              "id": "b5a25449-bb9a-4e61-a12d-8d65251691c2",
+                              "name": "OAuth client not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "image/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "<binary>"
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/clients/:id/logo/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "clients",
+                                    ":id",
+                                    "logo",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:26:58.000Z",
+                              "updatedAt": "2026-07-28T02:26:58.000Z",
+                              "uid": "35240-b5a25449-bb9a-4e61-a12d-8d65251691c2"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-23f7638f-815b-4c79-a9c7-c14a1e34ea2c"
+                        }
+                      ],
+                      "id": "e947bc9b-c873-44a5-af2e-b91910c745af",
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-e947bc9b-c873-44a5-af2e-b91910c745af"
+                    },
+                    {
+                      "name": "Get an ORDS OAuth client",
+                      "id": "9c0cf1c7-292f-4b56-9bf4-309db6d896a6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "clients",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "63f4bd4b-8232-4b91-adfc-53469f0c45a6",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details of a specific ORDS OAuth client by its identifier."
+                      },
+                      "response": [
+                        {
+                          "id": "e8464dbe-2b6c-4628-90a1-d71ea4f0e760",
+                          "name": "OAuth client details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"ut_189\": true,\n  \"in_a2\": -64633674,\n  \"consectetur_0d1\": -85667047.92635705,\n  \"deserunt546\": false\n}",
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-e8464dbe-2b6c-4628-90a1-d71ea4f0e760"
+                        },
+                        {
+                          "id": "dacca18e-cda0-4445-bd8f-da923f2fb8bc",
+                          "name": "OAuth client not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-dacca18e-cda0-4445-bd8f-da923f2fb8bc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-9c0cf1c7-292f-4b56-9bf4-309db6d896a6"
+                    },
+                    {
+                      "name": "Update an ORDS OAuth client",
+                      "id": "cfd0a080-dc32-45d4-8a28-811b9e3ec1c2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"privilege_names\": \"<string>\",\n  \"description\": \"<string>\",\n  \"allowed_origins\": \"<string>\",\n  \"redirect_uri\": \"<string>\",\n  \"role_names\": \"<string>\",\n  \"support_email\": \"<string>\",\n  \"support_uri\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "clients",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "797b11d3-a599-4477-baed-38c0d6400e63",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing ORDS OAuth client configuration."
+                      },
+                      "response": [
+                        {
+                          "id": "3504cd49-ec17-4ecd-a61f-00650b88a486",
+                          "name": "OAuth client updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"privilege_names\": \"<string>\",\n  \"description\": \"<string>\",\n  \"allowed_origins\": \"<string>\",\n  \"redirect_uri\": \"<string>\",\n  \"role_names\": \"<string>\",\n  \"support_email\": \"<string>\",\n  \"support_uri\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"ut_189\": true,\n  \"in_a2\": -64633674,\n  \"consectetur_0d1\": -85667047.92635705,\n  \"deserunt546\": false\n}",
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-3504cd49-ec17-4ecd-a61f-00650b88a486"
+                        },
+                        {
+                          "id": "28dc0878-bea9-40b5-90ef-05c921490a2b",
+                          "name": "OAuth client not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"privilege_names\": \"<string>\",\n  \"description\": \"<string>\",\n  \"allowed_origins\": \"<string>\",\n  \"redirect_uri\": \"<string>\",\n  \"role_names\": \"<string>\",\n  \"support_email\": \"<string>\",\n  \"support_uri\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-28dc0878-bea9-40b5-90ef-05c921490a2b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-cfd0a080-dc32-45d4-8a28-811b9e3ec1c2"
+                    },
+                    {
+                      "name": "Delete an ORDS OAuth client",
+                      "id": "f3679eb6-6923-47ed-8224-a4d4c1baff81",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "clients",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4fe8b55a-6a26-4df5-abaf-f05c45e3534b",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Deletes a specific ORDS OAuth client and revokes all associated tokens."
+                      },
+                      "response": [
+                        {
+                          "id": "464f397a-6a1b-4fb2-b665-89dc3f29e122",
+                          "name": "OAuth client deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-464f397a-6a1b-4fb2-b665-89dc3f29e122"
+                        },
+                        {
+                          "id": "361625a7-50c2-476e-af21-2c7591e8371e",
+                          "name": "OAuth client not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/clients/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "clients",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:58.000Z",
+                          "updatedAt": "2026-07-28T02:26:58.000Z",
+                          "uid": "35240-361625a7-50c2-476e-af21-2c7591e8371e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-f3679eb6-6923-47ed-8224-a4d4c1baff81"
+                    }
+                  ],
+                  "id": "7084b3f5-dfdf-48a0-b205-e72762b800b2",
+                  "createdAt": "2026-07-28T02:26:58.000Z",
+                  "updatedAt": "2026-07-28T02:26:58.000Z",
+                  "uid": "35240-7084b3f5-dfdf-48a0-b205-e72762b800b2"
+                },
+                {
+                  "name": "Get all ORDS OAuth clients",
+                  "id": "1f61ce58-0694-487f-b805-5796cee9d232",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/clients/?offset=0&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "clients",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The index of the first item to return (0-based). Default is 0.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return per page. Default is 25.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of all ORDS OAuth clients registered in the current schema."
+                  },
+                  "response": [
+                    {
+                      "id": "3b269e3e-7257-4b0b-a658-d0ed7707cc0b",
+                      "name": "Paginated list of OAuth clients",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/clients/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "clients",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"reprehenderit8\": true\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"irured3\": 62995349.433018625,\n      \"adipisicingfd\": \"Ut eiusmod proident exercitation minim\"\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-3b269e3e-7257-4b0b-a658-d0ed7707cc0b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:58.000Z",
+                  "updatedAt": "2026-07-28T02:26:58.000Z",
+                  "uid": "35240-1f61ce58-0694-487f-b805-5796cee9d232"
+                },
+                {
+                  "name": "Create an ORDS OAuth client",
+                  "id": "1777188d-edc1-475a-b243-b535de2b6eaf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"privilege_names\": \"<string>\",\n  \"description\": \"<string>\",\n  \"allowed_origins\": \"<string>\",\n  \"redirect_uri\": \"<string>\",\n  \"role_names\": \"<string>\",\n  \"support_email\": \"<string>\",\n  \"support_uri\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/clients/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "clients",
+                        ""
+                      ]
+                    },
+                    "description": "Creates a new ORDS OAuth client that enables third-party applications to access protected REST resources using OAuth 2.0 authorization flows."
+                  },
+                  "response": [
+                    {
+                      "id": "66f72fe9-3b3f-4d1b-8c27-394561bacf0e",
+                      "name": "OAuth client created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"privilege_names\": \"<string>\",\n  \"description\": \"<string>\",\n  \"allowed_origins\": \"<string>\",\n  \"redirect_uri\": \"<string>\",\n  \"role_names\": \"<string>\",\n  \"support_email\": \"<string>\",\n  \"support_uri\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/clients/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "clients",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"ut_189\": true,\n  \"in_a2\": -64633674,\n  \"consectetur_0d1\": -85667047.92635705,\n  \"deserunt546\": false\n}",
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-66f72fe9-3b3f-4d1b-8c27-394561bacf0e"
+                    },
+                    {
+                      "id": "f9778a78-8798-44ae-ae26-70961bfb521f",
+                      "name": "Missing required parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"privilege_names\": \"<string>\",\n  \"description\": \"<string>\",\n  \"allowed_origins\": \"<string>\",\n  \"redirect_uri\": \"<string>\",\n  \"role_names\": \"<string>\",\n  \"support_email\": \"<string>\",\n  \"support_uri\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/clients/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "clients",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-f9778a78-8798-44ae-ae26-70961bfb521f"
+                    },
+                    {
+                      "id": "9112ab00-50df-421e-ba01-0b0904ac8d80",
+                      "name": "An OAuth client with that name already exists",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"privilege_names\": \"<string>\",\n  \"description\": \"<string>\",\n  \"allowed_origins\": \"<string>\",\n  \"redirect_uri\": \"<string>\",\n  \"role_names\": \"<string>\",\n  \"support_email\": \"<string>\",\n  \"support_uri\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/clients/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "clients",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:58.000Z",
+                      "updatedAt": "2026-07-28T02:26:58.000Z",
+                      "uid": "35240-9112ab00-50df-421e-ba01-0b0904ac8d80"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:58.000Z",
+                  "updatedAt": "2026-07-28T02:26:58.000Z",
+                  "uid": "35240-1777188d-edc1-475a-b243-b535de2b6eaf"
+                }
+              ],
+              "id": "318022e6-3ca0-46fd-9451-1d772d76605a",
+              "createdAt": "2026-07-28T02:26:58.000Z",
+              "updatedAt": "2026-07-28T02:26:58.000Z",
+              "uid": "35240-318022e6-3ca0-46fd-9451-1d772d76605a"
+            }
+          ],
+          "id": "51bc8194-4ef9-47eb-9e02-46dfc6be25d1",
+          "createdAt": "2026-07-28T02:26:58.000Z",
+          "updatedAt": "2026-07-28T02:26:58.000Z",
+          "uid": "35240-51bc8194-4ef9-47eb-9e02-46dfc6be25d1"
+        }
+      ],
+      "id": "27ee839c-66e3-4f81-abbe-686b8e686fe0",
+      "createdAt": "2026-07-28T02:26:58.000Z",
+      "updatedAt": "2026-07-28T02:26:58.000Z",
+      "uid": "35240-27ee839c-66e3-4f81-abbe-686b8e686fe0"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

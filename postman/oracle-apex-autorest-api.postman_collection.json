@@ -1,0 +1,930 @@
+{
+  "info": {
+    "_postman_id": "64b7f914-6cd5-47ee-820a-5a8ad6e0e70f",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:54.000Z",
+    "updatedAt": "2026-07-28T02:26:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-64b7f914-6cd5-47ee-820a-5a8ad6e0e70f"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "autorest",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "metadata",
+                      "item": [
+                        {
+                          "name": "Get a REST enabled object metadata",
+                          "id": "d1d9391b-cb29-4750-abbb-250e707ba692",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/autorest/:id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "autorest",
+                                ":id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "46bf3160-60fe-40c3-b697-6fc5ee546c08",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves the metadata (column definitions, types, constraints) for a REST-enabled database object."
+                          },
+                          "response": [
+                            {
+                              "id": "6d2e2998-cf01-44dc-b557-40bea689e7ee",
+                              "name": "REST-enabled object metadata",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/autorest/:id/metadata",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "autorest",
+                                    ":id",
+                                    "metadata"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"incididunt_f4\": false,\n  \"cupidatat6\": \"sit nisi \"\n}",
+                              "createdAt": "2026-07-28T02:26:55.000Z",
+                              "updatedAt": "2026-07-28T02:26:55.000Z",
+                              "uid": "35240-6d2e2998-cf01-44dc-b557-40bea689e7ee"
+                            },
+                            {
+                              "id": "cce72a2b-635f-4196-ba26-dc86b6690e98",
+                              "name": "REST-enabled object not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/autorest/:id/metadata",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "autorest",
+                                    ":id",
+                                    "metadata"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:26:55.000Z",
+                              "updatedAt": "2026-07-28T02:26:55.000Z",
+                              "uid": "35240-cce72a2b-635f-4196-ba26-dc86b6690e98"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:26:55.000Z",
+                          "updatedAt": "2026-07-28T02:26:55.000Z",
+                          "uid": "35240-d1d9391b-cb29-4750-abbb-250e707ba692"
+                        }
+                      ],
+                      "id": "43b2c2a1-8304-47ef-8ec6-7ddd44f34dc9",
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-43b2c2a1-8304-47ef-8ec6-7ddd44f34dc9"
+                    },
+                    {
+                      "name": "Get a REST enabled object",
+                      "id": "5337343e-1554-461e-8a99-b3c5dc6e6c95",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/autorest/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "autorest",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "99714f8b-4820-432b-8dc7-5c1333d00107",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details of a specific REST-enabled object by its identifier."
+                      },
+                      "response": [
+                        {
+                          "id": "ca408417-0001-4b4f-949b-85264b6d9bb4",
+                          "name": "REST-enabled object details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/autorest/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "autorest",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"incididunt_f4\": false,\n  \"cupidatat6\": \"sit nisi \"\n}",
+                          "createdAt": "2026-07-28T02:26:55.000Z",
+                          "updatedAt": "2026-07-28T02:26:55.000Z",
+                          "uid": "35240-ca408417-0001-4b4f-949b-85264b6d9bb4"
+                        },
+                        {
+                          "id": "7f1dbb2e-eb5f-404c-a99c-4ccb3b8e8141",
+                          "name": "REST-enabled object not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/autorest/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "autorest",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:55.000Z",
+                          "updatedAt": "2026-07-28T02:26:55.000Z",
+                          "uid": "35240-7f1dbb2e-eb5f-404c-a99c-4ccb3b8e8141"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-5337343e-1554-461e-8a99-b3c5dc6e6c95"
+                    },
+                    {
+                      "name": "Update or disable a REST enabled object",
+                      "id": "51848fc4-0da5-40de-b87c-6bcc3dd2d138",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"object_name\": \"<string>\",\n  \"object_alias\": \"<string>\",\n  \"auth\": \"<boolean>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/autorest/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "autorest",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4039d800-ddd3-430d-a887-046f683c9d2b",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Updates the configuration of a REST-enabled object or disables REST access for the object."
+                      },
+                      "response": [
+                        {
+                          "id": "f6ddb4ee-ae4f-4b0e-9bc3-0499828c6824",
+                          "name": "REST-enabled object updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"object_name\": \"<string>\",\n  \"object_alias\": \"<string>\",\n  \"auth\": \"<boolean>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/autorest/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "autorest",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"incididunt_f4\": false,\n  \"cupidatat6\": \"sit nisi \"\n}",
+                          "createdAt": "2026-07-28T02:26:55.000Z",
+                          "updatedAt": "2026-07-28T02:26:55.000Z",
+                          "uid": "35240-f6ddb4ee-ae4f-4b0e-9bc3-0499828c6824"
+                        },
+                        {
+                          "id": "035e9a23-3c3f-44fd-88f0-88cd14a27efe",
+                          "name": "REST-enabled object not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"object_name\": \"<string>\",\n  \"object_alias\": \"<string>\",\n  \"auth\": \"<boolean>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/autorest/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "autorest",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:55.000Z",
+                          "updatedAt": "2026-07-28T02:26:55.000Z",
+                          "uid": "35240-035e9a23-3c3f-44fd-88f0-88cd14a27efe"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-51848fc4-0da5-40de-b87c-6bcc3dd2d138"
+                    }
+                  ],
+                  "id": "f4426c98-3a5f-4197-a491-c2a902184f75",
+                  "createdAt": "2026-07-28T02:26:55.000Z",
+                  "updatedAt": "2026-07-28T02:26:55.000Z",
+                  "uid": "35240-f4426c98-3a5f-4197-a491-c2a902184f75"
+                },
+                {
+                  "name": "summary",
+                  "item": [
+                    {
+                      "name": "Get count of all REST enabled objects",
+                      "id": "71b05c53-ca40-4fa2-ba5d-e184e531bd60",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/autorest/summary",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "autorest",
+                            "summary"
+                          ]
+                        },
+                        "description": "Retrieves a summary count of all REST-enabled objects in the current schema."
+                      },
+                      "response": [
+                        {
+                          "id": "87bd704b-34a2-4853-bac9-f68732f99b60",
+                          "name": "Summary count of REST-enabled objects",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/autorest/summary",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "autorest",
+                                "summary"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"incididunt_f4\": false,\n  \"cupidatat6\": \"sit nisi \"\n}",
+                          "createdAt": "2026-07-28T02:26:55.000Z",
+                          "updatedAt": "2026-07-28T02:26:55.000Z",
+                          "uid": "35240-87bd704b-34a2-4853-bac9-f68732f99b60"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-71b05c53-ca40-4fa2-ba5d-e184e531bd60"
+                    }
+                  ],
+                  "id": "afe53282-2bf8-40ce-9539-5c5e9d27b466",
+                  "createdAt": "2026-07-28T02:26:55.000Z",
+                  "updatedAt": "2026-07-28T02:26:55.000Z",
+                  "uid": "35240-afe53282-2bf8-40ce-9539-5c5e9d27b466"
+                },
+                {
+                  "name": "Get all REST enabled objects",
+                  "id": "80dde888-1423-4f0f-90db-dab440d83ebf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/autorest/?offset=0&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "autorest",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The index of the first item to return (0-based). Default is 0.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return per page. Default is 25.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of all database objects that have been REST-enabled through AutoREST in the current schema."
+                  },
+                  "response": [
+                    {
+                      "id": "2c966bb9-2e41-49d5-a8d2-9473d544ef77",
+                      "name": "Paginated list of REST-enabled objects",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/autorest/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "autorest",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"eu6\": true,\n      \"consectetur3\": 15237118.19422698\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-2c966bb9-2e41-49d5-a8d2-9473d544ef77"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:55.000Z",
+                  "updatedAt": "2026-07-28T02:26:55.000Z",
+                  "uid": "35240-80dde888-1423-4f0f-90db-dab440d83ebf"
+                },
+                {
+                  "name": "REST enable an object",
+                  "id": "6c4c596b-d878-4350-b965-78753cd541df",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"object_name\": \"<string>\",\n  \"object_alias\": \"<string>\",\n  \"auth\": \"<boolean>\",\n  \"run_mode\": \"codePreview\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/autorest/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "autorest",
+                        ""
+                      ]
+                    },
+                    "description": "Enables automatic REST access for a database table or view. AutoREST generates standard CRUD endpoints for the specified object without requiring manual module, template, or handler definitions."
+                  },
+                  "response": [
+                    {
+                      "id": "ed933d4b-a405-4f3c-8117-1b4f53d0896c",
+                      "name": "Object REST-enabled successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"object_name\": \"<string>\",\n  \"object_alias\": \"<string>\",\n  \"auth\": \"<boolean>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/autorest/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "autorest",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"incididunt_f4\": false,\n  \"cupidatat6\": \"sit nisi \"\n}",
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-ed933d4b-a405-4f3c-8117-1b4f53d0896c"
+                    },
+                    {
+                      "id": "d534449a-30c4-40b1-8acd-9cae3d0f7e26",
+                      "name": "Missing required parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"object_name\": \"<string>\",\n  \"object_alias\": \"<string>\",\n  \"auth\": \"<boolean>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/autorest/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "autorest",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-d534449a-30c4-40b1-8acd-9cae3d0f7e26"
+                    },
+                    {
+                      "id": "fdcaca27-7a23-4f5d-b4f3-feec47df28d1",
+                      "name": "Object is already REST-enabled",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"object_name\": \"<string>\",\n  \"object_alias\": \"<string>\",\n  \"auth\": \"<boolean>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/autorest/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "autorest",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:55.000Z",
+                      "updatedAt": "2026-07-28T02:26:55.000Z",
+                      "uid": "35240-fdcaca27-7a23-4f5d-b4f3-feec47df28d1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:55.000Z",
+                  "updatedAt": "2026-07-28T02:26:55.000Z",
+                  "uid": "35240-6c4c596b-d878-4350-b965-78753cd541df"
+                }
+              ],
+              "id": "9f8000e2-5a91-4b6b-8b40-a41a9daa7f4c",
+              "createdAt": "2026-07-28T02:26:55.000Z",
+              "updatedAt": "2026-07-28T02:26:55.000Z",
+              "uid": "35240-9f8000e2-5a91-4b6b-8b40-a41a9daa7f4c"
+            }
+          ],
+          "id": "aca86280-470d-49af-b1e9-8c2f7aa61815",
+          "createdAt": "2026-07-28T02:26:55.000Z",
+          "updatedAt": "2026-07-28T02:26:55.000Z",
+          "uid": "35240-aca86280-470d-49af-b1e9-8c2f7aa61815"
+        }
+      ],
+      "id": "3c663485-f1f2-4b07-83f5-9061dbb468ce",
+      "createdAt": "2026-07-28T02:26:55.000Z",
+      "updatedAt": "2026-07-28T02:26:55.000Z",
+      "uid": "35240-3c663485-f1f2-4b07-83f5-9061dbb468ce"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}

@@ -1,0 +1,956 @@
+{
+  "info": {
+    "_postman_id": "8542274d-e968-4b17-bce9-71e66e8c9a8b",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Modules API",
+    "description": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:57.000Z",
+    "updatedAt": "2026-07-28T02:26:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8542274d-e968-4b17-bce9-71e66e8c9a8b"
+  },
+  "item": [
+    {
+      "name": "ords",
+      "item": [
+        {
+          "name": "rest",
+          "item": [
+            {
+              "name": "modules",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "source",
+                      "item": [
+                        {
+                          "name": "Get a REST module source",
+                          "id": "790c5622-b8d4-4d33-a87d-df2bf41aee12",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/modules/:id/source",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "modules",
+                                ":id",
+                                "source"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ab2ee50a-965c-4f46-a0ae-f29632d9155c",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) Unique identifier of the resource"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves the PL/SQL source code that defines the specified REST service module."
+                          },
+                          "response": [
+                            {
+                              "id": "f7eaf8a4-12a6-420e-ac3c-c571b24c8f82",
+                              "name": "REST module source code",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/modules/:id/source",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "modules",
+                                    ":id",
+                                    "source"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"aliquip_6\": \"sunt reprehenderit\"\n}",
+                              "createdAt": "2026-07-28T02:26:57.000Z",
+                              "updatedAt": "2026-07-28T02:26:57.000Z",
+                              "uid": "35240-f7eaf8a4-12a6-420e-ac3c-c571b24c8f82"
+                            },
+                            {
+                              "id": "3c2fffd5-94f7-4914-be5d-5866dbe48b24",
+                              "name": "Module not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/ords/rest/modules/:id/source",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "ords",
+                                    "rest",
+                                    "modules",
+                                    ":id",
+                                    "source"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:26:57.000Z",
+                              "updatedAt": "2026-07-28T02:26:57.000Z",
+                              "uid": "35240-3c2fffd5-94f7-4914-be5d-5866dbe48b24"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:26:57.000Z",
+                          "updatedAt": "2026-07-28T02:26:57.000Z",
+                          "uid": "35240-790c5622-b8d4-4d33-a87d-df2bf41aee12"
+                        }
+                      ],
+                      "id": "69cfca92-3b8f-4ca2-9788-2e3d1c29c3e6",
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-69cfca92-3b8f-4ca2-9788-2e3d1c29c3e6"
+                    },
+                    {
+                      "name": "Get a REST module",
+                      "id": "8f47bbba-a32a-4ca2-8630-c2021d0b6b99",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/modules/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "modules",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e7d8938c-1bd2-44bb-8cec-15dcceee5c95",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves details of a specific REST service module by its identifier."
+                      },
+                      "response": [
+                        {
+                          "id": "ff40ceed-2af4-4cfe-a64f-8d44b3dd684c",
+                          "name": "REST module details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/modules/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "modules",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"aliquip_6\": \"sunt reprehenderit\"\n}",
+                          "createdAt": "2026-07-28T02:26:57.000Z",
+                          "updatedAt": "2026-07-28T02:26:57.000Z",
+                          "uid": "35240-ff40ceed-2af4-4cfe-a64f-8d44b3dd684c"
+                        },
+                        {
+                          "id": "86fdae94-24d2-4572-980b-e34ba5ae9c37",
+                          "name": "Module not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/modules/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "modules",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:57.000Z",
+                          "updatedAt": "2026-07-28T02:26:57.000Z",
+                          "uid": "35240-86fdae94-24d2-4572-980b-e34ba5ae9c37"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-8f47bbba-a32a-4ca2-8630-c2021d0b6b99"
+                    },
+                    {
+                      "name": "Update a REST module",
+                      "id": "53a55688-006b-4e56-af3c-39de0eca9479",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/modules/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "modules",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e3780882-eca8-4db0-9b90-1559b26b9c59",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier of the resource"
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing REST service module. All mutable properties of the module can be modified."
+                      },
+                      "response": [
+                        {
+                          "id": "b7a43240-37d1-4900-b61e-83aa495a6a1a",
+                          "name": "REST module updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/modules/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "modules",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"aliquip_6\": \"sunt reprehenderit\"\n}",
+                          "createdAt": "2026-07-28T02:26:57.000Z",
+                          "updatedAt": "2026-07-28T02:26:57.000Z",
+                          "uid": "35240-b7a43240-37d1-4900-b61e-83aa495a6a1a"
+                        },
+                        {
+                          "id": "14b701e4-ae46-4400-8d64-b5387ef3824c",
+                          "name": "Module not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/modules/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "modules",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:57.000Z",
+                          "updatedAt": "2026-07-28T02:26:57.000Z",
+                          "uid": "35240-14b701e4-ae46-4400-8d64-b5387ef3824c"
+                        },
+                        {
+                          "id": "5c7ac077-3596-4197-bd6d-7b49b61e0c83",
+                          "name": "A module with that name or base path already exists",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ords/rest/modules/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ords",
+                                "rest",
+                                "modules",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:26:57.000Z",
+                          "updatedAt": "2026-07-28T02:26:57.000Z",
+                          "uid": "35240-5c7ac077-3596-4197-bd6d-7b49b61e0c83"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-53a55688-006b-4e56-af3c-39de0eca9479"
+                    }
+                  ],
+                  "id": "e2fc4bf3-bb07-411b-aed0-75542152d932",
+                  "createdAt": "2026-07-28T02:26:57.000Z",
+                  "updatedAt": "2026-07-28T02:26:57.000Z",
+                  "uid": "35240-e2fc4bf3-bb07-411b-aed0-75542152d932"
+                },
+                {
+                  "name": "Get all REST modules",
+                  "id": "e60cf0a5-197f-40ba-8882-732e6cbee8dd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/modules/?offset=0&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "modules",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The index of the first item to return (0-based). Default is 0.",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return per page. Default is 25.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a paginated list of all REST service modules defined in the current schema."
+                  },
+                  "response": [
+                    {
+                      "id": "eef7de2d-f00a-4091-a872-53c961ffe68b",
+                      "name": "Paginated list of REST modules",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/modules/?offset=0&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "modules",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The index of the first item to return (0-based). Default is 0.",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Maximum number of items to return per page. Default is 25.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"count\": \"<integer>\",\n  \"hasMore\": \"<boolean>\",\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"pariatur_56\": 35287502.62729764,\n      \"ex303\": false\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        },\n        {\n          \"rel\": \"<string>\",\n          \"href\": \"<string>\"\n        }\n      ],\n      \"ut_6\": 79016353\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-eef7de2d-f00a-4091-a872-53c961ffe68b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:57.000Z",
+                  "updatedAt": "2026-07-28T02:26:57.000Z",
+                  "uid": "35240-e60cf0a5-197f-40ba-8882-732e6cbee8dd"
+                },
+                {
+                  "name": "Create a REST module",
+                  "id": "737afd3f-efd2-4aaa-a095-ba410fa5404b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ords/rest/modules/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ords",
+                        "rest",
+                        "modules",
+                        ""
+                      ]
+                    },
+                    "description": "Creates a new REST service module with the specified name and base path. A module is a container for templates that defines the root URI pattern for a group of related REST services."
+                  },
+                  "response": [
+                    {
+                      "id": "5f79b320-6d6a-4430-8605-6fb8b0ff97b4",
+                      "name": "Source code preview of the module creation (when run_mode is codePreview)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/modules/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "modules",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"aliquip_6\": \"sunt reprehenderit\"\n}",
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-5f79b320-6d6a-4430-8605-6fb8b0ff97b4"
+                    },
+                    {
+                      "id": "3c161c13-e478-448d-a3f9-8d3f57ebbe77",
+                      "name": "REST module created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/modules/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "modules",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"aliquip_6\": \"sunt reprehenderit\"\n}",
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-3c161c13-e478-448d-a3f9-8d3f57ebbe77"
+                    },
+                    {
+                      "id": "bda5baeb-5ece-45c5-8abe-7acb672fcd9d",
+                      "name": "No name or base_path parameter provided",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/modules/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "modules",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-bda5baeb-5ece-45c5-8abe-7acb672fcd9d"
+                    },
+                    {
+                      "id": "c5661f3c-b1bc-489a-8cbb-7b4e15149d66",
+                      "name": "A module with that name or base path already exists",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"base_path\": \"<string>\",\n  \"origins_allowed\": \"<string>\",\n  \"items_per_page\": 25,\n  \"module_status\": \"PUBLISHED\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"codePreview\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ords/rest/modules/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ords",
+                            "rest",
+                            "modules",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:26:57.000Z",
+                      "updatedAt": "2026-07-28T02:26:57.000Z",
+                      "uid": "35240-c5661f3c-b1bc-489a-8cbb-7b4e15149d66"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:26:57.000Z",
+                  "updatedAt": "2026-07-28T02:26:57.000Z",
+                  "uid": "35240-737afd3f-efd2-4aaa-a095-ba410fa5404b"
+                }
+              ],
+              "id": "6bfbba24-e59b-4b70-bf69-2ff575603525",
+              "createdAt": "2026-07-28T02:26:57.000Z",
+              "updatedAt": "2026-07-28T02:26:57.000Z",
+              "uid": "35240-6bfbba24-e59b-4b70-bf69-2ff575603525"
+            }
+          ],
+          "id": "c7ffbbac-e546-40f0-a1d7-56faa5e8d0bc",
+          "createdAt": "2026-07-28T02:26:57.000Z",
+          "updatedAt": "2026-07-28T02:26:57.000Z",
+          "uid": "35240-c7ffbbac-e546-40f0-a1d7-56faa5e8d0bc"
+        }
+      ],
+      "id": "45ac019b-b30d-4240-9994-0639214e0bfc",
+      "createdAt": "2026-07-28T02:26:57.000Z",
+      "updatedAt": "2026-07-28T02:26:57.000Z",
+      "uid": "35240-45ac019b-b30d-4240-9994-0639214e0bfc"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8443"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable"
+    }
+  ]
+}
