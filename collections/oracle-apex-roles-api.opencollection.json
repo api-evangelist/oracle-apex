@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Roles API",
+    "version": "25.4"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all ORDS roles defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ORDS role that can be assigned to privileges and OAuth clients to control access to REST services."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific ORDS role by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ORDS role."
+        },
+        {
+          "info": {
+            "name": "Delete an ORDS role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ORDS role."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS privileges for a specific role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/roles/:id/privileges/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all privileges associated with a specific ORDS role."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

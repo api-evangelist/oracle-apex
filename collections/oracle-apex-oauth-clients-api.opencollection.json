@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST OAuth Clients API",
+    "version": "25.4"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS OAuth clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all ORDS OAuth clients registered in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ORDS OAuth client that enables third-party applications to access protected REST resources using OAuth 2.0 authorization flows."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific ORDS OAuth client by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ORDS OAuth client configuration."
+        },
+        {
+          "info": {
+            "name": "Delete an ORDS OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ORDS OAuth client and revokes all associated tokens."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS privileges in an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id/privileges/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all privileges assigned to a specific ORDS OAuth client."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS roles in an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id/roles/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all roles assigned to a specific ORDS OAuth client."
+        },
+        {
+          "info": {
+            "name": "Update ORDS OAuth client avatar image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/clients/:id/logo/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Uploads or updates the avatar image displayed during OAuth authorization for a specific OAuth client."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

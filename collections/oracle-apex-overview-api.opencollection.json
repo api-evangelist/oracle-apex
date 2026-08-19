@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Overview API",
+    "version": "25.4"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Overview",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current ORDS schema and REST objects count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/overview/"
+          },
+          "docs": "Retrieves an overview of the current schema including counts of REST modules, templates, handlers, privileges, roles, and OAuth clients."
+        },
+        {
+          "info": {
+            "name": "Get all current schema recent REST objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/overview/objects_recent"
+          },
+          "docs": "Retrieves the most recently created or modified REST objects in the current schema."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

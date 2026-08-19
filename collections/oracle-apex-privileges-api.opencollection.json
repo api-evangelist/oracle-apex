@@ -1,0 +1,208 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Privileges API",
+    "version": "25.4"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Privileges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS privileges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of all ORDS privileges defined in the current schema."
+        },
+        {
+          "info": {
+            "name": "Create an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ORDS privilege that controls access to REST modules and URL patterns. Privileges can be associated with roles, patterns, and modules."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific ORDS privilege by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ORDS privilege including its label, description, and associated roles, patterns, and modules."
+        },
+        {
+          "info": {
+            "name": "Delete an ORDS privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all ORDS roles in a privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id/roles/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all roles associated with a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all REST modules in a privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id/modules/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all REST modules protected by a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all REST patterns in a privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privileges/:id/patterns/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Retrieves all URL patterns protected by a specific ORDS privilege."
+        },
+        {
+          "info": {
+            "name": "Get all protected REST modules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/rest/privilege/modules/",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The index of the first item to return (0-based). Default is 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page. Default is 25."
+              }
+            ]
+          },
+          "docs": "Retrieves all REST modules that are protected by one or more ORDS privileges."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

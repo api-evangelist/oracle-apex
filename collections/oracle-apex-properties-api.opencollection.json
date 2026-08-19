@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Properties API",
+    "version": "25.4"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all ORDS properties values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/"
+          },
+          "docs": "Retrieves all configuration property values for the ORDS instance."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Retrieves the value of a specific ORDS configuration property."
+        },
+        {
+          "info": {
+            "name": "Set an ORDS property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the value of a specific ORDS configuration property."
+        },
+        {
+          "info": {
+            "name": "Unset an ORDS property value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Removes a custom ORDS configuration property value, reverting it to the default."
+        },
+        {
+          "info": {
+            "name": "Get an ORDS property value for a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:schema/:key",
+            "params": [
+              {
+                "name": "schema",
+                "value": "",
+                "type": "path",
+                "description": "The schema name"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Retrieves the value of a specific ORDS configuration property scoped to a particular schema."
+        },
+        {
+          "info": {
+            "name": "Set an ORDS property value for a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:schema/:key",
+            "params": [
+              {
+                "name": "schema",
+                "value": "",
+                "type": "path",
+                "description": "The schema name"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the value of a specific ORDS configuration property scoped to a particular schema."
+        },
+        {
+          "info": {
+            "name": "Unset an ORDS property value for a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{host}:{port}/ords/_/db-api/stable/ords/properties/:schema/:key",
+            "params": [
+              {
+                "name": "schema",
+                "value": "",
+                "type": "path",
+                "description": "The schema name"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The property key name"
+              }
+            ]
+          },
+          "docs": "Removes a schema-scoped ORDS configuration property value, reverting it to the default."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

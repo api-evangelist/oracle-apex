@@ -1,0 +1,1281 @@
+{
+  "item": [
+    {
+      "id": "0a43a268-09db-40b9-8db4-8e6e50e522a1",
+      "name": "Handlers",
+      "description": {
+        "content": "REST template handler management. A handler implements an HTTP method on a template with source code.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "081765e1-bd6c-4da7-993c-1ff81355af17",
+          "name": "Get all REST template handlers",
+          "request": {
+            "name": "Get all REST template handlers",
+            "description": {
+              "content": "Retrieves a paginated list of all REST template handlers defined in the current schema.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ords",
+                "rest",
+                "handlers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The index of the first item to return (0-based). Default is 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page. Default is 25."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the ORDS instance",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "Port number for the ORDS instance",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4e5fdc6-cd5d-4e36-8e6d-70fb4dbf1387",
+              "name": "Paginated list of REST handlers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 8795,\n  \"hasMore\": false,\n  \"limit\": 4356,\n  \"offset\": 1445,\n  \"items\": [\n    {\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"href\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"href\": \"string\"\n        }\n      ],\n      \"key_0\": 7273.728932349759\n    },\n    {\n      \"links\": [\n        {\n          \"rel\": \"string\",\n          \"href\": \"string\"\n        },\n        {\n          \"rel\": \"string\",\n          \"href\": \"string\"\n        }\n      ],\n      \"key_0\": 5466.471470192429,\n      \"key_1\": 7178.595290661145,\n      \"key_2\": false\n    }\n  ],\n  \"links\": [\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5722cf45-ac83-4c05-ab72-923881bf776e",
+          "name": "Create a REST template handler",
+          "request": {
+            "name": "Create a REST template handler",
+            "description": {
+              "content": "Creates a new REST template handler that implements a specific HTTP method on a template. The handler contains the source code (SQL query or PL/SQL block) that will be executed when the template URI is accessed with the specified HTTP method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ords",
+                "rest",
+                "handlers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the ORDS instance",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "Port number for the ORDS instance",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65d1e113-d821-4e6f-9d93-9ac20124d9fc",
+              "name": "REST handler created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"links\": [\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"key_0\": 2536.206716936176\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d639292-4ced-43aa-ad18-3c4802751f28",
+              "name": "Missing required parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2074ec89-70ef-4ceb-b229-384e9b5965c1",
+              "name": "Template does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b394d12d-fecb-42ab-8ffd-b1c44b2069ee",
+              "name": "A handler for that method already exists on the template",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e594bc4-efd4-456e-adbb-74a22b02c636",
+          "name": "Get a REST template handler",
+          "request": {
+            "name": "Get a REST template handler",
+            "description": {
+              "content": "Retrieves details of a specific REST template handler by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ords",
+                "rest",
+                "handlers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier of the resource"
+                },
+                {
+                  "description": "Hostname of the ORDS instance",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "Port number for the ORDS instance",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20521771-0940-426f-8464-fc97e9dd19f3",
+              "name": "REST handler details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"links\": [\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"key_0\": 2536.206716936176\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cdd9971-d26e-439a-9aa2-0ba7eb8d39e7",
+              "name": "Handler not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1fc08f14-9e5e-4165-8350-fbdd4b6c4849",
+          "name": "Update a REST template handler",
+          "request": {
+            "name": "Update a REST template handler",
+            "description": {
+              "content": "Updates an existing REST template handler including its source code, source type, and pagination settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ords",
+                "rest",
+                "handlers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier of the resource"
+                },
+                {
+                  "description": "Hostname of the ORDS instance",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "Port number for the ORDS instance",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0601979-1452-4c62-9449-6d0266172f41",
+              "name": "REST handler updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"links\": [\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"key_0\": 2536.206716936176\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3e183c4-e109-4fda-b1f8-064e7726fb85",
+              "name": "Handler not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template_id\": \"<integer>\",\n  \"source\": \"<string>\",\n  \"source_type\": \"<string>\",\n  \"method\": \"<string>\",\n  \"items_per_page\": \"<integer,null>\",\n  \"mimes_allowed\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"run_mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25ce5ccc-9349-4520-84c8-95ee4d427f77",
+          "name": "Delete a REST template handler",
+          "request": {
+            "name": "Delete a REST template handler",
+            "description": {
+              "content": "Deletes a specific REST template handler.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ords",
+                "rest",
+                "handlers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier of the resource"
+                },
+                {
+                  "description": "Hostname of the ORDS instance",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "Port number for the ORDS instance",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c3ee2c8-b751-4b67-a6a7-9d26baedbdd0",
+              "name": "REST handler deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e89a6cb5-2852-4eee-8b97-370ac44b3aaa",
+              "name": "Handler not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c52ec06-bb17-4148-ba25-7d580ad185b6",
+          "name": "Get a REST handler source",
+          "request": {
+            "name": "Get a REST handler source",
+            "description": {
+              "content": "Retrieves the source code implementation of a specific REST template handler.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ords",
+                "rest",
+                "handlers",
+                ":id",
+                "source"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier of the resource"
+                },
+                {
+                  "description": "Hostname of the ORDS instance",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "Port number for the ORDS instance",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cca0bd8-e52f-4e71-92e9-4bc6c5bc5358",
+              "name": "REST handler source code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id",
+                    "source"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"links\": [\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"key_0\": 2536.206716936176\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41222618-6977-41c2-aaff-760ff9249eb0",
+              "name": "Handler not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ords",
+                    "rest",
+                    "handlers",
+                    ":id",
+                    "source"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the resource"
+                    },
+                    {
+                      "description": "Hostname of the ORDS instance",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "Port number for the ORDS instance",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the ORDS instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "host"
+    },
+    {
+      "description": {
+        "content": "Port number for the ORDS instance",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "8443",
+      "key": "port"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}:{{port}}/ords/_/db-api/stable",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2765f29d-8e51-460f-b514-edbd1d178ea5",
+    "name": "Oracle REST Data Services (ORDS) REST AutoREST Handlers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.\n\nContact Support:\n Name: Oracle APEX Support\n Email: apex-info_us@oracle.com",
+      "type": "text/plain"
+    }
+  }
+}
