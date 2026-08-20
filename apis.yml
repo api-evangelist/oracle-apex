@@ -37,6 +37,20 @@ tags:
   - PL/SQL
   - REST API
   - Web Applications
+  - Workflows
+tags_raw:
+  - APEX
+  - Cloud
+  - Database
+  - Development Platform
+  - Enterprise
+  - Generative AI
+  - Low-Code
+  - Oracle
+  - ORDS
+  - PL/SQL
+  - REST API
+  - Web Applications
   - Workflow
 apis:
 - name: Oracle APEX REST Data Services API
@@ -87,6 +101,10 @@ apis:
   humanURL: https://apex.oracle.com/
   baseURL: https://apex.oracle.com/pls/apex/
   tags:
+  - Application
+  - Development
+  - Management
+  tags_raw:
   - Applications
   - Development
   - Management
@@ -155,6 +173,12 @@ apis:
   humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html
   baseURL: https://apex.oracle.com/pls/apex/
   tags:
+  - Application
+  - Deployment
+  - Export
+  - Import
+  - PL/SQL
+  tags_raw:
   - Applications
   - Deployment
   - Export
@@ -177,6 +201,12 @@ apis:
   humanURL: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/
   baseURL: https://apex.oracle.com/pls/apex/
   tags:
+  - Approval
+  - Automation
+  - Human Tasks
+  - PL/SQL
+  - Workflows
+  tags_raw:
   - Approval
   - Automation
   - Human Tasks
@@ -221,6 +251,12 @@ apis:
   humanURL: https://apex.oracle.com/en/platform/features/whats-new-242/
   baseURL: https://apex.oracle.com/pls/apex/
   tags:
+  - Artificial Intelligence
+  - Generative AI
+  - Machine-Learning
+  - PL/SQL
+  - Vector Search
+  tags_raw:
   - AI
   - Generative AI
   - Machine Learning
