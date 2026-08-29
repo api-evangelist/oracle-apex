@@ -3,6 +3,18 @@ name: Oracle APEX
 description: >-
   Oracle Application Express (APEX) is a low-code development platform that enables you to build scalable, secure
   enterprise apps with world-class features.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve
