@@ -236,6 +236,12 @@ apis:
   tags:
   - Authentication
   - PL/SQL
+  - Sessions
+  - User Management
+  - Utility
+  tags_raw:
+  - Authentication
+  - PL/SQL
   - Session
   - User Management
   - Utility
