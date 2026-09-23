@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Oracle REST Data Services (ORDS) REST AutoREST Templates API
+  title: Oracle REST Data Services (ORDS) REST Templates API
   description: REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.
   version: '25.4'
   contact:
@@ -135,6 +135,55 @@ paths:
           description: Template not found
 components:
   schemas:
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
     TemplateCreate:
       type: object
       description: Request body for creating a REST module template
@@ -176,29 +225,6 @@ components:
           description: Set to 'codePreview' to return the PL/SQL code instead of executing it
           enum:
           - codePreview
-    LinkRelation:
-      type: object
-      description: HATEOAS link relation describing a related resource or action
-      required:
-      - rel
-      - href
-      properties:
-        rel:
-          type: string
-          description: Link relationship type (e.g., self, describedby, edit, collection)
-        href:
-          type: string
-          description: URI of the related resource
-    ResourceItem:
-      type: object
-      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
-      additionalProperties: true
-      properties:
-        links:
-          type: array
-          description: HATEOAS links for the resource
-          items:
-            $ref: '#/components/schemas/LinkRelation'
     TemplateUpdate:
       type: object
       description: Request body for updating a REST module template
@@ -228,33 +254,14 @@ components:
         comments:
           type: string
           description: Descriptive comment for the template
-    ItemsCollection:
-      type: object
-      description: Paginated collection of resource items following the ORDS standard collection format
-      properties:
-        count:
-          type: integer
-          description: Total number of records in the current response page
-        hasMore:
-          type: boolean
-          description: Indicates whether additional pages of results are available
-        limit:
-          type: integer
-          description: The page size limit applied by the server
-        offset:
-          type: integer
-          description: The starting index of items in this page
-        items:
-          type: array
-          description: Array of resource items in this page
-          items:
-            $ref: '#/components/schemas/ResourceItem'
-        links:
-          type: array
-          description: Pagination navigation links (first, next, prev, last)
-          items:
-            $ref: '#/components/schemas/LinkRelation'
   parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
     offset:
       name: offset
       in: query
@@ -264,13 +271,6 @@ components:
         type: integer
         default: 0
         minimum: 0
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique identifier of the resource
-      schema:
-        type: integer
     limit:
       name: limit
       in: query

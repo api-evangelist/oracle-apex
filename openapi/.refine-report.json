@@ -1,16 +1,7 @@
 {
   "provider": "oracle-apex",
   "sources": [
-    "oracle-apex-autorest-api-openapi.yml",
-    "oracle-apex-handlers-api-openapi.yml",
-    "oracle-apex-modules-api-openapi.yml",
-    "oracle-apex-oauth-clients-api-openapi.yml",
-    "oracle-apex-overview-api-openapi.yml",
-    "oracle-apex-parameters-api-openapi.yml",
-    "oracle-apex-privileges-api-openapi.yml",
-    "oracle-apex-properties-api-openapi.yml",
-    "oracle-apex-roles-api-openapi.yml",
-    "oracle-apex-templates-api-openapi.yml"
+    "_original/ords-rest-api-openapi.json"
   ],
   "outputs": [
     "oracle-apex-autorest-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ords-rest-api-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "oracle-apex-autorest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-handlers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-modules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-oauth-clients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-overview-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-parameters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-privileges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oracle-apex-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

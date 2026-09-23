@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Oracle REST Data Services (ORDS) REST AutoREST Overview API
+  title: Oracle REST Data Services (ORDS) REST Overview API
   description: REST API for managing Oracle REST Data Services (ORDS) RESTful service definitions including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects. ORDS provides a mid-tier Java application that maps HTTP requests to database transactions, enabling RESTful access to Oracle Database resources. This specification covers the ORDS REST Services Management endpoints available through the Database API stable interface.
   version: '25.4'
   contact:
@@ -63,16 +63,6 @@ paths:
                 $ref: '#/components/schemas/ItemsCollection'
 components:
   schemas:
-    ResourceItem:
-      type: object
-      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
-      additionalProperties: true
-      properties:
-        links:
-          type: array
-          description: HATEOAS links for the resource
-          items:
-            $ref: '#/components/schemas/LinkRelation'
     LinkRelation:
       type: object
       description: HATEOAS link relation describing a related resource or action
@@ -86,6 +76,16 @@ components:
         href:
           type: string
           description: URI of the related resource
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
     ItemsCollection:
       type: object
       description: Paginated collection of resource items following the ORDS standard collection format
