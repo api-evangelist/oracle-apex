@@ -139,32 +139,6 @@ components:
           description: HATEOAS links for the resource
           items:
             $ref: '#/components/schemas/LinkRelation'
-    ItemsCollection:
-      type: object
-      description: Paginated collection of resource items following the ORDS standard collection format
-      properties:
-        count:
-          type: integer
-          description: Total number of records in the current response page
-        hasMore:
-          type: boolean
-          description: Indicates whether additional pages of results are available
-        limit:
-          type: integer
-          description: The page size limit applied by the server
-        offset:
-          type: integer
-          description: The starting index of items in this page
-        items:
-          type: array
-          description: Array of resource items in this page
-          items:
-            $ref: '#/components/schemas/ResourceItem'
-        links:
-          type: array
-          description: Pagination navigation links (first, next, prev, last)
-          items:
-            $ref: '#/components/schemas/LinkRelation'
     LinkRelation:
       type: object
       description: HATEOAS link relation describing a related resource or action
@@ -214,6 +188,32 @@ components:
         comments:
           type: string
           description: Descriptive comment for the parameter
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
   parameters:
     resourceId:
       name: id
@@ -222,15 +222,6 @@ components:
       description: Unique identifier of the resource
       schema:
         type: integer
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The index of the first item to return (0-based). Default is 0.
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
     limit:
       name: limit
       in: query
@@ -241,6 +232,15 @@ components:
         default: 25
         minimum: 1
         maximum: 500
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The index of the first item to return (0-based). Default is 0.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
   securitySchemes:
     basicAuth:
       type: http

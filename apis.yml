@@ -263,7 +263,7 @@ apis:
   tags:
   - Artificial Intelligence
   - Generative AI
-  - Machine-Learning
+  - Machine Learning
   - PL/SQL
   - Vector Search
   tags_raw:
@@ -272,6 +272,7 @@ apis:
   - Machine Learning
   - PL/SQL
   - Vector Search
+  - Machine-Learning
   properties:
   - type: Documentation
     url: https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/

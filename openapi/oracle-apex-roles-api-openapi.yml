@@ -157,6 +157,33 @@ components:
           description: HATEOAS links for the resource
           items:
             $ref: '#/components/schemas/LinkRelation'
+    RoleCreate:
+      type: object
+      description: Request body for creating or updating an ORDS role
+      required:
+      - role_name
+      properties:
+        role_name:
+          type: string
+          description: Unique name of the ORDS role
+        run_mode:
+          type: string
+          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
+          enum:
+          - codePreview
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
     ItemsCollection:
       type: object
       description: Paginated collection of resource items following the ORDS standard collection format
@@ -183,33 +210,6 @@ components:
           description: Pagination navigation links (first, next, prev, last)
           items:
             $ref: '#/components/schemas/LinkRelation'
-    LinkRelation:
-      type: object
-      description: HATEOAS link relation describing a related resource or action
-      required:
-      - rel
-      - href
-      properties:
-        rel:
-          type: string
-          description: Link relationship type (e.g., self, describedby, edit, collection)
-        href:
-          type: string
-          description: URI of the related resource
-    RoleCreate:
-      type: object
-      description: Request body for creating or updating an ORDS role
-      required:
-      - role_name
-      properties:
-        role_name:
-          type: string
-          description: Unique name of the ORDS role
-        run_mode:
-          type: string
-          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
-          enum:
-          - codePreview
   parameters:
     resourceId:
       name: id
@@ -218,15 +218,6 @@ components:
       description: Unique identifier of the resource
       schema:
         type: integer
-    offset:
-      name: offset
-      in: query
-      required: false
-      description: The index of the first item to return (0-based). Default is 0.
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
     limit:
       name: limit
       in: query
@@ -237,6 +228,15 @@ components:
         default: 25
         minimum: 1
         maximum: 500
+    offset:
+      name: offset
+      in: query
+      required: false
+      description: The index of the first item to return (0-based). Default is 0.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
   securitySchemes:
     basicAuth:
       type: http
