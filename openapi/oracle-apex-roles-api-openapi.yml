@@ -146,70 +146,6 @@ paths:
         '404':
           description: Role not found
 components:
-  schemas:
-    ResourceItem:
-      type: object
-      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
-      additionalProperties: true
-      properties:
-        links:
-          type: array
-          description: HATEOAS links for the resource
-          items:
-            $ref: '#/components/schemas/LinkRelation'
-    RoleCreate:
-      type: object
-      description: Request body for creating or updating an ORDS role
-      required:
-      - role_name
-      properties:
-        role_name:
-          type: string
-          description: Unique name of the ORDS role
-        run_mode:
-          type: string
-          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
-          enum:
-          - codePreview
-    LinkRelation:
-      type: object
-      description: HATEOAS link relation describing a related resource or action
-      required:
-      - rel
-      - href
-      properties:
-        rel:
-          type: string
-          description: Link relationship type (e.g., self, describedby, edit, collection)
-        href:
-          type: string
-          description: URI of the related resource
-    ItemsCollection:
-      type: object
-      description: Paginated collection of resource items following the ORDS standard collection format
-      properties:
-        count:
-          type: integer
-          description: Total number of records in the current response page
-        hasMore:
-          type: boolean
-          description: Indicates whether additional pages of results are available
-        limit:
-          type: integer
-          description: The page size limit applied by the server
-        offset:
-          type: integer
-          description: The starting index of items in this page
-        items:
-          type: array
-          description: Array of resource items in this page
-          items:
-            $ref: '#/components/schemas/ResourceItem'
-        links:
-          type: array
-          description: Pagination navigation links (first, next, prev, last)
-          items:
-            $ref: '#/components/schemas/LinkRelation'
   parameters:
     resourceId:
       name: id
@@ -237,6 +173,70 @@ components:
         type: integer
         default: 0
         minimum: 0
+  schemas:
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
+    RoleCreate:
+      type: object
+      description: Request body for creating or updating an ORDS role
+      required:
+      - role_name
+      properties:
+        role_name:
+          type: string
+          description: Unique name of the ORDS role
+        run_mode:
+          type: string
+          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
+          enum:
+          - codePreview
+    ItemsCollection:
+      type: object
+      description: Paginated collection of resource items following the ORDS standard collection format
+      properties:
+        count:
+          type: integer
+          description: Total number of records in the current response page
+        hasMore:
+          type: boolean
+          description: Indicates whether additional pages of results are available
+        limit:
+          type: integer
+          description: The page size limit applied by the server
+        offset:
+          type: integer
+          description: The starting index of items in this page
+        items:
+          type: array
+          description: Array of resource items in this page
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        links:
+          type: array
+          description: Pagination navigation links (first, next, prev, last)
+          items:
+            $ref: '#/components/schemas/LinkRelation'
   securitySchemes:
     basicAuth:
       type: http

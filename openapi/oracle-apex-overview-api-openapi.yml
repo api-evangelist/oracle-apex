@@ -63,6 +63,29 @@ paths:
                 $ref: '#/components/schemas/ItemsCollection'
 components:
   schemas:
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
     ItemsCollection:
       type: object
       description: Paginated collection of resource items following the ORDS standard collection format
@@ -89,29 +112,6 @@ components:
           description: Pagination navigation links (first, next, prev, last)
           items:
             $ref: '#/components/schemas/LinkRelation'
-    ResourceItem:
-      type: object
-      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
-      additionalProperties: true
-      properties:
-        links:
-          type: array
-          description: HATEOAS links for the resource
-          items:
-            $ref: '#/components/schemas/LinkRelation'
-    LinkRelation:
-      type: object
-      description: HATEOAS link relation describing a related resource or action
-      required:
-      - rel
-      - href
-      properties:
-        rel:
-          type: string
-          description: Link relationship type (e.g., self, describedby, edit, collection)
-        href:
-          type: string
-          description: URI of the related resource
   securitySchemes:
     basicAuth:
       type: http
