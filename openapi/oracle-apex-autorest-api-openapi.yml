@@ -148,13 +148,6 @@ paths:
                 $ref: '#/components/schemas/ResourceItem'
 components:
   parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique identifier of the resource
-      schema:
-        type: integer
     limit:
       name: limit
       in: query
@@ -174,52 +167,14 @@ components:
         type: integer
         default: 0
         minimum: 0
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
   schemas:
-    ResourceItem:
-      type: object
-      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
-      additionalProperties: true
-      properties:
-        links:
-          type: array
-          description: HATEOAS links for the resource
-          items:
-            $ref: '#/components/schemas/LinkRelation'
-    LinkRelation:
-      type: object
-      description: HATEOAS link relation describing a related resource or action
-      required:
-      - rel
-      - href
-      properties:
-        rel:
-          type: string
-          description: Link relationship type (e.g., self, describedby, edit, collection)
-        href:
-          type: string
-          description: URI of the related resource
-    AutoRestEnable:
-      type: object
-      description: Request body for enabling or updating AutoREST on a database object
-      required:
-      - object_name
-      - object_alias
-      - auth
-      properties:
-        object_name:
-          type: string
-          description: Name of the database table or view to REST-enable
-        object_alias:
-          type: string
-          description: Alias used in the REST URI path for the object
-        auth:
-          type: boolean
-          description: When true, requires user authorization via ORDS roles before allowing access to the object metadata and data
-        run_mode:
-          type: string
-          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
-          enum:
-          - codePreview
     ItemsCollection:
       type: object
       description: Paginated collection of resource items following the ORDS standard collection format
@@ -246,6 +201,51 @@ components:
           description: Pagination navigation links (first, next, prev, last)
           items:
             $ref: '#/components/schemas/LinkRelation'
+    LinkRelation:
+      type: object
+      description: HATEOAS link relation describing a related resource or action
+      required:
+      - rel
+      - href
+      properties:
+        rel:
+          type: string
+          description: Link relationship type (e.g., self, describedby, edit, collection)
+        href:
+          type: string
+          description: URI of the related resource
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
+    AutoRestEnable:
+      type: object
+      description: Request body for enabling or updating AutoREST on a database object
+      required:
+      - object_name
+      - object_alias
+      - auth
+      properties:
+        object_name:
+          type: string
+          description: Name of the database table or view to REST-enable
+        object_alias:
+          type: string
+          description: Alias used in the REST URI path for the object
+        auth:
+          type: boolean
+          description: When true, requires user authorization via ORDS roles before allowing access to the object metadata and data
+        run_mode:
+          type: string
+          description: Set to 'codePreview' to return the PL/SQL code instead of executing it
+          enum:
+          - codePreview
   securitySchemes:
     basicAuth:
       type: http
