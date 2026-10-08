@@ -433,6 +433,12 @@ apis:
   - type: OpenAPI
     url: openapi/oracle-apex-templates-api-openapi.yml
 common:
+- type: Plans
+  url: plans/oracle-apex-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/oracle-apex-rate-limits.yml
+- type: FinOps
+  url: finops/oracle-apex-finops.yml
 - type: Website
   url: https://oracle.com
 - type: PostmanWorkspace
