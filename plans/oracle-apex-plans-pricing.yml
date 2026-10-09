@@ -97,3 +97,40 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - compute
+  - data
+  - object
+  plans:
+  - name: Included with Oracle Database
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - object
+    periods:
+    - per-use
+  - name: APEX on Autonomous — Always Free
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: APEX on Autonomous — Pay As You Go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    - data
+    periods:
+    - month
+    - per-use
