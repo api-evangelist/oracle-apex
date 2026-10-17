@@ -200,16 +200,6 @@ paths:
                 $ref: '#/components/schemas/ItemsCollection'
 components:
   parameters:
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of items to return per page. Default is 25.
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 500
     offset:
       name: offset
       in: query
@@ -226,6 +216,16 @@ components:
       description: Unique identifier of the resource
       schema:
         type: integer
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of items to return per page. Default is 25.
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 500
   schemas:
     ItemsCollection:
       type: object
@@ -253,6 +253,16 @@ components:
           description: Pagination navigation links (first, next, prev, last)
           items:
             $ref: '#/components/schemas/LinkRelation'
+    ResourceItem:
+      type: object
+      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
+      additionalProperties: true
+      properties:
+        links:
+          type: array
+          description: HATEOAS links for the resource
+          items:
+            $ref: '#/components/schemas/LinkRelation'
     LinkRelation:
       type: object
       description: HATEOAS link relation describing a related resource or action
@@ -266,16 +276,6 @@ components:
         href:
           type: string
           description: URI of the related resource
-    ResourceItem:
-      type: object
-      description: A single resource item with HATEOAS navigation links. Additional properties are included depending on the resource type.
-      additionalProperties: true
-      properties:
-        links:
-          type: array
-          description: HATEOAS links for the resource
-          items:
-            $ref: '#/components/schemas/LinkRelation'
     PrivilegeCreate:
       type: object
       description: Request body for creating or updating an ORDS privilege
