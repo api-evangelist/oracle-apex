@@ -1,4 +1,4 @@
-# Oracle APEX (oracle-apex)
+# Oracle APEX
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,299 +66,211 @@
 
 Oracle Application Express (APEX) is a low-code development platform that enables you to build scalable, secure enterprise apps with world-class features.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/oracle-apex/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/oracle-apex/refs/heads/main/apis.yml)
+**Areas:** APEX · Cloud · Database · Development Platform · Enterprise · Generative AI · Low-Code · Oracle · ORDS · PL/SQL · REST API · Web Applications
+
+## Oracle APEX on APIs.io
+
+Everything profiled for Oracle APEX is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/oracle-apex/](https://apis.io/providers/oracle-apex/)** — or go straight to one of the APIs or properties below.
+
+### APIs (21)
 
-## Scope
+- [Oracle APEX REST Data Services API](https://apis.io/apis/oracle-apex/oracle-apex-rest-data-services-api/) — RESTful API for Oracle APEX applications enabling data access and manipulation through REST endpoints.
+- [Oracle APEX SQL Workshop API](https://apis.io/apis/oracle-apex/oracle-apex-sql-workshop-api/) — API for accessing SQL Workshop functionality programmatically.
+- [Oracle APEX Application API](https://apis.io/apis/oracle-apex/oracle-apex-application-api/) — API for managing APEX applications, pages, and components.
+- [Oracle REST Data Services (ORDS) API](https://apis.io/apis/oracle-apex/oracle-rest-data-services-ords-api/) — REST API framework integrated with APEX for creating RESTful services including modules, templates, handlers, privileges, roles, OAuth clients, and…
+- [Oracle APEX Cloud REST API](https://apis.io/apis/oracle-apex/oracle-apex-cloud-rest-api/) — REST APIs for provisioning and managing Oracle APEX instances in Oracle Cloud Infrastructure, including workspace and application lifecycle management.
+- [Oracle APEX Export and Import API](https://apis.io/apis/oracle-apex/oracle-apex-export-and-import-api/) — PL/SQL and REST APIs for exporting and importing APEX applications, workspaces, and components using APEX_EXPORT and related packages.
+- [Oracle APEX Approval and Workflow API](https://apis.io/apis/oracle-apex/oracle-apex-approval-and-workflow-api/) — PL/SQL APIs for managing approvals, human tasks, and workflows in APEX applications using the APEX_APPROVAL and workflow packages.
+- [Oracle APEX Utility API](https://apis.io/apis/oracle-apex/oracle-apex-utility-api/) — The APEX_UTIL PL/SQL package provides utility functions for user management, authentication, session management, and other common APEX operations.
+- [Oracle APEX Generative AI API](https://apis.io/apis/oracle-apex/oracle-apex-generative-ai-api/) — APIs for integrating generative AI capabilities into APEX applications, including chat, text generation, and vector embeddings introduced in APEX 24.2.
+- [Oracle ORDS Database API](https://apis.io/apis/oracle-apex/oracle-ords-database-api/) — REST API for Oracle Database management and monitoring operations through ORDS, including pluggable database management, data export, and performance…
+- [Oracle APEX REST Administration API](https://apis.io/apis/oracle-apex/oracle-apex-rest-administration-api/) — REST Administration API enabling APEX instance administrators to perform administrative functions over REST and HTTP protocols for machine-to-machine…
+- [Oracle APEX AutoREST API](https://apis.io/apis/oracle-apex/oracle-apex-autorest-api/) — AutoREST object management. AutoREST enables automatic REST access to database tables and views.
+- [Oracle APEX Handlers API](https://apis.io/apis/oracle-apex/oracle-apex-handlers-api/) — REST template handler management. A handler implements an HTTP method on a template with source code.
+- [Oracle APEX Modules API](https://apis.io/apis/oracle-apex/oracle-apex-modules-api/) — REST module management. A module is a container for one or more templates with an associated base path.
+- [Oracle APEX OAuth Clients API](https://apis.io/apis/oracle-apex/oracle-apex-oauth-clients-api/) — ORDS OAuth client management. OAuth clients enable third-party applications to access protected resources.
+- [Oracle APEX Overview API](https://apis.io/apis/oracle-apex/oracle-apex-overview-api/) — ORDS schema overview and REST object summaries.
+- [Oracle APEX Parameters API](https://apis.io/apis/oracle-apex/oracle-apex-parameters-api/) — REST handler parameter management. Parameters define input bindings for handlers.
+- [Oracle APEX Privileges API](https://apis.io/apis/oracle-apex/oracle-apex-privileges-api/) — ORDS privilege management. Privileges control access to REST modules and URL patterns.
+- [Oracle APEX Properties API](https://apis.io/apis/oracle-apex/oracle-apex-properties-api/) — ORDS configuration property management.
+- [Oracle APEX Roles API](https://apis.io/apis/oracle-apex/oracle-apex-roles-api/) — ORDS role management. Roles group privileges for assignment to users and OAuth clients.
+- [Oracle APEX Templates API](https://apis.io/apis/oracle-apex/oracle-apex-templates-api/) — REST module template management. A template defines a URI pattern within a module for routing requests.
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+### Published properties
 
-## Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- APEX
-- Cloud
-- Database
-- Development Platform
-- Enterprise
-- Generative AI
-- Low-Code
-- Oracle
-- ORDS
-- PL/SQL
-- REST API
-- Web Applications
-- Workflow
+#### Agentic access (1)
 
-## Timestamps
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+- [Oracle Apex Agentic Access](https://apis.io/agentic-access/oracle-apex/oracle-apex-agentic-access/)
 
-## APIs
+#### JSON Schema (13)
 
-### Oracle APEX REST Data Services API
+The data models the API reads and writes.
 
-RESTful API for Oracle APEX applications enabling data access and manipulation through REST endpoints.
+- [Oracle APEX Application](https://apis.io/schemas/oracle-apex/oracle-apex-application/)
+- [AutoRestEnable](https://apis.io/schemas/oracle-apex/oracle-apex-autorestenable/)
+- [HandlerCreate](https://apis.io/schemas/oracle-apex/oracle-apex-handlercreate/)
+- [ItemsCollection](https://apis.io/schemas/oracle-apex/oracle-apex-itemscollection/)
+- [LinkRelation](https://apis.io/schemas/oracle-apex/oracle-apex-linkrelation/)
+- [ModuleCreate](https://apis.io/schemas/oracle-apex/oracle-apex-modulecreate/)
+- [OAuthClientCreate](https://apis.io/schemas/oracle-apex/oracle-apex-oauthclientcreate/)
+- [ParameterCreate](https://apis.io/schemas/oracle-apex/oracle-apex-parametercreate/)
+- [PrivilegeCreate](https://apis.io/schemas/oracle-apex/oracle-apex-privilegecreate/)
+- [ResourceItem](https://apis.io/schemas/oracle-apex/oracle-apex-resourceitem/)
+- [RoleCreate](https://apis.io/schemas/oracle-apex/oracle-apex-rolecreate/)
+- [TemplateCreate](https://apis.io/schemas/oracle-apex/oracle-apex-templatecreate/)
+- [TemplateUpdate](https://apis.io/schemas/oracle-apex/oracle-apex-templateupdate/)
 
-- **Human URL:** [https://apex.oracle.com/](https://apex.oracle.com/)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
+#### JSON Structure (1)
 
-#### Tags
+Data models expressed in JSON Structure.
 
-- Data Services
-- Database
-- Low-Code
-- REST
+- [Oracle Apex Structure](https://apis.io/json-structure/oracle-apex/oracle-apex-structure/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/)
-- [Authentication](https://docs.oracle.com/en/database/oracle/apex/latest/htmdb/authentication.html)
-- [Getting Started](https://apex.oracle.com/en/learn/getting-started/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Linked-data contexts for the provider's vocabulary.
 
-### Oracle APEX SQL Workshop API
+- [Oracle Apex Context](https://apis.io/jsonld/oracle-apex/oracle-apex-context/)
 
-API for accessing SQL Workshop functionality programmatically.
+#### Vocabulary (1)
 
-- **Human URL:** [https://apex.oracle.com/](https://apex.oracle.com/)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
+The provider's domain terms, defined.
 
-#### Tags
+- [Oracle APEX Domain Vocabulary](https://apis.io/vocabularies/oracle-apex/oracle-apex-vocabulary/)
 
-- Database
-- Development
-- SQL
+#### Collections (21)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.oracle.com/en/database/oracle/apex/latest/)
-- [Tutorials](https://apex.oracle.com/en/learn/tutorials/)
-- [API Reference](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Oracle REST Data Services (ORDS) REST AutoREST API](https://apis.io/collections/oracle-apex/open-oracle-apex-autorest-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Handlers API](https://apis.io/collections/oracle-apex/open-oracle-apex-handlers-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Modules API](https://apis.io/collections/oracle-apex/open-oracle-apex-modules-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST OAuth Clients API](https://apis.io/collections/oracle-apex/open-oracle-apex-oauth-clients-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Overview API](https://apis.io/collections/oracle-apex/open-oracle-apex-overview-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Parameters API](https://apis.io/collections/oracle-apex/open-oracle-apex-parameters-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Privileges API](https://apis.io/collections/oracle-apex/open-oracle-apex-privileges-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Properties API](https://apis.io/collections/oracle-apex/open-oracle-apex-properties-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Roles API](https://apis.io/collections/oracle-apex/open-oracle-apex-roles-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Templates API](https://apis.io/collections/oracle-apex/open-oracle-apex-templates-api/)
+- [Oracle REST Data Services (ORDS) REST API](https://apis.io/collections/oracle-apex/open-ords-rest-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST API](https://apis.io/collections/oracle-apex/postman-oracle-apex-autorest-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Handlers API](https://apis.io/collections/oracle-apex/postman-oracle-apex-handlers-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Modules API](https://apis.io/collections/oracle-apex/postman-oracle-apex-modules-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST OAuth Clients API](https://apis.io/collections/oracle-apex/postman-oracle-apex-oauth-clients-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Overview API](https://apis.io/collections/oracle-apex/postman-oracle-apex-overview-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Parameters API](https://apis.io/collections/oracle-apex/postman-oracle-apex-parameters-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Privileges API](https://apis.io/collections/oracle-apex/postman-oracle-apex-privileges-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Properties API](https://apis.io/collections/oracle-apex/postman-oracle-apex-properties-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Roles API](https://apis.io/collections/oracle-apex/postman-oracle-apex-roles-api/)
+- [Oracle REST Data Services (ORDS) REST AutoREST Templates API](https://apis.io/collections/oracle-apex/postman-oracle-apex-templates-api/)
 
-### Oracle APEX Application API
+#### Governance rules (1)
 
-API for managing APEX applications, pages, and components.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://apex.oracle.com/](https://apex.oracle.com/)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
+- [Oracle APEX — jsonschema rules](https://apis.io/rules/oracle-apex/oracle-apex-jsonschema-spectral-rules/)
 
-#### Tags
+#### Security (2)
 
-- Applications
-- Development
-- Management
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Oracle Apex Authentication](https://apis.io/security/oracle-apex/oracle-apex-authentication/)
+- [Oracle Apex Domain Security](https://apis.io/security/oracle-apex/oracle-apex-domain-security/)
 
-- [Documentation](https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/)
-- [API Reference](https://docs.oracle.com/en/database/oracle/apex/latest/aeapi/APEX_APPLICATION.html)
-- [Getting Started](https://apex.oracle.com/en/learn/getting-started/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### OAuth scopes (1)
 
-### Oracle REST Data Services (ORDS) API
+The permissions the API asks for.
 
-REST API framework integrated with APEX for creating RESTful services including modules, templates, handlers, privileges, roles, OAuth clients, and AutoREST-enabled objects.
+- [Oracle Apex Scopes](https://apis.io/scopes/oracle-apex/oracle-apex-scopes/)
 
-- **Human URL:** [https://www.oracle.com/database/technologies/appdev/rest.html](https://www.oracle.com/database/technologies/appdev/rest.html)
-- **Base URL:** `https://example.com/ords/_/db-api/stable/`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Integration
-- ORDS
-- REST
-- Web Services
+- [Oracle Apex Plans Pricing](https://apis.io/plans/oracle-apex/oracle-apex-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/)
-- [API Reference](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orrst/index.html)
-- [F A Q](https://www.oracle.com/tools/technologies/faq-rest-data-services.html)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Oracle APEX Cloud REST API
+- [Oracle Apex Rate Limits](https://apis.io/rate-limits/oracle-apex/oracle-apex-rate-limits/)
 
-REST APIs for provisioning and managing Oracle APEX instances in Oracle Cloud Infrastructure, including workspace and application lifecycle management.
+#### FinOps (1)
 
-- **Human URL:** [https://docs.oracle.com/en/cloud/paas/apex/rest-apis.html](https://docs.oracle.com/en/cloud/paas/apex/rest-apis.html)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
+What the API costs to run, by operation.
 
-#### Tags
+- [Oracle Apex Finops](https://apis.io/finops/oracle-apex/oracle-apex-finops/)
 
-- Administration
-- Cloud
-- Oracle Cloud
-- Provisioning
-- REST
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://docs.oracle.com/en/cloud/paas/apex/rest-apis.html)
-- [Getting Started](https://docs.oracle.com/en/cloud/paas/apex/gsadd/sign-up-for-apex-service.html)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Oracle APEX Export and Import API
-
-PL/SQL and REST APIs for exporting and importing APEX applications, workspaces, and components using APEX_EXPORT and related packages.
-
-- **Human URL:** [https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
-
-#### Tags
-
-- Applications
-- Deployment
-- Export
-- Import
-- PL/SQL
-
-#### Properties
-
-- [Documentation](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_EXPORT.html)
-- [API Reference](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Oracle APEX Approval and Workflow API
-
-PL/SQL APIs for managing approvals, human tasks, and workflows in APEX applications using the APEX_APPROVAL and workflow packages.
-
-- **Human URL:** [https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
-
-#### Tags
-
-- Approval
-- Automation
-- Human Tasks
-- PL/SQL
-- Workflow
-
-#### Properties
-
-- [Documentation](https://docs.oracle.com/en/database/oracle/apex/23.2/aeapi/APEX_APPROVAL.html)
-- [API Reference](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Oracle APEX Utility API
-
-The APEX_UTIL PL/SQL package provides utility functions for user management, authentication, session management, and other common APEX operations.
-
-- **Human URL:** [https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
-
-#### Tags
-
-- Authentication
-- PL/SQL
-- Session
-- User Management
-- Utility
-
-#### Properties
-
-- [Documentation](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- [API Reference](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/APEX_UTIL.html)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Oracle APEX Generative AI API
-
-APIs for integrating generative AI capabilities into APEX applications, including chat, text generation, and vector embeddings introduced in APEX 24.2.
-
-- **Human URL:** [https://apex.oracle.com/en/platform/features/whats-new-242/](https://apex.oracle.com/en/platform/features/whats-new-242/)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
-
-#### Tags
-
-- AI
-- Generative AI
-- Machine Learning
-- PL/SQL
-- Vector Search
-
-#### Properties
-
-- [Documentation](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- [Release Notes](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/changes-in-this-release.html)
-- [Features](https://apex.oracle.com/en/platform/features/whats-new-242/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Oracle ORDS Database API
-
-REST API for Oracle Database management and monitoring operations through ORDS, including pluggable database management, data export, and performance monitoring.
-
-- **Human URL:** [https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/)
-- **Base URL:** `https://example.com/ords/`
-
-#### Tags
-
-- Database
-- Management
-- Monitoring
-- ORDS
-- REST
-
-#### Properties
-
-- [Documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/)
-- [API Reference](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/orrst/toc.htm)
-- [Getting Started](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/25.2/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Oracle APEX REST Administration API
-
-REST Administration API enabling APEX instance administrators to perform administrative functions over REST and HTTP protocols for machine-to-machine communication.
-
-- **Human URL:** [https://docs.oracle.com/database/apex-5.1/AEAPI/Using-REST-Administration-Interface-API.htm](https://docs.oracle.com/database/apex-5.1/AEAPI/Using-REST-Administration-Interface-API.htm)
-- **Base URL:** `https://apex.oracle.com/pls/apex/`
-
-#### Tags
-
-- Administration
-- Automation
-- Instance Management
-- REST
-
-#### Properties
-
-- [Documentation](https://docs.oracle.com/database/apex-5.1/AEAPI/Using-REST-Administration-Interface-API.htm)
-- [API Reference](https://docs.oracle.com/en/database/oracle/apex/24.2/aeapi/)
-- [Postman Collection](collections/ords-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ords-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
+- [Website](https://oracle.com)
 - [Documentation](https://docs.oracle.com/en/database/oracle/apex/)
-- [Blog](https://blogs.oracle.com/apex/)
-- [GitHub Organization](https://github.com/oracle/apex)
-- [YouTube](https://www.youtube.com/c/OracleAPEX)
+- [Getting started](https://apex.oracle.com/en/learn/getting-started/)
+- [API reference](https://docs.oracle.com/en/database/oracle/apex/24.2/api-references.html)
 - [Pricing](https://www.oracle.com/application-development/apex/pricing/)
-- [Getting Started](https://apex.oracle.com/en/learn/getting-started/)
-- [Tutorials](https://apex.oracle.com/en/learn/tutorials/)
-- [Release Notes](https://apex.oracle.com/en/learn/documentation/release-notes/)
-- [API Reference](https://docs.oracle.com/en/database/oracle/apex/24.2/api-references.html)
-- [Terms of Service](https://www.oracle.com/legal/terms/)
-- [Privacy Policy](https://www.oracle.com/legal/privacy/privacy-policy/)
-- [F A Q](https://www.oracle.com/tools/technologies/faq-rest-data-services.html)
 - [Support](https://apex.oracle.com/community)
-- [Sign Up](https://docs.oracle.com/en/cloud/paas/apex/gsadd/sign-up-for-apex-service.html)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Blog](https://blogs.oracle.com/apex/)
+- [Terms of service](https://www.oracle.com/legal/terms/)
+- [Privacy policy](https://www.oracle.com/legal/privacy/privacy-policy/)
+- [GitHub](https://github.com/oracle/apex)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 43.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 56.7 |
+| Contract governance | 9.8 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 34.5 |
+| Access clarity | 52.6 |
+
+**Agent readiness 27.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 31.8** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/oracle-apex/](https://apis.io/providers/oracle-apex/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Oracle APEX: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/oracle-apex/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
